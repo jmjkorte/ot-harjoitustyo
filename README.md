@@ -1,10 +1,7 @@
-# Yläotsikko
-*Kirjoitetaan tänne jotain kursiivilla*
-**Ja kirjoitetaan tänne jotain lihavoituna**
+# Ohjelmistotekniikka, harjoitustyö
 
-## Kurssin eteneminen
-* Viikko 1 
-* Viikko 2 
-* Viikko 3 
-* Ja niin edelleen... 
+## Viikko 1
+. 
 
+http://github.com - automatic!
+[GitHub](http://github.com)
