@@ -8,3 +8,5 @@
 * Viikko 3 
 * Ja niin edelleen... 
 
+http://github.com - automatic!
+[GitHub](http://github.com)
