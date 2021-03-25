@@ -200,6 +200,6 @@ public class KassapaateTest {
     @Test
     public void kortilleEiVoiLadataNegatiivistaSummaa(){
         paate.lataaRahaaKortille(riittava, -1000);
-        assertEquals(1000, riittava.saldo());
+        assertEquals(100, riittava.saldo());
     }
 }
