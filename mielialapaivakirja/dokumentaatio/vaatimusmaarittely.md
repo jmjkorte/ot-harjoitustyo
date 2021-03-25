@@ -18,7 +18,23 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä.
 - Terapeutti pystyy luomaan potilaalle päiväkirjan.
 - Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja.
 - Terapeutti pystyy tulostamaan potilaan päiväkirjan.
+- Käyttäjätunnuksen poistaminen
 
 ### Potilaan näkymä
-- Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle.
+- Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle.
 - Potilas pystyy tulostamaan päiväkirjan.
+- Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
+
+## Jatkokehitys
+Perusversion tarjoamia toiminnallisuuksia laajennetaan. 
+### Terapeutin näkymä
+- Mahdollisuus lisätä, poistaa tai muokata mittareita.
+- Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
+- Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
+- Mahdollisuus luoda laadullisia mittareita (String).
+### Potilaan näkymä
+- Mahdollisuus tietojen tallentamiseen ja lataamiseen.
+- Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
+- Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
+- Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen.
+
