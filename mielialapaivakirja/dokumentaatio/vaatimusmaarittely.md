@@ -19,11 +19,13 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä.
 - Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja.
 - Terapeutti pystyy tulostamaan potilaan päiväkirjan.
 - Käyttäjätunnuksen poistaminen
+- Järjestelmään kirjautuminenen ja uloskirjautuminen
 
 ### Potilaan näkymä
 - Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle.
 - Potilas pystyy tulostamaan päiväkirjan.
 - Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
+- Järjestelmään kirjautuminenen ja uloskirjautuminen
 
 ## Jatkokehitys
 Perusversion tarjoamia toiminnallisuuksia laajennetaan. 
