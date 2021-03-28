@@ -11,9 +11,8 @@ Sovelluksella on kaksi käyttäjäroolia, *terapeutti* ja *potilas*. Terapeutin 
 ## Käyttöliittymä
 Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä.
 
-## Perusversion tarjoama toiminnallisuus
+## Ensimmäisen version tarjoama toiminnallisuus
 ### Terapeutin näkymä
-- Terapeutti pystyy luomaan itselleen käyttäjätunnuksen.
 - Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle.
 - Terapeutti pystyy luomaan potilaalle päiväkirjan.
 - Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja.
@@ -28,7 +27,8 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä.
 - Järjestelmään kirjautuminenen ja uloskirjautuminen
 
 ## Jatkokehitys
-Perusversion tarjoamia toiminnallisuuksia laajennetaan. 
+Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
+- Tietojen tallennus tiedostoon / tietokantaan ja lataus tiedostosta / tietokannasta.
 ### Terapeutin näkymä
 - Mahdollisuus lisätä, poistaa tai muokata mittareita.
 - Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
