@@ -5,11 +5,13 @@ Sovelluksen tarkoituksena on toimia mielialahäiriöitä sairastavien potilaiden
 
 Potilaan päiväkirjaan kirjaamat tiedot tallennetaan ja niiden avulla terapeutin ja potilaan on mahdollista tarkastella potilaan voinnin kehittymistä myös pitkällä aikavälillä.
 
+Sovellus ohjelmoidaa Java-ohjelmointikielellä.
+
 ## Käyttäjät
 Sovelluksella on kaksi käyttäjäroolia, *terapeutti* ja *potilas*. Terapeutin on mahdollista luoda potilaille käyttäjätunnus. Vain terapeutin tunnuksilla on mahdollista luoda potilaan päiväkirja ja siinä seurattavat asiat.
 
 ## Käyttöliittymä
-Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä.
+Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisessti graafinen käyttöliittymä. 
 
 ## Ensimmäisen version tarjoama toiminnallisuus
 ### Terapeutin näkymä
