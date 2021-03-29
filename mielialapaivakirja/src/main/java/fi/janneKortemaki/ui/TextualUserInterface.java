@@ -1,16 +1,16 @@
 
-package fi.janneKortemaki.gui;
+package fi.janneKortemaki.ui;
 import fi.janneKortemaki.logics.Logics;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.*;
-public class UserInterface {
+public class TextualUserInterface {
     
     private Scanner scanner;
     private Logics logics;
     private String username;
     
-    public UserInterface(Scanner textScanner) {
+    public TextualUserInterface(Scanner textScanner) {
         this.scanner = textScanner;
         this.logics = new Logics();
         
