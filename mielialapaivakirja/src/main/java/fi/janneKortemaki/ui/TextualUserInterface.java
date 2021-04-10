@@ -48,11 +48,13 @@ public class TextualUserInterface {
             System.out.println("Valitse seuraavista:");
             System.out.println("1 - Perusta potilas");
             System.out.println("2 - Poista potilas");
-            System.out.println("3 - Tutki potilaiden tietoja");
+            System.out.println("3 - Tulosta potilaat");
             System.out.println("4 - Tutki tilastoja");
             System.out.println("5 - Tulosta kaikkien potilaiden tiedot");
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
+            
+            System.out.print("> ");
 
             int choice = Integer.valueOf(scanner.nextLine());
 
@@ -66,7 +68,7 @@ public class TextualUserInterface {
             } else if (choice ==2) {
                 System.out.println("Toimintoa ei ole vielä luotu."); 
             } else if (choice ==3) {
-                System.out.println("Toimintoa ei ole vielä luotu."); 
+                logics.printAllPatients(); 
             } else if (choice ==4) {
                 System.out.println("Toimintoa ei ole vielä luotu."); 
             } else if (choice == 5){

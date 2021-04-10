@@ -3,13 +3,17 @@ package fi.janneKortemaki.logics;
 import fi.janneKortemaki.logics.Patient;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
+import strman.Strman;
+
 
 public class Logics {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     private Scanner scanner;
+    
     
     public Logics(Scanner scanner) {
         this.userRoles = new HashMap();
@@ -32,8 +36,8 @@ public class Logics {
     }
     
     public void createPatient(String surname, String firstname, int bornYear, int bornMonth, int bornDay){
-        patients.add(new Patient(surname, firstname, bornYear, bornMonth, bornDay));
-        //Miten sortataan aakkosjärjestykseen?
+        patients.add(new Patient(capitalize(surname), capitalize(firstname), bornYear, bornMonth, bornDay));
+        Collections.sort(patients, Comparator.comparing(Patient::getSurname));
         System.out.println("Potilas luotu onnistuneesti.");
         
         
@@ -51,6 +55,19 @@ public class Logics {
         patients.add(new Patient("Koivisto", "Mauno-Henrik", 2001, 12, 12));
         patients.add(new Patient("Niinistö", "Sauli", 1951, 12, 4));
         patients.add(new Patient("Halonen", "tarja", 1990, 11, 1));
+        Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
+    }
+     
+    private String capitalize(String name){
+        if(name.contains("-")){
+            String[] parts = name.split("-");
+            String part1 = Strman.capitalize(parts[0]);
+            String part2 = Strman.capitalize(parts[1]);
+            String capName = part1 + "-" + part2;
+            return capName;
+        }
+       String capName = Strman.capitalize(name);
+       return capName;
     }
        
         
