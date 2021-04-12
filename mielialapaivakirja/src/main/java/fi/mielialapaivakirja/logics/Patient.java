@@ -8,22 +8,22 @@ public class Patient {
     final String surname;
     final String firstname;
     final LocalDate dateOfBirth;
-    private ArrayList<Indicator> indicators;
+    private ArrayList<Indicator> diary; //Indikaattorit tulevat päiväkirjaan
     
     public Patient(String surName, String firstName, int year, int month, int date){
         this.surname = surName;
         this.firstname = firstName;
         this.dateOfBirth = LocalDate.of(year, month, date);
-        this.indicators = new ArrayList<>();
+        this.diary = new ArrayList<>();
         
         }
     
     public void createIndicator(String nameOfIndicator, int minValue, int maxValue){
-        this.indicators.add(new Indicator(nameOfIndicator, minValue, maxValue));
+        this.diary.add(new Indicator(nameOfIndicator, minValue, maxValue));
     }
     
     public void printAllIndicators(){
-        for(Indicator indicator : this.indicators){
+        for(Indicator indicator : this.diary){
             System.out.println(indicator.getNameOfIndicator() + ": minimiarvo " + indicator.getMinValue() + ", maksimiarvo " + indicator.getMaxValue());
         }
     }
@@ -38,6 +38,12 @@ public class Patient {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+    
+    public void printIndicators() { //tämä on testi
+        for(Indicator indicator: diary){
+            System.out.println(indicator.toString());
+        }
     }
 
     @Override

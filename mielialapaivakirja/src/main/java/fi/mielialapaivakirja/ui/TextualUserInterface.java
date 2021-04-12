@@ -49,8 +49,10 @@ public class TextualUserInterface {
             System.out.println("1 - Perusta potilas");
             System.out.println("2 - Poista potilas");
             System.out.println("3 - Tulosta potilaat");
-            System.out.println("4 - Tutki tilastoja");
+            System.out.println("4 - Valitse potilas");
             System.out.println("5 - Tulosta kaikkien potilaiden tiedot");
+            System.out.println("6 - Luo indikaattori");
+            System.out.println("7 - Tulosta kaikki indikaattorit");
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
             
@@ -70,10 +72,34 @@ public class TextualUserInterface {
             } else if (choice ==3) {
                 logics.printAllPatients(); 
             } else if (choice ==4) {
-                System.out.println("Toimintoa ei ole vielä luotu."); 
+                System.out.println("Anna potilaan sukunimi:");
+                String surname = scanner.nextLine();
+                System.out.println("Anna potilaan etunimi:");
+                String firstname = scanner.nextLine();
+                boolean patientExists = logics.choosePatient(surname, firstname);
+                if (patientExists){
+                    System.out.println("Potilas " + logics.getPatient() + " valittu.");
+                }
+                else {
+                    System.out.println("Potilasta " + surname + ", " + firstname + "ei löytynyt");
+                    System.out.println("Valittuna on potilas " + logics.getPatient() + ".");
+                }
             } else if (choice == 5){
                 logics.printAllPatients();
-            } else {
+            } else if (choice == 6){
+                System.out.println("Olet luomassa indikaattoria potilaalle " + logics.getPatient());
+                System.out.println("Anna indikaattorin nimi:");
+                String nameOfIndicator = scanner.nextLine();
+                System.out.println("Anna indikaattorin minimiarvo:");
+                int minValue = Integer.valueOf(scanner.nextLine());
+                System.out.println("Anna indikaattorin maksimiarvo:");
+                int maxValue = Integer.valueOf(scanner.nextLine());
+                logics.newIndicator(nameOfIndicator, minValue, maxValue);
+            } else if (choice == 7){
+                logics.printAllIndicators();
+            }
+            
+            else {
                 System.out.println("Väärä valinta.");
             }
             
@@ -83,7 +109,7 @@ public class TextualUserInterface {
         
     }
 
-    public void  newPatient(){
+    private void  newPatient(){
         int bornYear;
         int bornMonth;
         int bornDate;

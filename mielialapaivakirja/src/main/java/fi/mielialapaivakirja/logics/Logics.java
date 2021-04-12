@@ -12,7 +12,9 @@ import strman.Strman;
 public class Logics {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
+    
     private Scanner scanner;
+    private Patient patient;
     
     
     public Logics(Scanner scanner) {
@@ -49,12 +51,39 @@ public class Logics {
         }
     }
     
+    public boolean choosePatient(String surname, String firstname){
+        surname = capitalize(surname);
+        firstname = capitalize(firstname);
+        
+        for(Patient person : patients){
+            if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)){
+                this.patient = person;
+                return true;
+            }
+            
+        }
+        return false;
+    }
+    
+    
+    public void newIndicator(String nameOfIndicator, int minValue, int maxValue) {
+        this.patient.createIndicator(nameOfIndicator, minValue, maxValue);
+    
+}
+    public String getPatient(){
+        return this.patient.getSurname() + " " + this.patient.getFirstname();
+    
+}
+    public void printAllIndicators(){
+        this.patient.printAllIndicators();
+    }
+    
      private void initTestEnvironment(){
         patients.add(new Patient("Kiesilä", "Kalle", 1980, 10, 10));
         patients.add(new Patient("Kekkonen", "Urho-Kaleva", 1910, 7, 1));
         patients.add(new Patient("Koivisto", "Mauno-Henrik", 2001, 12, 12));
         patients.add(new Patient("Niinistö", "Sauli", 1951, 12, 4));
-        patients.add(new Patient("Halonen", "tarja", 1990, 11, 1));
+        patients.add(new Patient("Halonen", "Tarja", 1990, 11, 1));
         Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
     }
      
