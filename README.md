@@ -9,3 +9,4 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 3. Kaikkien potilaiden tietojen listaus
 4. Sovellukseen on luotu yksi testi, joka testaa Patient -luokan kostruktorin toimintaa. Testin voi ajaa komentorivin komennolla mvn test.
 5. Testikattavuusraportin voi generoida komennolla mvn test jacoco:report
+6. Sovelluksen voi ajaa sekä Netbeansissa että komentorivin kautta komennolla mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
