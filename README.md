@@ -7,7 +7,5 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 1. Sisään- ja uloskirjautuminen
 2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
 3. Kaikkien potilaiden tietojen listaus
-
-
-* Sovellukseen on luotu yksi testi, joka testaa Patient -luokan kostruktorin toimintaa. Testin voi ajaa komentorivin komennolla mvn test.
-* Testikattavuusraportin voi generoida komennolla mvn test jacoco:report
+4. Sovellukseen on luotu yksi testi, joka testaa Patient -luokan kostruktorin toimintaa. Testin voi ajaa komentorivin komennolla mvn test.
+5. Testikattavuusraportin voi generoida komennolla mvn test jacoco:report
