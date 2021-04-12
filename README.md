@@ -1,12 +1,13 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-## Viikko 1
-. 
+## Viikko 3
+
+### Sovelluksen kehitystilanne
+Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia. Sovelluksen käynnistyttyä kysytään käyttäjätunnusta, johon tulee kirjoittaa 'test'. Sovellus luo oletusarvoisesti muutamia testipotilaita, joille on merkitty myös syntymäaika. Sovelluksen toiminnalisuuksista toimii tällä hetkellä seuraavat:
+1. Sisään- ja uloskirjautuminen
+2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
+3. Kaikkien potilaiden tietojen listaus
 
 
-[gitlog.txt](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-
-### Muutos
+* Sovellukseen on luotu yksi testi, joka testaa Patient -luokan kostruktorin toimintaa. Testin voi ajaa komentorivin komennolla mvn test.
+* Testikattavuusraportin voi generoida komennolla mvn test jacoco:report
