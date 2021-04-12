@@ -1,6 +1,6 @@
 
-package fi.janneKortemaki.ui;
-import fi.janneKortemaki.logics.Logics;
+package fi.mielialapaivakirja.ui;
+import fi.mielialapaivakirja.logics.Logics;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.*;

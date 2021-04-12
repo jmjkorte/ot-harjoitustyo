@@ -1,5 +1,5 @@
 
-package fi.janneKortemaki.logics;
+package fi.mielialapaivakirja.logics;
 
 
 public class Indicator {

@@ -1,6 +1,6 @@
 
-package fi.janneKortemaki.logics;
-import fi.janneKortemaki.logics.Patient;
+package fi.mielialapaivakirja.logics;
+import fi.mielialapaivakirja.logics.Patient;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

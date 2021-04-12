@@ -1,5 +1,5 @@
 
-package fi.janneKortemaki.logics;
+package fi.mielialapaivakirja.logics;
 
 import java.time.*;
 import java.util.ArrayList;
