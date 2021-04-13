@@ -3,7 +3,6 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 
 ## Viikko 3
 
-### Sovelluksen tarkoitus
 ### Sovelluksen kehitystilanne
 Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.**Sovelluksen käynnistyttyä kysytään käyttäjätunnusta, johon tulee kirjoittaa 'test'.** Sovellus luo oletusarvoisesti muutamia testipotilaita, joille on merkitty myös syntymäaika. Sovelluksen toiminnalisuuksista toimii tällä hetkellä seuraavat:
 1. Sisään- ja uloskirjautuminen
@@ -16,6 +15,7 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 
 
 ### Dokumentaatio
+
 [Työaikakirjanpito](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 [Vaatimusmäärittely](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
