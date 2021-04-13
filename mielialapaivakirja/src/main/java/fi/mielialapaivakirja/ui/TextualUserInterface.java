@@ -43,7 +43,7 @@ public class TextualUserInterface {
     public void therapistView(){
         System.out.println("Tervetuloa " + this.username + "!");
         while(true){
-            System.out.println("Paina mitä tahansa näppäintä jatkaaksesi");
+            System.out.println("Paina <Enter> jatkaaksesi");
             scanner.nextLine();
             System.out.println("Valitse seuraavista:");
             System.out.println("1 - Perusta potilas");
