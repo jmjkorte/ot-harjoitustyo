@@ -9,9 +9,7 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
 3. Kaikkien potilaiden tietojen listaus
 4. Mittarin luominen ja mittareiden tulostaminen
-5. Sovellukseen on luotu yksi testi, joka testaa Patient -luokan kostruktorin toimintaa. Testin voi ajaa komentorivin komennolla **mvn test**.
-6. Testikattavuusraportin voi generoida komennolla **mvn test jacoco:report**
-7. Sovelluksen voi ajaa sekä Netbeansissa että komentorivin kautta komennolla **mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main**
+7.
 
 
 ### Dokumentaatio
@@ -19,3 +17,14 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 [Työaikakirjanpito](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 [Vaatimusmäärittely](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+
+### Komentorivitoiminnot
+
+Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla **mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main**
+
+Testit suoritetaan komennolla
+**mvn test**
+
+Testikattavuusraportti luodaan komennolla
+**mvn test jacoco::report**
