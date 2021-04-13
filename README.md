@@ -9,7 +9,6 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
 3. Kaikkien potilaiden tietojen listaus
 4. Mittarin luominen ja mittareiden tulostaminen
-7.
 
 
 ### Dokumentaatio
