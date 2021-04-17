@@ -4,6 +4,7 @@ import fi.mielialapaivakirja.logics.Logics;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.*;
+import java.time.LocalDate;
 public class TextualUserInterface {
     
     private Scanner scanner;
@@ -29,10 +30,10 @@ public class TextualUserInterface {
             if (role == 1){
                 therapistView();
 
-            } else if (role ==2){
+            } else if (role == 2){
                 patientView();
 
-            } else if (role ==3) {
+            } else if (role == 3) {
                 System.out.println("Käyttäjätunnusta ei löydy.");
                 
             }
@@ -42,6 +43,7 @@ public class TextualUserInterface {
     
     public void therapistView(){
         System.out.println("Tervetuloa " + this.username + "!");
+        System.out.println("Tänään on " + logics.getDate());
         while(true){
             System.out.println("Paina <Enter> jatkaaksesi");
             scanner.nextLine();
@@ -127,6 +129,7 @@ public class TextualUserInterface {
             }
         }
         
+        
         while(true){
             System.out.println("Kuukausi(mm)");
             bornMonth = Integer.valueOf(scanner.nextLine());
@@ -146,7 +149,10 @@ public class TextualUserInterface {
             }
         }
         
-        logics.createPatient(surName, firstName, bornYear, bornMonth, bornDate);
+        System.out.println("Käyttäjätunnus:");
+        String user = scanner.nextLine();
+        
+        logics.createPatient(surName, firstName, bornYear, bornMonth, bornDate, user);
         
         
     }
@@ -154,6 +160,57 @@ public class TextualUserInterface {
     
     
     public void patientView() {
+        System.out.println("Tervetuloa " + logics.getPatient());
+        System.out.println("Tänään on " + logics.getDate());
+        
+        while (true){
+            
+            System.out.println("Paina <Enter> jatkaaksesi.");
+            scanner.nextLine();
+            System.out.println("Valitse seuraavista:");
+            System.out.println("1 - Tee kirjaus päiväkirjaan");
+            System.out.println("2 - Tarkastele päiväkirjaa");
+            System.out.println("3 - Tulosta päiväkirja");
+            System.out.println("4 - Tulosta mittarit");
+            System.out.println("0 - Kirjaudu ulos");
+            System.out.println("99 - Lopeta");
+
+            System.out.println("> ");
+            String patientsChoice = scanner.nextLine();
+
+            if (patientsChoice.equals("0")) {
+                start();
+            } else if (patientsChoice.equals("1")) {
+                System.out.println("Tänään on " + logics.getDate());
+                System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");
+                String entryForToday = scanner.nextLine();
+                if (entryForToday.equals("k") || entryForToday.equals("k")) {
+                    LocalDate now = LocalDate.now();
+                    for (int i = 0; i < logics.patient.indicators.size(); i++) {
+                        System.out.println("Anna arvo mittarille " + logics.patient.indicators.get(i).toString());
+                        int valueOfEntry = Integer.valueOf(scanner.nextLine());
+                        logics.patient.makeEntry(now, valueOfEntry);
+                        
+                    }
+                    logics.patient.makeEntry(now);
+                }
+                System.out.println("Toimintoa ei ole vielä luotu.");
+            } else if (patientsChoice.equals("2")) {
+                System.out.println("Toimintoa ei ole vielä luotu.");
+            } else if (patientsChoice.equals("3")) {
+                System.out.println("Toimintoa ei ole vielä luotu.");
+            } else if (patientsChoice.equals("4")) {
+                logics.printAllIndicators();
+            } else if (patientsChoice.equals("99")) {
+                System.out.println("Hyvää päivänhatkoa!");
+                System.exit(0);
+            } else {
+                System.out.println("Väärä valinta.");
+            }
+        
+        
+        }
+        
     
     
     }

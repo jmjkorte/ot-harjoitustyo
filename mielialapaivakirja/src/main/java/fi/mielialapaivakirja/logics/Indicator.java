@@ -8,11 +8,11 @@ public class Indicator {
     private int maxValue;
     private int value;
     
-    public Indicator(String name, int min, int max){
+    public Indicator(String name, int min, int max) {
         this.nameOfIndicator = name;
         this.minValue = min;
         this.maxValue = max;
-        this.value= 0;
+        this.value = 0;
     }
     
     
