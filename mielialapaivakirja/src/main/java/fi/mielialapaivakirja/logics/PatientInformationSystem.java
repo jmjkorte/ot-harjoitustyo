@@ -10,7 +10,7 @@ import java.util.Scanner;
 import strman.Strman;
 
 
-public class Logics {
+public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     
@@ -18,7 +18,7 @@ public class Logics {
     public Patient patient;
     
     
-    public Logics(Scanner scanner) {
+    public PatientInformationSystem(Scanner scanner) {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
         userRoles.put("test", 1);
@@ -74,16 +74,10 @@ public class Logics {
     }
     
     
-    public void newIndicator(String nameOfIndicator, int minValue, int maxValue) {
-        this.patient.createIndicator(nameOfIndicator, minValue, maxValue);
+   
+    public Patient getPatient() {
+        return this.patient;
     
-    }
-    public String getPatient() {
-        return this.patient.getSurname() + " " + this.patient.getFirstname();
-    
-    }
-    public void printAllIndicators() {
-        this.patient.printAllIndicators();
     }
     
     private void initTestEnvironment() {
@@ -99,8 +93,8 @@ public class Logics {
         userRoles.put("tarja", 2);
         Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
         choosePatient("Koivisto", "Mauno-Henrik");
-        this.patient.createIndicator("Surullisuus", 0, 5);
-        this.patient.createIndicator("Aktiivisuus", 0, 10);
+        this.patient.diary.createIndicator("Surullisuus", 0, 5);
+        this.patient.diary.createIndicator("Aktiivisuus", 0, 10);
     }
     
     public String getDate(){

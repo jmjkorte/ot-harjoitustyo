@@ -1,19 +1,22 @@
 
 package fi.mielialapaivakirja.ui;
-import fi.mielialapaivakirja.logics.Logics;
+import fi.mielialapaivakirja.logics.PatientInformationSystem;
+import fi.mielialapaivakirja.logics.Patient;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 public class TextualUserInterface {
     
     private Scanner scanner;
-    private Logics logics;
+    private PatientInformationSystem patientInformationSystem;
     private String username;
+    private Patient patient;
     
     public TextualUserInterface(Scanner textScanner) {
         this.scanner = textScanner;
-        this.logics = new Logics(this.scanner);
+        this.patientInformationSystem = new PatientInformationSystem(this.scanner);
         
     }
     
@@ -26,7 +29,7 @@ public class TextualUserInterface {
                 System.out.println("Hyvää päivänjatkoa!");
                 break;
             }
-            int role = this.logics.check(username);
+            int role = this.patientInformationSystem.check(username);
             if (role == 1){
                 therapistView();
 
@@ -42,8 +45,9 @@ public class TextualUserInterface {
     }
     
     public void therapistView(){
+        this.patient = patientInformationSystem.getPatient();
         System.out.println("Tervetuloa " + this.username + "!");
-        System.out.println("Tänään on " + logics.getDate());
+        System.out.println("Tänään on " + getDate());
         while(true){
             System.out.println("Paina <Enter> jatkaaksesi");
             scanner.nextLine();
@@ -72,33 +76,34 @@ public class TextualUserInterface {
             } else if (choice ==2) {
                 System.out.println("Toimintoa ei ole vielä luotu."); 
             } else if (choice ==3) {
-                logics.printAllPatients(); 
+                patientInformationSystem.printAllPatients(); 
             } else if (choice ==4) {
                 System.out.println("Anna potilaan sukunimi:");
                 String surname = scanner.nextLine();
                 System.out.println("Anna potilaan etunimi:");
                 String firstname = scanner.nextLine();
-                boolean patientExists = logics.choosePatient(surname, firstname);
+                boolean patientExists = patientInformationSystem.choosePatient(surname, firstname);
                 if (patientExists){
-                    System.out.println("Potilas " + logics.getPatient() + " valittu.");
+                    this.patient = patientInformationSystem.getPatient();
+                    System.out.println("Potilas " + this.patient.toString() + " valittu.");
                 }
                 else {
                     System.out.println("Potilasta " + surname + ", " + firstname + "ei löytynyt");
-                    System.out.println("Valittuna on potilas " + logics.getPatient() + ".");
+                    System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
                 }
             } else if (choice == 5){
-                logics.printAllPatients();
+                patientInformationSystem.printAllPatients();
             } else if (choice == 6){
-                System.out.println("Olet luomassa indikaattoria potilaalle " + logics.getPatient());
+                System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.toString());
                 System.out.println("Anna indikaattorin nimi:");
                 String nameOfIndicator = scanner.nextLine();
                 System.out.println("Anna indikaattorin minimiarvo:");
                 int minValue = Integer.valueOf(scanner.nextLine());
                 System.out.println("Anna indikaattorin maksimiarvo:");
                 int maxValue = Integer.valueOf(scanner.nextLine());
-                logics.newIndicator(nameOfIndicator, minValue, maxValue);
+                this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue);
             } else if (choice == 7){
-                logics.printAllIndicators();
+                System.out.println(this.patient.diary.getIndicators());
             }
             
             else {
@@ -152,7 +157,7 @@ public class TextualUserInterface {
         System.out.println("Käyttäjätunnus:");
         String user = scanner.nextLine();
         
-        logics.createPatient(surName, firstName, bornYear, bornMonth, bornDate, user);
+        patientInformationSystem.createPatient(surName, firstName, bornYear, bornMonth, bornDate, user);
         
         
     }
@@ -160,8 +165,10 @@ public class TextualUserInterface {
     
     
     public void patientView() {
-        System.out.println("Tervetuloa " + logics.getPatient());
-        System.out.println("Tänään on " + logics.getDate());
+        this.patient = patientInformationSystem.getPatient();
+        System.out.println("Tervetuloa " + patientInformationSystem.getPatient());
+        
+        System.out.println("Tänään on "  + getDate());
         
         while (true){
             
@@ -181,28 +188,23 @@ public class TextualUserInterface {
             if (patientsChoice.equals("0")) {
                 start();
             } else if (patientsChoice.equals("1")) {
-                System.out.println("Tänään on " + logics.getDate());
+                System.out.println("Tänään on " + LocalDate.now());
                 System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");
                 String entryForToday = scanner.nextLine();
-                if (entryForToday.equals("k") || entryForToday.equals("k")) {
+                if (entryForToday.equals("k") || entryForToday.equals("K")) {
                     LocalDate now = LocalDate.now();
-                    for (int i = 0; i < logics.patient.indicators.size(); i++) {
-                        System.out.println("Anna arvo mittarille " + logics.patient.indicators.get(i).toString());
-                        int valueOfEntry = Integer.valueOf(scanner.nextLine());
-                        logics.patient.makeEntry(now, valueOfEntry);
-                        
-                    }
-                    logics.patient.makeEntry(now);
+                    this.patient.diary.makeEntry(now);
+                    
                 }
-                System.out.println("Toimintoa ei ole vielä luotu.");
+                    
             } else if (patientsChoice.equals("2")) {
                 System.out.println("Toimintoa ei ole vielä luotu.");
             } else if (patientsChoice.equals("3")) {
-                System.out.println("Toimintoa ei ole vielä luotu.");
+                this.patient.diary.printAllEntries();
             } else if (patientsChoice.equals("4")) {
-                logics.printAllIndicators();
+                this.patient.diary.printAllIndicators();
             } else if (patientsChoice.equals("99")) {
-                System.out.println("Hyvää päivänhatkoa!");
+                System.out.println("Hyvää päivänjatkoa!");
                 System.exit(0);
             } else {
                 System.out.println("Väärä valinta.");
@@ -213,6 +215,12 @@ public class TextualUserInterface {
         
     
     
+    }
+    
+    public String getDate(){
+        LocalDate today = LocalDate.now();
+        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return formattedDay;
     }
     
     

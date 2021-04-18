@@ -6,13 +6,13 @@ public class Indicator {
     private String nameOfIndicator;
     private int minValue;
     private int maxValue;
-    private int value;
+    
     
     public Indicator(String name, int min, int max) {
         this.nameOfIndicator = name;
         this.minValue = min;
         this.maxValue = max;
-        this.value = 0;
+        
     }
     
     
@@ -31,10 +31,7 @@ public class Indicator {
         return maxValue;
     }
 
-    public int getValue() {
-        return value;
-    }
-
+    
     public void setNameOfIndicator(String nameOfIndicator) {
         this.nameOfIndicator = nameOfIndicator;
     }
@@ -47,13 +44,11 @@ public class Indicator {
         this.maxValue = maxValue;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+   
 
     @Override
     public String toString() {
-        return  nameOfIndicator + ": minValue=" + minValue + ", maxValue=" + maxValue;
+        return  nameOfIndicator + "(" + minValue + "-" + maxValue + ")";
     }
     
     
