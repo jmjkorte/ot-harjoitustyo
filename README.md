@@ -26,4 +26,4 @@ Testit suoritetaan komennolla
 **mvn test**
 
 Testikattavuusraportti luodaan komennolla
-**mvn test jacoco::report**
+**mvn test jacoco:report**
