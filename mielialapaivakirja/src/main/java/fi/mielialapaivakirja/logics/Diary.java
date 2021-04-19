@@ -10,7 +10,7 @@ public class Diary {
     private ArrayList<Entry> entries;
     private Scanner scanner;
     
-    public Diary(){
+    public Diary() {
         this.indicators = new ArrayList();
         this.entries = new ArrayList();
         this.scanner = new Scanner(System.in);
@@ -34,26 +34,50 @@ public class Diary {
             System.out.println("Indikaattoreita ei löydy.");
             return;
         }    
-        for (Indicator indicator: this.indicators){
+        for (Indicator indicator: this.indicators) {
             System.out.println(indicator.toString());
         }
     }
     
-    public void makeEntry(LocalDate date){
-        for(Indicator indicator: this.indicators){
-            System.out.println("Anna arvo indicaattorille " + indicator.toString());
+    public void printNameOfAllIndicators() {
+        for (Indicator indicator: this.indicators) {
+            System.out.println(indicator.getNameOfIndicator());
+        }
+    }
+    
+    public void makeEntry(LocalDate date) {
+        for (Indicator indicator: this.indicators) {
+            System.out.println("Anna arvo indikaattorille " + indicator.toString());
             int valueOfEntry = Integer.valueOf(scanner.nextLine());
             this.entries.add(new Entry(date, indicator, valueOfEntry));
         }
     }
         
-    public void printAllEntries(){
-        for(Entry entry: this.entries){
+    public void printAllEntries() {
+        for (Entry entry: this.entries) {
             System.out.println(entry.toString());
         }
     }
+    
+    public void printEntriesOfChosenIndicator(String name) {
+        for (Entry entry: this.entries) {
+            if (name.equals(entry.getIndicatorOfEntry().getNameOfIndicator())) {
+                System.out.println(entry.getDateOfEntry() + " " + entry.getIndicatorOfEntry().getNameOfIndicator() + ":" + entry.getValueOfEntry());
+            }
+        }
+    }    
+        
+    public void printEntriesOfChosenDate(LocalDate chosenDate) {
+        for (Entry entry: this.entries) {
+            if (chosenDate.equals(entry.getDateOfEntry())) {
+                System.out.println(entry.getDateOfEntry() + " " + entry.getIndicatorOfEntry().getNameOfIndicator() + ":" + entry.getValueOfEntry());
+            }
+
+        }
+    }
+}
         
     
     
     
-}
+

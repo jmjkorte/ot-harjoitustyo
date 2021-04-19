@@ -97,7 +97,7 @@ public class PatientInformationSystem {
         this.patient.diary.createIndicator("Aktiivisuus", 0, 10);
     }
     
-    public String getDate(){
+    public String getDate() {
         LocalDate today = LocalDate.now();
         String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;

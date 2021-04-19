@@ -37,7 +37,7 @@ public class Patient {
         return dateOfBirth;
     }
     
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
     }
     

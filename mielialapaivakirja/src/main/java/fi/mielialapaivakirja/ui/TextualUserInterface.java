@@ -182,7 +182,7 @@ public class TextualUserInterface {
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
 
-            System.out.println("> ");
+            System.out.print("> ");
             String patientsChoice = scanner.nextLine();
 
             if (patientsChoice.equals("0")) {
@@ -196,9 +196,29 @@ public class TextualUserInterface {
                     this.patient.diary.makeEntry(now);
                     
                 }
+                if (entryForToday.equals("e") || entryForToday.equals("E")){
+                    this.patient.diary.makeEntry(setDate());
+                }
                     
             } else if (patientsChoice.equals("2")) {
-                System.out.println("Toimintoa ei ole vielä luotu.");
+                System.out.println("Voit tutkia kirjauksiasi päivämäärän tai indikaattorin nimen perusteella.");
+                System.out.println("Valitse seuraavista:");
+                System.out.println("1 - Tarkastelu indikaattorin perusteella");
+                System.out.println("2 - Tarkastelu päivämäärän perusteella");
+                System.out.print("> ");
+                int chosenAlternative = Integer.valueOf(scanner.nextLine());
+                if (chosenAlternative == 1){
+                    System.out.println("Valitse seuraavista vaihtoehdoista kirjoittamalla indikaattorin nimi: ");
+                    this.patient.diary.printNameOfAllIndicators();
+                    System.out.print("> ");
+                    String chosenIndicator = scanner.nextLine();
+                    this.patient.diary.printEntriesOfChosenIndicator(chosenIndicator);
+                } else if (chosenAlternative == 2){
+                    this.patient.diary.printEntriesOfChosenDate(setDate());
+                    
+                    
+                }
+                
             } else if (patientsChoice.equals("3")) {
                 this.patient.diary.printAllEntries();
             } else if (patientsChoice.equals("4")) {
@@ -222,6 +242,20 @@ public class TextualUserInterface {
         String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;
     }
+    
+    public LocalDate setDate(){
+         System.out.println("Anna vuosi: ");
+        System.out.print("> ");
+        int year = Integer.valueOf(scanner.nextLine());
+        System.out.println("Anna kuukausi: ");
+        System.out.print("> ");
+        int month = Integer.valueOf(scanner.nextLine());
+        System.out.println("Anna päivä: ");
+        System.out.print("> ");
+        int day = Integer.valueOf(scanner.nextLine());
+        LocalDate chosenDate = LocalDate.of(year, month, day);
+        return chosenDate;
+    } 
     
     
     
