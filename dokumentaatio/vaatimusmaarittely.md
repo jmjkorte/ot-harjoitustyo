@@ -21,7 +21,7 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 - [x] Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
 
 ### Terapeutin näkymä
-- [ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
+- [ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika). *Huom! Käyttäjätunnuksen lisääminen onnistuu.* 
 - [x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
 - [x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. 
 - [x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. 
@@ -31,7 +31,7 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 - [x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle.
 - [x] Potilas pystyy tulostamaan päiväkirjan näytölle. 
 - [x] Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
-- [x]Järjestelmään kirjautuminen ja uloskirjautuminen 
+- [x] Järjestelmään kirjautuminen ja uloskirjautuminen 
 
 ## Jatkokehitys
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
@@ -45,5 +45,5 @@ Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan.
 - [ ] Mahdollisuus tietojen tallentamiseen ja lataamiseen.
 - [ ] Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
 - [ ] Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
-- [x]Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. 
+- [x] Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. 
 
