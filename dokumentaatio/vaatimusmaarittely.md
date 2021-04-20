@@ -21,17 +21,17 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 - Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
 
 ### Terapeutin näkymä
-[x] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
-[] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
-[] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
-[] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
-[] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+-[ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
+-[x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
+-[x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
+-[x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
+-[x] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
 
 ### Potilaan näkymä
-- Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
-- Potilas pystyy tulostamaan päiväkirjan näytölle. *tehty*
-- Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
-- Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+-[x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
+-[x] Potilas pystyy tulostamaan päiväkirjan näytölle. *tehty*
+-[x] Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
+-[x]Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
 
 ## Jatkokehitys
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
@@ -45,5 +45,5 @@ Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan.
 - Mahdollisuus tietojen tallentamiseen ja lataamiseen.
 - Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
 - Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
-- Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. *tehty*
+-[x]Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. *tehty*
 
