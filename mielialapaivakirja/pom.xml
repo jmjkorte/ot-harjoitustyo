@@ -31,7 +31,8 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>Mielialapaivakirja/ui/*</exclude>
+                        <exclude>fi/mielialapaivakirja/ui/*</exclude>
+                        <exclude>fi/mielialapaivakirja/main/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

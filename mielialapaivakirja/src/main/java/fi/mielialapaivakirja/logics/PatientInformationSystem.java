@@ -103,7 +103,7 @@ public class PatientInformationSystem {
         return formattedDay;
     }
      
-    private String capitalize(String name) {
+    public String capitalize(String name) {
         if (name.contains("-")) {
             String[] parts = name.split("-");
             String part1 = Strman.capitalize(parts[0]);
