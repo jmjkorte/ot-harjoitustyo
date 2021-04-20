@@ -4,7 +4,7 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Viikko 4
 
 ### Sovelluksen kehitystilanne
-Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.**Sovelluksen käynnistyttyä kysytään käyttäjätunnusta, johon tulee kirjoittaa ==test==.** Sovellus luo oletusarvoisesti muutamia testipotilaita, joille on merkitty myös syntymäaika. Sovelluksen toiminnalisuuksista toimii tällä hetkellä seuraavat:
+Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.**Sovelluksen käynnistyttyä kysytään käyttäjätunnusta, johon tulee kirjoittaa *test*.** Sovellus luo oletusarvoisesti muutamia testipotilaita, joille on merkitty myös syntymäaika. Sovelluksen toiminnalisuuksista toimii tällä hetkellä seuraavat:
 1. Sisään- ja uloskirjautuminen
 2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
 3. Kaikkien potilaiden tietojen listaus
@@ -24,11 +24,14 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 ### Komentorivitoiminnot
 
 Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla 
-...
+```
 mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
-...
+```
 Testit suoritetaan komennolla
-==mvn test==
-
+```
+mvn test
+```
 Testikattavuusraportti luodaan komennolla
-==mvn test jacoco:report==
+```
+mvn test jacoco:report
+``` 
