@@ -12,3 +12,7 @@
 | 11.4.| Repositorion siistiminen, README.md:n kirjoittaminen, sovelluksen ohjelmointi |3|
 | 12.4.| Sovelluksen koodaus |2|
 | 13.4.| Sovelluksen testaus, READEME.md:n kirjoittaminen, viikkopalautuksen viimeistely |1|
+| 18.4.| Potilaan käyttöliittymän ja potilan toiminnallisuuksiin liittyvien luokkien ohjelmointi |3|
+| 19.4.| Potilaan käyttöliittymän ja potilan toiminnallisuuksiin liittyvien luokkien ohjelmointi. Checkstylen käyttöönotto. |4|
+| 20.4.| Testit, arkkitehtuuri.md:n ja README.md:n kirjoittaminen |3|
+
