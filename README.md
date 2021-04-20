@@ -4,11 +4,14 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Viikko 4
 
 ### Sovelluksen kehitystilanne
-Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.**Sovelluksen käynnistyttyä kysytään käyttäjätunnusta, johon tulee kirjoittaa *test*.** Sovellus luo oletusarvoisesti muutamia testipotilaita, joille on merkitty myös syntymäaika. Sovelluksen toiminnalisuuksista toimii tällä hetkellä seuraavat:
-1. Sisään- ja uloskirjautuminen
-2. Uuden potilaan luominen. Uutta potilasta luotaessa tarkastetaan potilaan nimen ja syntymäajan kirjoitusasu. Etu- ja sukunimen kirjainten koon tarkastamiseen ja korjaamiseen käytetään ulkopuolisen kirjaston, Strmanin metodia. 
-3. Kaikkien potilaiden tietojen listaus
-4. Mittarin luominen ja mittareiden tulostaminen
+Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.Sovelluksen käynnistyttyä kysytään käyttäjätunnusta. Sovellus generoi testausta varten yhden terapeuttikäyttäjän ja kolme potilasta, joiden käyttäjätunnukset ovat:
+```
+Terapeutti: test
+Potilaat: kalle, urkki, manu, sale, tarja
+```
+Oletusarvoisesti terapeutin käyttöliittymässä on valittu potilas *manu*.
+Testipotilaiden ja terapeutin generointi tapahtuu luokan *PatientInformationSystem* metodilla *InitTestEnvironment*. Metodia kutsutaan saman luokan konstruktorissa rivillä 26. Tämä rivi tulee poistaa, mikäli testipotilaita ei haluta luoda. 
+HUOM! Terapeutin luonti ei ole sovelluksessa vielä mahdollista, joten saman luokan riviä 24 ei tule poistaa!
 
 
 ### Dokumentaatio
