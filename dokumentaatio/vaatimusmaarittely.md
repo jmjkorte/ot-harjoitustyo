@@ -23,27 +23,27 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 ### Terapeutin näkymä
 - [ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
 - [x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
-- [x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
-- [x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
-- [x] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+- [x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. 
+- [x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. 
+- [x] Järjestelmään kirjautuminenen ja uloskirjautuminen 
 
 ### Potilaan näkymä
-- [x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
-- [x] Potilas pystyy tulostamaan päiväkirjan näytölle. *tehty*
+- [x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle.
+- [x] Potilas pystyy tulostamaan päiväkirjan näytölle. 
 - [x] Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
-- [x]Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+- [x]Järjestelmään kirjautuminen ja uloskirjautuminen 
 
 ## Jatkokehitys
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
-- Tietojen tallennus tiedostoon / tietokantaan ja lataus tiedostosta / tietokannasta.
+- [ ] Tietojen tallennus tiedostoon / tietokantaan ja lataus tiedostosta / tietokannasta.
 ### Terapeutin näkymä
-- Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty*
-- Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
-- Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
-- Mahdollisuus luoda laadullisia mittareita (String).
+- [ ] Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty*
+- [ ] Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
+- [ ] Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
+- [ ] Mahdollisuus luoda laadullisia mittareita (String).
 ### Potilaan näkymä
-- Mahdollisuus tietojen tallentamiseen ja lataamiseen.
-- Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
-- Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
--[x]Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. *tehty*
+- [ ] Mahdollisuus tietojen tallentamiseen ja lataamiseen.
+- [ ] Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
+- [ ] Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
+- [x]Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. 
 
