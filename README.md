@@ -37,6 +37,6 @@ Testikattavuusraportti luodaan komennolla:
 mvn test jacoco:report
 ``` 
 #### Checkstyle
-Tiedostossa [checkstyle.xml] määritellyt tarkistukset suoritetaan komennolla:
+Tiedostossa [checkstyle.xml](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/checkstyle.xml) määritellyt tarkistukset suoritetaan komennolla:
 ```
 mvn jxr:jxr checkstyle:checkstyle
