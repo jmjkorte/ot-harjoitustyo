@@ -4,7 +4,7 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Viikko 4
 
 ### Sovelluksen kehitystilanne
-Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.Sovelluksen käynnistyttyä kysytään käyttäjätunnusta. Sovellus generoi testausta varten yhden terapeuttikäyttäjän ja kolme potilasta, joiden käyttäjätunnukset ovat:
+Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen liittyviä toiminnallisuuksia.Sovelluksen käynnistyttyä kysytään käyttäjätunnusta. Sovellus generoi testausta varten yhden terapeuttikäyttäjän ja viisi potilasta, joiden käyttäjätunnukset ovat:
 ```
 Terapeutti: test
 Potilaat: kalle, urkki, manu, sale, tarja
