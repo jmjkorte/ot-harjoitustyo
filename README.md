@@ -12,7 +12,7 @@ Terapeutti: test
 Potilaat: kalle, urkki, manu, sale, tarja
 ```
 Oletusarvoisesti terapeutin käyttöliittymässä on valittu potilas *manu*.
-Testipotilaiden ja terapeutin generointi tapahtuu luokan *PatientInformationSystem* metodilla *InitTestEnvironment*. Metodia kutsutaan saman luokan konstruktorissa rivillä 26. Tämä rivi tulee poistaa, mikäli testipotilaita ei haluta luoda. 
+Testipotilaiden ja terapeutin generointi tapahtuu luokan **PatientInformationSystem** metodilla **InitTestEnvironment()**. Metodia kutsutaan saman luokan konstruktorissa rivillä 26. Tämä rivi tulee poistaa, mikäli testipotilaita ei haluta luoda. 
 HUOM! Terapeutin luonti ei ole sovelluksessa vielä mahdollista, joten saman luokan riviä 24 ei tule poistaa!
 
 
