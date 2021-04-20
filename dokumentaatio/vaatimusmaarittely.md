@@ -21,11 +21,11 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 - Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
 
 ### Terapeutin näkymä
-- Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
-- Terapeutti pystyy luomaan potilaalle päiväkirjan. [x]
-- Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
-- Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
-- Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+[x] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
+[] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
+[] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
+[] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
+[] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
 
 ### Potilaan näkymä
 - Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
