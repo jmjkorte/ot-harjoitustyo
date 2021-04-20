@@ -23,15 +23,20 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 
 ### Komentorivitoiminnot
 
-Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla 
+Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla: 
 ```
 mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
 ```
-Testit suoritetaan komennolla
+#### Testaus
+Testit suoritetaan komennolla:
 ```
 mvn test
 ```
-Testikattavuusraportti luodaan komennolla
+Testikattavuusraportti luodaan komennolla:
 ```
 mvn test jacoco:report
 ``` 
+#### Checkstyle
+Tiedostossa [checkstyle.xml] määritellyt tarkistukset suoritetaan komennolla:
+```
+mvn jxr:jxr checkstyle:checkstyle
