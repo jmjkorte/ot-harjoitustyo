@@ -18,20 +18,20 @@ Sovelluksella on kaksi käyttäjäroolia, *terapeutti* ja *potilas*. Terapeutin 
 Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisessti graafinen käyttöliittymä. 
 
 ## Ensimmäisen version tarjoama toiminnallisuus
-- Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
+- [x] Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
 
 ### Terapeutin näkymä
--[ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
--[x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
--[x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
--[x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
--[x] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+- [ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika) 
+- [x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
+- [x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. **tehty**
+- [x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. **tehty**
+- [x] Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
 
 ### Potilaan näkymä
--[x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
--[x] Potilas pystyy tulostamaan päiväkirjan näytölle. *tehty*
--[x] Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
--[x]Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
+- [x] Potilas pystyy kirjaamaan päiväkirjaan merkintöjä valittujen mittarien alle valitsemalleen päivälle. *tehty*
+- [x] Potilas pystyy tulostamaan päiväkirjan näytölle. *tehty*
+- [x] Potilas pystyy muokkaamaan kirjauksiaan valitulle päivämäärälle.
+- [x]Järjestelmään kirjautuminenen ja uloskirjautuminen *tehty*
 
 ## Jatkokehitys
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
