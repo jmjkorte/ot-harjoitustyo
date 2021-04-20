@@ -23,8 +23,10 @@ Sovellukseen on ohjelmoitu terapeutin näkymää käyttöliittymässä ja siihen
 
 ### Komentorivitoiminnot
 
-Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla **mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main**
-
+Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla 
+...
+mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
+...
 Testit suoritetaan komennolla
 ==mvn test==
 
