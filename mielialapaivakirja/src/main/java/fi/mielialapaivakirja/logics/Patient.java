@@ -2,6 +2,7 @@
 package fi.mielialapaivakirja.logics;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,11 +14,12 @@ public class Patient {
     public Diary diary;
      
    
-    
-    public Patient(String surName, String firstName, int year, int month, int date, String username) {
+    private Patient patient;
+    private PatientInformationSystem pis;
+    public Patient(String surName, String firstName, LocalDate bornDate, String username) {
         this.surname = surName;
         this.firstname = firstName;
-        this.dateOfBirth = LocalDate.of(year, month, date);
+        this.dateOfBirth = bornDate;
         this.username = username;
         this.diary = new Diary();
     
@@ -50,7 +52,12 @@ public class Patient {
 
     @Override
     public String toString() {
-        return surname + ", " + firstname + ", s. " + dateOfBirth;
+        return surname + ", " + firstname + ", s. " + getFormattedDate(dateOfBirth);
+    }
+    
+    public String getFormattedDate(LocalDate date) {
+        String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return formattedDay;
     }
     
    

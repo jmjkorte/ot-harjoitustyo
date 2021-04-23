@@ -13,7 +13,7 @@ public class IndicatorTest {
    
     @Before
     public void setUp() {
-        indicator = new Indicator("TestIndicator", 1, 5);
+        indicator = new Indicator("TestIndicator", 1, 5, 1000, 1000);
     }
     
     @Test

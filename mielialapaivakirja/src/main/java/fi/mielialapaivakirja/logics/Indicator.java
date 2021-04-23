@@ -31,7 +31,7 @@ public class Indicator {
         return maxValue;
     }
     
-     public int getCriticalValue() {
+    public int getCriticalValue() {
         return criticalValue;
     }
 

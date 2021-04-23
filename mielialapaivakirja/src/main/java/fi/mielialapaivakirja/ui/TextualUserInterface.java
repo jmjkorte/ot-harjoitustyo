@@ -1,51 +1,36 @@
 
-package fi.mielialapaivakirja.ui;
+/*package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
 import fi.mielialapaivakirja.logics.Patient;
 import java.sql.*;
 import java.util.Scanner;
 import java.util.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import strman.Strman;
 public class TextualUserInterface {
     
-    private Scanner scanner;
-    private PatientInformationSystem patientInformationSystem;
+    final Scanner scanner;
+    final PatientInformationSystem pis;
     private String username;
     private Patient patient;
     
     public TextualUserInterface(Scanner textScanner) {
         this.scanner = textScanner;
-        this.patientInformationSystem = new PatientInformationSystem(this.scanner);
+        this.pis = new PatientInformationSystem(this.scanner);
         
     }
     
     public void start(){
         while(true){
-            System.out.println("Tervetuloa Mielialapäiväkirja -sovellukseen.");
-            System.out.println("Kirjaudu antamalla käyttäjätunnuksesi (x lopettaa ohjelman):");
-             this.username = scanner.nextLine();
-            if (username.equals("x")){
-                System.out.println("Hyvää päivänjatkoa!");
-                break;
-            }
-            int role = this.patientInformationSystem.check(username);
-            if (role == 1){
-                therapistView();
-
-            } else if (role == 2){
-                patientView();
-
-            } else if (role == 3) {
-                System.out.println("Käyttäjätunnusta ei löydy.");
-                
-            }
+            
 
         }
     }
     
     public void therapistView(){
-        this.patient = patientInformationSystem.getPatient();
+        this.patient = pis.getPatient();
         System.out.println("Tervetuloa " + this.username + "!");
         System.out.println("Tänään on " + getDate());
         while(true){
@@ -53,7 +38,7 @@ public class TextualUserInterface {
             scanner.nextLine();
             System.out.println("Valitse seuraavista:");
             System.out.println("1 - Perusta potilas");
-            System.out.println("2 - Poista potilas");
+            System.out.println("2 - Arkistoi tai palauta potilas");
             System.out.println("3 - Tulosta potilaat");
             System.out.println("4 - Valitse potilas");
             System.out.println("5 - Tulosta kaikkien potilaiden tiedot");
@@ -74,25 +59,31 @@ public class TextualUserInterface {
             } else if (choice == 1){
                 newPatient();
             } else if (choice ==2) {
-                System.out.println("Toimintoa ei ole vielä luotu."); 
+                System.out.println("Haluatko arkistoida(1) vai palauttaa(2) potilaan arkistosta?");
+                int archiveOrReturn = Integer.valueOf(scanner.nextLine());
+                String[] patientsName = askName();
+                if (archiveOrReturn == 1){
+                    pis.archivePatient(patientsName[0], patientsName[1]);
+                }
+                if (archiveOrReturn ==2){
+                    pis.returnPatientFromArchive(patientsName[0], patientsName[1]);
+                }
+                
             } else if (choice ==3) {
-                patientInformationSystem.printAllPatients(); 
+                pis.printAllPatients(); 
             } else if (choice ==4) {
-                System.out.println("Anna potilaan sukunimi:");
-                String surname = scanner.nextLine();
-                System.out.println("Anna potilaan etunimi:");
-                String firstname = scanner.nextLine();
-                boolean patientExists = patientInformationSystem.choosePatient(surname, firstname);
+                String[] patientsName = askName();
+                boolean patientExists = pis.choosePatient(patientsName[0], patientsName[1]);
                 if (patientExists){
-                    this.patient = patientInformationSystem.getPatient();
+                    this.patient = pis.getPatient();
                     System.out.println("Potilas " + this.patient.toString() + " valittu.");
                 }
                 else {
-                    System.out.println("Potilasta " + surname + ", " + firstname + "ei löytynyt");
+                    System.out.println("Potilasta " + (patientsName[0]) + ", " + patientsName[1] + "ei löytynyt");
                     System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
                 }
             } else if (choice == 5){
-                patientInformationSystem.printAllPatients();
+                pis.printAllPatients();
             } else if (choice == 6){
                 System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.toString());
                 System.out.println("Anna indikaattorin nimi:");
@@ -102,11 +93,11 @@ public class TextualUserInterface {
                 System.out.println("Anna indikaattorin maksimiarvo:");
                 int maxValue = Integer.valueOf(scanner.nextLine());
                 System.out.println("Haluatko luoda indikaattorille kriittisen arvon (K/E)?");
-                String critical = scanner.nextLine();
+                String critical = capitalize(scanner.nextLine());
                 while (true) {
-                    if (critical.equals("k") || critical.equals("K")){
+                    if (critical.equals("K")){
                         while(true){
-                            System.out.println("Anna kriittinen arvo väliltä " + minValue + "-" + maxValue);
+                            System.out.println("Anna kriittinen arvo väliltä " + (minValue +1) + "-" + (maxValue -1));
                             int criticalValue = Integer.valueOf(scanner.nextLine());
                             if (criticalValue >= minValue && criticalValue <= maxValue) {
                                     while(true){
@@ -129,18 +120,7 @@ public class TextualUserInterface {
                                     System.out.println("Kriittinen arvo ei ole välillä " + minValue + "-" + maxValue + ".");
                                     System.out.println("");
                             }
-                        
-                        
-                        
-                  //  else if (critical.equals("E")){
-                  //          this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue, 1001, 1001);
-                  //          break;
-                  //  }
-                    else {
-                        System.out.println("Väärä valinta.");
-                         
-                            }
-                }
+                        }
                 
             } else if (choice == 7){
                 System.out.println(this.patient.diary.getIndicators());
@@ -160,10 +140,7 @@ public class TextualUserInterface {
         int bornYear;
         int bornMonth;
         int bornDate;
-        System.out.println("Sukunimi: ");
-        String surName = scanner.nextLine();
-        System.out.println("Etunimi: ");
-        String firstName = scanner.nextLine();
+        String[] patientsName = askName();
         while(true){
             System.out.println("Syntymäaika, vuosi(yyyy):");
             bornYear = Integer.valueOf(scanner.nextLine());
@@ -193,11 +170,12 @@ public class TextualUserInterface {
                 System.out.println("Virhe!");
             }
         }
+        LocalDate borndate = LocalDate.of(bornYear, bornMonth, bornDate);
         
         System.out.println("Käyttäjätunnus:");
-        String user = scanner.nextLine();
+        String userN = scanner.nextLine();
         
-        patientInformationSystem.createPatient(surName, firstName, bornYear, bornMonth, bornDate, user);
+        pis.createPatient(patientsName[0], patientsName[1], borndate);
         
         
     }
@@ -205,8 +183,8 @@ public class TextualUserInterface {
     
     
     public void patientView() {
-        this.patient = patientInformationSystem.getPatient();
-        System.out.println("Tervetuloa " + patientInformationSystem.getPatient());
+        this.patient = pis.getPatient();
+        System.out.println("Tervetuloa " + pis.getPatient());
         
         System.out.println("Tänään on "  + getDate());
         
@@ -295,12 +273,27 @@ public class TextualUserInterface {
         int day = Integer.valueOf(scanner.nextLine());
         LocalDate chosenDate = LocalDate.of(year, month, day);
         return chosenDate;
-    } 
+    }
     
-    
-    
-    
-   
+    public String[] askName(){
         
+        System.out.println("Anna sukunimi: ");
+        String surname = capitalize(scanner.nextLine());
+        System.out.println("Anna etunimi: ");
+        String firstname = capitalize(scanner.nextLine());
+        String[] name = {surname, firstname};
+        return name;
+       }
     
-}
+    public String capitalize(String name) {
+        if (name.contains("-")) {
+            String[] parts = name.split("-");
+            String part1 = Strman.capitalize(parts[0]);
+            String part2 = Strman.capitalize(parts[1]);
+            String capName = part1 + "-" + part2;
+            return capName;
+        }
+        String capName = Strman.capitalize(name);
+        return capName;
+    }
+}*/

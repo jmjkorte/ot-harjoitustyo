@@ -12,7 +12,7 @@ public class DatabaseCreator {
         
     }
     
-    public void createDatabase() throws SQLException{
+    public void createDatabase() throws SQLException {
         Statement s = db.createStatement();
         s.execute("CREATE TABLE Patients(id INTEGER PRIMARY KEY, firstname TEXT, surname TEXT, username TEXT UNIQUE, dateOFBirth DATE");
         s.execute("CREATE TABLE Indicators(id INTEGER PRIMARY KEY, indicator TEXT, minvalue INTEGER, maxvalue INTEGER, patient_id INTEGER REFERENCES Patients");

@@ -50,7 +50,7 @@ public class Diary {
             System.out.println("Anna arvo indikaattorille " + indicator.toString());
             int valueOfEntry = Integer.valueOf(scanner.nextLine());
             this.entries.add(new Entry(date, indicator, valueOfEntry));
-            if (valueOfEntry < indicator.getMaxValue()) {
+            if (valueOfEntry < indicator.getCriticalValue()) {
                 System.out.println("HUOM! Antamasi arvo alittaa kriittisen arvon.");
                 System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
             }
