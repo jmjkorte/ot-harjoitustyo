@@ -17,4 +17,4 @@
 | 20.4.| Testit, arkkitehtuuri.md:n ja README.md:n kirjoittaminen |3|
 | 23.4.| Käyttöliittymäluokkien refaktorointi ja ohjelmointi sekä toiminnallisuuksien ohjelmointi. Sekvenssikaavionn teko. |8|
 
-**Tunnit yhteensä: 43
+**Tunnit yhteensä: 43 **
