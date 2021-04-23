@@ -13,6 +13,7 @@ public class Entry {
         this.indicatorOfEntry = indicator;
         this.valueOfEntry = value;
     }
+    
 
     public LocalDate getDateOfEntry() {
         return dateOfEntry;

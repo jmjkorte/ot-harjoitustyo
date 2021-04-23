@@ -6,19 +6,19 @@ public class Indicator {
     private String nameOfIndicator;
     private int minValue;
     private int maxValue;
+    private int criticalValue;
+    private int lowerOrHigher;
     
-    
-    public Indicator(String name, int min, int max) {
+    public Indicator(String name, int min, int max, int criticalValue, int lowerOrHigher) {
         this.nameOfIndicator = name;
         this.minValue = min;
         this.maxValue = max;
+        this.criticalValue = criticalValue;
+        this.lowerOrHigher = lowerOrHigher;
+        
         
     }
-    
-    
-    
-
-
+   
     public String getNameOfIndicator() {
         return nameOfIndicator;
     }
@@ -29,6 +29,10 @@ public class Indicator {
 
     public int getMaxValue() {
         return maxValue;
+    }
+    
+     public int getCriticalValue() {
+        return criticalValue;
     }
 
     
@@ -43,6 +47,13 @@ public class Indicator {
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
+
+    public void setCriticalValue(int criticalValue) {
+        this.criticalValue = criticalValue;
+    }
+
+   
+    
 
    
 

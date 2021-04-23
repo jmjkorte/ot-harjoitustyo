@@ -1,5 +1,5 @@
 
-package fi.mielialapaivakirja.logics;
+package fi.mielialapaivakirja.database;
 import java.sql.*;
 import java.util.*;
         

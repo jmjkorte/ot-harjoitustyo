@@ -93,8 +93,8 @@ public class PatientInformationSystem {
         userRoles.put("tarja", 2);
         Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
         choosePatient("Koivisto", "Mauno-Henrik");
-        this.patient.diary.createIndicator("Surullisuus", 0, 5);
-        this.patient.diary.createIndicator("Aktiivisuus", 0, 10);
+        this.patient.diary.createIndicator("Surullisuus", 0, 5, 1, 1);
+        this.patient.diary.createIndicator("Aktiivisuus", 0, 10, -1, -1);
     }
     
     public String getDate() {

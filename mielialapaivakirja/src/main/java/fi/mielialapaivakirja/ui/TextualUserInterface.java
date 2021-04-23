@@ -101,7 +101,47 @@ public class TextualUserInterface {
                 int minValue = Integer.valueOf(scanner.nextLine());
                 System.out.println("Anna indikaattorin maksimiarvo:");
                 int maxValue = Integer.valueOf(scanner.nextLine());
-                this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue);
+                System.out.println("Haluatko luoda indikaattorille kriittisen arvon (K/E)?");
+                String critical = scanner.nextLine();
+                while (true) {
+                    if (critical.equals("k") || critical.equals("K")){
+                        while(true){
+                            System.out.println("Anna kriittinen arvo väliltä " + minValue + "-" + maxValue);
+                            int criticalValue = Integer.valueOf(scanner.nextLine());
+                            if (criticalValue >= minValue && criticalValue <= maxValue) {
+                                    while(true){
+                                        System.out.println("Haluatko hälyytystoiminnon kriittisen arvon alittavista(1) vai ylittävistä(2) merkinnöistä?");
+                                        int lowerOrHigher = Integer.valueOf(scanner.nextLine());
+                                        if (lowerOrHigher != 1 && lowerOrHigher != 2) {
+                                            System.out.println("Väärä valinta.");
+
+                                        } else {
+                                            this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue, criticalValue, lowerOrHigher);
+                                             break;
+                                        } 
+                                    } break;
+                                } break;
+                            } break;    
+                                  
+                                    
+                                       
+                            } else {
+                                    System.out.println("Kriittinen arvo ei ole välillä " + minValue + "-" + maxValue + ".");
+                                    System.out.println("");
+                            }
+                        
+                        
+                        
+                  //  else if (critical.equals("E")){
+                  //          this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue, 1001, 1001);
+                  //          break;
+                  //  }
+                    else {
+                        System.out.println("Väärä valinta.");
+                         
+                            }
+                }
+                
             } else if (choice == 7){
                 System.out.println(this.patient.diary.getIndicators());
             }

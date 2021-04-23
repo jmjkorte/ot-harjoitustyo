@@ -16,8 +16,8 @@ public class Diary {
         this.scanner = new Scanner(System.in);
     }
     
-    public void createIndicator(String name, int min, int max) {
-        this.indicators.add(new Indicator(name, min, max));
+    public void createIndicator(String name, int min, int max, int criticalValue, int lowerOrHigher) {
+        this.indicators.add(new Indicator(name, min, max, criticalValue, lowerOrHigher));
         
     }
 
@@ -50,6 +50,10 @@ public class Diary {
             System.out.println("Anna arvo indikaattorille " + indicator.toString());
             int valueOfEntry = Integer.valueOf(scanner.nextLine());
             this.entries.add(new Entry(date, indicator, valueOfEntry));
+            if (valueOfEntry < indicator.getMaxValue()) {
+                System.out.println("HUOM! Antamasi arvo alittaa kriittisen arvon.");
+                System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
+            }
         }
     }
         
