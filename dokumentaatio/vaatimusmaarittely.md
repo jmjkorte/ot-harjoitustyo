@@ -21,7 +21,7 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 - [x] Tekstikäyttöliittymä sekä terapeutin että potilaan näkymiin perustoiminnallisuuksien osalta.
 
 ### Terapeutin näkymä
-- [ ] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika). *Huom! Käyttäjätunnuksen lisääminen onnistuu.* 
+- [x] Terapeutti pystyy luomaan käyttäjätunnuksen potilaalle ja poistamaan käyttäjätunnuksen. Käyttäjätunnukseen yhdistetään potilaan henkilötiedot (Nimi, syntymäaika). *Potilasta ei voi poistaa, vaan siirtää arkistoon. Tämä vastaa todellista potilastietojärjestelmien .* 
 - [x] Terapeutti pystyy luomaan potilaalle päiväkirjan. 
 - [x] Terapeutti pystyy luomaan päiväkirjan mittarit. Alkuvaiheessa mittarit saavat arvoikseen kokonaislukuja. 
 - [x] Terapeutti pystyy tulostamaan potilaan päiväkirjan näytölle. 
@@ -39,11 +39,11 @@ Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan.
 ### Terapeutin näkymä
 - [ ] Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty*
 - [ ] Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
-- [ ] Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
+- [x] Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
 - [ ] Mahdollisuus luoda laadullisia mittareita (String).
 ### Potilaan näkymä
 - [ ] Mahdollisuus tietojen tallentamiseen ja lataamiseen.
-- [ ] Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
+- [x] Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
 - [ ] Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
-- [x] Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. 
+- [x] Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. *Erillistä aikaleimaa ei loda, mutta potilas voi tehdä merkinnän kirjauspäivälle antamatta erikseen päivämäärää.*
 
