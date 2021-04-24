@@ -23,13 +23,6 @@ public class PatientInformationSystemTest {
     }
     
     @Test
-    public void CapitalizeWorksRight(){
-        String works = pis.capitalize("wOrKiNg");
-        assertEquals("Working", works);
-    
-    }
-    
-    @Test
     public void ChekReturnsRightRoleToPatient(){
         assertEquals(2, pis.check("kyosti"));
     }
@@ -38,10 +31,7 @@ public class PatientInformationSystemTest {
     public void ChoosePatientWorks(){
         assertTrue(pis.choosePatient("Kallio", "Kyosti"));
     }
-    
-    @Test
+}    
    
-    }
-}
     
    
