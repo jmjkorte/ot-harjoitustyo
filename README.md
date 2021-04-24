@@ -1,7 +1,7 @@
 # Mielialapäiväkirja
 Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttisessa työskentelyssä mielialahäiriöistä kärsiviä potilaita hoidettaessa. Mielialapäiväkirja tukee tavoitteellista terapeuttista työskentelyä. Potilas ja terapeutti määrittävät yhdessä mittarit / indikaattorit (esim. mieliala, aktiivisuus, nukkuminen), joita potilas seuraa päivittäin ja kirjaa tuloksen mielialapäiväkirjaan terapiakertojen välillä. Potilaan voinnin kehitystä seurataan terapiakäynneillä mielialapäiväkirjasta.
 
-## Viikko 4
+## Viikko 5
 
 ### Sovelluksen kehitystilanne
 Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää ainakaan toistaiseksi.
@@ -28,10 +28,17 @@ HUOM! Terapeutin luonti ei ole sovelluksessa vielä mahdollista, joten saman luo
 
 ### Komentorivitoiminnot
 
+Sovelluksesta voi tehdä jar-tiedoston komennolla:
+```
+mvn package
+```
+
 Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla: 
 ```
 mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
 ```
+
+
 #### Testaus
 Testit suoritetaan komennolla:
 ```
