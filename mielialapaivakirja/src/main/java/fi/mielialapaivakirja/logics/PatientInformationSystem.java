@@ -66,9 +66,7 @@ public class PatientInformationSystem {
     }
     
     public boolean choosePatient(String surname, String firstname) {
-        surname = capitalize(surname);
-        firstname = capitalize(firstname);
-        
+       
         for (Patient person : patients) {
             if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)) {
                 this.patient = person;
@@ -146,17 +144,7 @@ public class PatientInformationSystem {
         return formattedDay;
     }
      
-    public String capitalize(String name) {
-        if (name.contains("-")) {
-            String[] parts = name.split("-");
-            String part1 = Strman.capitalize(parts[0]);
-            String part2 = Strman.capitalize(parts[1]);
-            String capName = part1 + "-" + part2;
-            return capName;
-        }
-        String capName = Strman.capitalize(name);
-        return capName;
-    }
+   
     
     
        

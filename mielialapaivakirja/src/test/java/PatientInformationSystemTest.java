@@ -1,4 +1,5 @@
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
+import java.time.LocalDate;
 import java.util.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,7 +18,8 @@ public class PatientInformationSystemTest {
     public void setUp() {
         Scanner scanner = new Scanner(System.in);
         pis = new PatientInformationSystem(scanner);
-        pis.createPatient("Kallio", "Kyosti", 1900, 12, 3, "kyosti");
+        LocalDate bornDate = LocalDate.of(1920, 3, 1);
+        pis.createPatient("Kallio", "Kyosti", bornDate, "kyosti");
     }
     
     @Test
@@ -28,13 +30,17 @@ public class PatientInformationSystemTest {
     }
     
     @Test
-    public void ChekReturnsRightRole(){
+    public void ChekReturnsRightRoleToPatient(){
         assertEquals(2, pis.check("kyosti"));
     }
     
     @Test
     public void ChoosePatientWorks(){
         assertTrue(pis.choosePatient("Kallio", "Kyosti"));
+    }
+    
+    @Test
+   
     }
 }
     

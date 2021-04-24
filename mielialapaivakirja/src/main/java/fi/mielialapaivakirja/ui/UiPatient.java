@@ -10,11 +10,9 @@ public class UiPatient {
     
     private Scanner scanner;
     private Patient patient;
-    private PatientInformationSystem pis;
     
     public UiPatient(Scanner scanner, PatientInformationSystem pis) {
         this.scanner = scanner;
-        this.pis = pis;
         this.patient = pis.getPatient();
     }
     
