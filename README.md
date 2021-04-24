@@ -4,16 +4,16 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Viikko 5
 
 ### Sovelluksen kehitystilanne
-Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää ainakaan toistaiseksi.
+Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilas on myös mahdollista siirtää arkistoon ja arkistosta takaisin aktiiviseksi potilaaksi. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää ainakaan toistaiseksi.
 
-Sovelluksen käynnistyttyä kysytään käyttäjätunnusta. Sovellus generoi testausta varten yhden terapeuttikäyttäjän ja viisi potilasta, joiden käyttäjätunnukset ovat:
+Sovelluksen käynnistyttyä on mahdollista kirjautua testiympäristöön. Tällöin sovellus generoi testausta varten yhden terapeuttikäyttäjän ja viisi potilasta, joiden käyttäjätunnukset ovat:
 ```
 Terapeutti: test
 Potilaat: kalle, urkki, manu, sale, tarja
 ```
-Oletusarvoisesti terapeutin käyttöliittymässä on valittu potilas *manu*.
-Testipotilaiden ja terapeutin generointi tapahtuu luokan **PatientInformationSystem** metodilla **InitTestEnvironment()**. Metodia kutsutaan saman luokan konstruktorissa rivillä 26. Tämä rivi tulee poistaa, mikäli testipotilaita ei haluta luoda. 
-HUOM! Terapeutin luonti ei ole sovelluksessa vielä mahdollista, joten saman luokan riviä 24 ei tule poistaa!
+Sovelluksen käyttöliittymää on refaktoroitu oleellisesti edellisestä viikosta. Yhdestä käyttöliittymäluokasta on muodostettu omat luokkansa terapeutin ja potilaan käyttöön. Näiden lisäksi on luotu luokka *UiInit*, jota kutsutaan sovelluksen käynnistyessä main-luokassa. 
+
+Sovelluksen jatkokehityksen seuraava askel - puuttuvien toimintojen luonnin ohella - on tehdä siitä tietokantasovellus. Tämän vuoksi sovelluksessa on jo pakkaus *database*, joka tulee sisältämään tietokantatoimintoihin liittyvät luokat. Tämä kehitys on vasta suunnitteluvaiheessa, eikä toteutusta ole vielä tehty.
 
 
 ### Dokumentaatio
@@ -32,8 +32,10 @@ Sovelluksesta voi tehdä jar-tiedoston komennolla:
 ```
 mvn package
 ```
+Jar-tiedosto generoidaan *target* -kansioon ja on nimeltään 
 
-Sovelluksen voi suorittaa sekä Netbeansissa että komentorivin kautta komennolla: 
+
+Sovelluksen voi myös suorittaa sekä Netbeansissa että komentorivin kautta komennolla: 
 ```
 mvn compile exec:java -Dexec.mainClass=fi.mielialapaivakirja.main.Main
 ```
