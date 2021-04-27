@@ -26,7 +26,7 @@ Sovelluksen jatkokehityksen seuraava askel - puuttuvien toimintojen luonnin ohel
 
 [Vaatimusmäärittely](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/vaatimusmaarittely.md)
 
-[Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/mielialapaivakirja/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/arkkitehtuuri.md)
 
 
 
