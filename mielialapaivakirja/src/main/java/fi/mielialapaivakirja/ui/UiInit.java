@@ -19,6 +19,8 @@ public class UiInit {
         System.out.println("Sinulla on mahdollisuus kirjautua sovellukseen testikäyttäjänä, ");
         System.out.println("jolloin potilastietojärjestelmään on luotu testiterapeutti(username: 'test' ja ");
         System.out.println("viisi testipotilasta:(usernames: 'kalle', 'urkki', 'manu', 'sale' , 'tarja'");
+        System.out.println("HUOM! Tässä vaiheessa sovelluskehitystä on tärkeää, että uloskirjautumisen");
+        System.out.println("jälkeen et kirjaudu sovellukseen enää uudelleen testikäyttäjänä.");
         while (true) {
             System.out.println("Haluatko kirjautua testikäyttäjänä (K/E)? (X lopettaa sovelluksen)");
             String testUser = scanner.nextLine().toUpperCase();

@@ -23,14 +23,23 @@ public class PatientInformationSystemTest {
     }
     
     @Test
-    public void ChekReturnsRightRoleToPatient(){
+    public void CheckReturnsRightRoleToPatient() {
         assertEquals(2, pis.check("kyosti"));
+    }
+
+    
+    @Test
+    public void ChoosePatientWorks() {
+        assertTrue(pis.choosePatient("Kallio", "Kyosti"));
     }
     
     @Test
-    public void ChoosePatientWorks(){
-        assertTrue(pis.choosePatient("Kallio", "Kyosti"));
+    public void createTherapistPutsNumber2ToUserroles() {
+        pis.createTherapist("janne");
+        assertEquals(1, pis.check("janne"));
     }
+    
+
 }    
    
     

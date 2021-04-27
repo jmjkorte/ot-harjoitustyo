@@ -17,7 +17,32 @@ public class IndicatorTest {
     }
     
     @Test
-    public void ConstructorWorksRight(){
+    public void ConstructorWorksRight() {
         assertEquals("TestIndicator(1-5)", indicator.toString());
     }
+    
+    @Test
+    public void setNameOfIndicatorWorksRight() {
+        indicator.setNameOfIndicator("Alternative");
+        assertEquals("Alternative", indicator.getNameOfIndicator());
+    }
+    
+    @Test
+    public void setMinValueWorksRigh() {
+        indicator.setMinValue(3);
+        assertEquals(3, indicator.getMinValue());
+    }
+    
+    @Test
+    public void setMaxValueWorksRigh() {
+        indicator.setMaxValue(7);
+        assertEquals(7, indicator.getMaxValue());
+    }
+    
+    @Test
+    public void setCriticalValueWorksRigh() {
+        indicator.setCriticalValue(6);
+        assertEquals(6, indicator.getCriticalValue());
+    }
+    
 }

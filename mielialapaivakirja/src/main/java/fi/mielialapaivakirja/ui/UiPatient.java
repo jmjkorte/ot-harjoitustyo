@@ -5,6 +5,7 @@ import fi.mielialapaivakirja.logics.Patient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.ArrayList;
 import strman.Strman;
 public class UiPatient {
     
@@ -56,7 +57,10 @@ public class UiPatient {
                 int chosenAlternative = Integer.valueOf(scanner.nextLine());
                 if (chosenAlternative == 1){
                     System.out.println("Valitse seuraavista vaihtoehdoista kirjoittamalla indikaattorin nimi: ");
-                    this.patient.diary.printNameOfAllIndicators();
+                    ArrayList<String> namesOfIndicators = this.patient.diary.getNamesOfAllIndicators();
+                    for (String name: namesOfIndicators) {
+                        System.out.println(name);
+                    }
                     System.out.print("> ");
                     String chosenIndicator = scanner.nextLine();
                     this.patient.diary.printEntriesOfChosenIndicator(chosenIndicator);

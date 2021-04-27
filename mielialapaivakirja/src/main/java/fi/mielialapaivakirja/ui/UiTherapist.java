@@ -46,7 +46,7 @@ public class UiTherapist {
                 System.out.println("Hyvää päivänjatkoa!");
                 System.exit(0);
             } else if (choice == 0) {
-                start();
+                break;
             } else if (choice == 1){
                 newPatient();
             } else if (choice ==2) {
@@ -71,7 +71,7 @@ public class UiTherapist {
                     System.out.println("Potilas " + this.patient.toString() + " valittu.");
                 }
                 else {
-                    System.out.println("Potilasta " + (patientsName[0]) + ", " + patientsName[1] + "ei löytynyt");
+                    System.out.println("Potilasta " + (patientsName[0]) + ", " + patientsName[1] + " ei löytynyt");
                     System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
                 }
             } else if (choice == 5){

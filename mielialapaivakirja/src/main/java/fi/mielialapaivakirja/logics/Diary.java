@@ -39,10 +39,12 @@ public class Diary {
         }
     }
     
-    public void printNameOfAllIndicators() {
+    public ArrayList getNamesOfAllIndicators() {
+        ArrayList<String> names = new ArrayList();
         for (Indicator indicator: this.indicators) {
-            System.out.println(indicator.getNameOfIndicator());
+            names.add(indicator.getNameOfIndicator());
         }
+        return names;
     }
     
     public void makeEntry(LocalDate date) {

@@ -29,13 +29,12 @@ public class Entry {
 
     @Override
     public String toString() {
-        return "Päivämäärä: " + getDate(dateOfEntry) + ", " + indicatorOfEntry + ":" + valueOfEntry;
+        return "Päivämäärä: " + getDate(dateOfEntry) + ", " + indicatorOfEntry.getNameOfIndicator() + ": " + valueOfEntry;
     }
     
     
     public String getDate(LocalDate date) {
-        LocalDate today = LocalDate.now();
-        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;
     }
     
