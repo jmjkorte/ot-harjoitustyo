@@ -16,6 +16,6 @@
 | 19.4.| Potilaan käyttöliittymän ja potilan toiminnallisuuksiin liittyvien luokkien ohjelmointi. Checkstylen käyttöönotto. |4|
 | 20.4.| Testit, arkkitehtuuri.md:n ja README.md:n kirjoittaminen |3|
 | 23.4.| Käyttöliittymäluokkien refaktorointi ja ohjelmointi sekä toiminnallisuuksien ohjelmointi. Sekvenssikaavionn teko. |8|
+| 27.4.| Testien luominen, hienosäätö ennen viikkopalautusta. |3|
 
-
-Tunnit yhteensä: 43
+Tunnit yhteensä: 45
