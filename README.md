@@ -22,11 +22,11 @@ Sovelluksen jatkokehityksen seuraava askel - puuttuvien toimintojen luonnin ohel
 
 ### Dokumentaatio
 
-[Työaikakirjanpito](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+[Työaikakirjanpito](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/tyoaikakirjanpito.md)
 
-[Vaatimusmäärittely](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/vaatimusmaarittely.md)
 
-[Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/dokumentaatio/mielialapaivakirja/arkkitehtuuri.md)
 
 
 
