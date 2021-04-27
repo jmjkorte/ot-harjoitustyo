@@ -11,7 +11,10 @@ Sovelluksen käynnistyttyä on mahdollista kirjautua testiympäristöön. Täll�
 Terapeutti: test
 Potilaat: kalle, urkki, manu, sale, tarja
 ```
-Sovelluksen käyttöliittymää on refaktoroitu oleellisesti edellisestä viikosta. Yhdestä käyttöliittymäluokasta on muodostettu omat luokkansa terapeutin ja potilaan käyttöön. Näiden lisäksi on luotu luokka *UiInit*, jota kutsutaan sovelluksen käynnistyessä main-luokassa. 
+Sovelluksen käyttöliittymää on refaktoroitu oleellisesti edellisestä viikosta. Yhdestä käyttöliittymäluokasta on muodostettu omat luokkansa terapeutin ja potilaan käyttöön. Näiden lisäksi on luotu luokka *UiInit*, jota kutsutaan sovelluksen käynnistyessä main-luokassa.
+
+**HUOM!** Mittarin kriittisen arvon luominen ei toimi käyttöliittymätasolla toivotulla tavalla. Sovelluslogiikan puolella toiminto on kunnossa. 
+**HUOM!** Jos kirjaudut ulos sovelluksesta, älä kirjaudu siihen toista kertaa testikäyttäjänä. Tämä luo tällä hetkellä samat käyttäjätunnukset toiseen kertaan.
 
 Sovelluksen jatkokehityksen seuraava askel - puuttuvien toimintojen luonnin ohella - on tehdä siitä tietokantasovellus. Tämän vuoksi sovelluksessa on jo pakkaus *database*, joka tulee sisältämään tietokantatoimintoihin liittyvät luokat. Tämä kehitys on vasta suunnitteluvaiheessa, eikä toteutusta ole vielä tehty.
 
