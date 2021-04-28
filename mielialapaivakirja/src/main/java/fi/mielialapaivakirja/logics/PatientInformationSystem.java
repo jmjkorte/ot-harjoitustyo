@@ -1,10 +1,14 @@
 
 package fi.mielialapaivakirja.logics;
+import fi.mielialapaivakirja.database.DatabaseCreator;
+import fi.mielialapaivakirja.database.PatientDao;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.HashMap;
+import java.util.List;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +20,7 @@ public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     private ArrayList<Patient> archive;
-    
+    private PatientDao patientdao;
     private Scanner scanner;
     public Patient patient;
     
@@ -25,6 +29,7 @@ public class PatientInformationSystem {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
         this.archive = new ArrayList<>();
+        this.patientdao = new PatientDao();
         
     }
     
@@ -57,6 +62,10 @@ public class PatientInformationSystem {
         System.out.println("Potilas luotu onnistuneesti.");
         
         
+    }
+    
+    public void loadPatients(Patient patient) {
+        this.patients.add(patient);
     }
     
     public void printAllPatients() {
@@ -120,7 +129,9 @@ public class PatientInformationSystem {
     
     }
     
-    public void initTestEnvironment() {
+    public void initTestEnvironment() throws SQLException {
+        DatabaseCreator dbc = new DatabaseCreator();
+        dbc.createDatabase();
         patients.add(new Patient("Kiesilä", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
         userRoles.put("kalle", 2);
         patients.add(new Patient("Kekkonen", "Urho-Kaleva", LocalDate.of(1910, 7, 1), "urkki"));
@@ -136,6 +147,15 @@ public class PatientInformationSystem {
         choosePatient("Koivisto", "Mauno-Henrik");
         this.patient.diary.createIndicator("Surullisuus", 0, 5, 1, 1);
         this.patient.diary.createIndicator("Aktiivisuus", 0, 10, -1, -1);
+        for(Patient patient: this.patients) {
+            patientdao.create(patient);
+        }
+        ArrayList<Patient> list = patientdao.list();
+        for(Patient patient: list) {
+            System.out.println(patient);
+        }
+        
+        
     }
     
     public String getFormattedDate(LocalDate date) {

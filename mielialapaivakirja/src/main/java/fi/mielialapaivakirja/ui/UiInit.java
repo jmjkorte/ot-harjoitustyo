@@ -1,8 +1,12 @@
 
 package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
+import fi.mielialapaivakirja.database.PatientDao;
+import fi.mielialapaivakirja.database.DatabaseCreator;
 import java.util.Scanner;
 import strman.Strman;
+import java.sql.*;
+
 
 
 public class UiInit {
@@ -13,7 +17,7 @@ public class UiInit {
         this.scanner = scanner;
         this.pis = new PatientInformationSystem(scanner);
     }
-    public void start() {
+    public void start() throws SQLException{
         
         System.out.println("Tervetuloa Mielialapäiväkirja -sovellukseen.");
         System.out.println("Sinulla on mahdollisuus kirjautua sovellukseen testikäyttäjänä, ");

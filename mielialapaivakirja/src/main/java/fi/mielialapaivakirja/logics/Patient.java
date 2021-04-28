@@ -5,11 +5,13 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.sql.Date;
 
 public class Patient {
     final String surname;
     final String firstname;
     final LocalDate dateOfBirth;
+    
     final String username;
     public Diary diary;
      
@@ -37,6 +39,11 @@ public class Patient {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+    
+    public Date getDatePfBirthAsDate() {
+        Date date = Date.valueOf(dateOfBirth);
+        return date;
     }
     
     public String getUsername() {
