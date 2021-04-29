@@ -1,7 +1,7 @@
 
 package fi.mielialapaivakirja.logics;
 import fi.mielialapaivakirja.database.DatabaseCreator;
-import fi.mielialapaivakirja.database.PatientDao;
+import fi.mielialapaivakirja.database.PatientDaoJDBC;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +20,7 @@ public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     private ArrayList<Patient> archive;
-    private PatientDao patientdao;
+    private PatientDaoJDBC patientdao;
     private Scanner scanner;
     public Patient patient;
     
@@ -29,7 +29,7 @@ public class PatientInformationSystem {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
         this.archive = new ArrayList<>();
-        this.patientdao = new PatientDao();
+        this.patientdao = new PatientDaoJDBC();
         
     }
     

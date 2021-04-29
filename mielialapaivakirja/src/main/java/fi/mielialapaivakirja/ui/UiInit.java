@@ -1,7 +1,7 @@
 
 package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
-import fi.mielialapaivakirja.database.PatientDao;
+import fi.mielialapaivakirja.database.PatientDaoJDBC;
 import fi.mielialapaivakirja.database.DatabaseCreator;
 import java.util.Scanner;
 import strman.Strman;

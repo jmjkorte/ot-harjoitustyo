@@ -1,5 +1,6 @@
 
 package fi.mielialapaivakirja.logics;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -21,6 +22,10 @@ public class Entry {
 
     public Indicator getIndicatorOfEntry() {
         return indicatorOfEntry;
+    }
+    public Date getDateOfEntryAsDate() {
+        Date date = Date.valueOf(dateOfEntry);
+        return date;
     }
 
     public int getValueOfEntry() {
