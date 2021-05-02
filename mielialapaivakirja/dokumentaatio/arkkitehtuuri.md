@@ -1,6 +1,7 @@
 # Arkkitehtuurikuvaus
 
 Sovelluksen pakkausrakenne on seuraavan kaltainen:
+
 ![image](https://yuml.me/jannek/7851cc75.jpg).
 
 Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui], sovelluslogiikka pakkauksessa [mielialapaivakirja.logics] ja tietokantatoiminnot pakkauksessa [mielialapaivakirja.database].
