@@ -1,7 +1,6 @@
 # Arkkitehtuurikuvaus
 
-Sovelluksen pakkausrakenne on seuraavankaltainen:
-http://yuml.me/jannek/diagram/plain/class/%5Bmielialapaivakirja.ui%5D%20-.-%3E%20%5Bmielialapaivakirja.logics%5D,%20%5Bmielialapaivakirja.logics%5D%20-.-%3E%20%5Bmielialapaivakirja.database%5D
+Sovelluksen [Pakkausrakenne](http://yuml.me/jannek/diagram/plain/class/%5Bmielialapaivakirja.ui%5D%20-.-%3E%20%5Bmielialapaivakirja.logics%5D,%20%5Bmielialapaivakirja.logics%5D%20-.-%3E%20%5Bmielialapaivakirja.database%5D)
 
 Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui], sovelluslogiikka pakkauksessa [mielialapaivakirja.logics] ja tietokantatoiminnot pakkauksessa [mielialapaivakirja.database].
 
