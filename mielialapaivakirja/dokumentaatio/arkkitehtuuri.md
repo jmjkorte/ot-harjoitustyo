@@ -8,7 +8,7 @@ Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui], sovellusl
 
 ## Sovelluslogiikka
 
-![image]https://yuml.me/jannek/Logics.jpg
+![image](https://yuml.me/jannek/Logics.jpg)
 
 Sovelluksen käynnistyessä luokka *Init* luo potilastietojärjestelmän tekemällä *PatientInformationSystem*-olion kutsumalla viimeksi mainitun luokan konstruktoria. Tämä luokka sisältää sovelluslogiikan kannalta olennaiset toiminnot potilaiden luontiin ja potilastietojärjestelmän ylläpitoon. Potilas luodaan kutsumalla luokan *Patient* konstruktoria, joka luo potilaalle myös päiväkirjan kutsumalla luokan *Diary* konstruktoria. *Patient* -luokassa on metodit patient-olion henkilötietojen ylläpitoon.
 
