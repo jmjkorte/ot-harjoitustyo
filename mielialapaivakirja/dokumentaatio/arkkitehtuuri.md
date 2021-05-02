@@ -4,7 +4,7 @@ Sovelluksen pakkausrakenne on seuraavan kaltainen:
 
 ![image](https://yuml.me/jannek/7851cc75.jpg).
 
-Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui], sovelluslogiikka pakkauksessa [mielialapaivakirja.logics] ja tietokantatoiminnot pakkauksessa [mielialapaivakirja.database].
+Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui](https://github.com/jmjkorte/ot-harjoitustyo/tree/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/ui), sovelluslogiikka pakkauksessa [mielialapaivakirja.logics](https://github.com/jmjkorte/ot-harjoitustyo/tree/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/logics) ja tietokantatoiminnot pakkauksessa [mielialapaivakirja.database](https://github.com/jmjkorte/ot-harjoitustyo/tree/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database).
 
 ## Sovelluslogiikka
 
