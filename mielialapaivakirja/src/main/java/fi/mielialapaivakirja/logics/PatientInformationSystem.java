@@ -158,7 +158,7 @@ public class PatientInformationSystem {
         
     }
     
-    public String getFormattedDate(LocalDate date) {
+    public String getFormattedDate(LocalDate date) { //siirretään metodi toiseen luokkaan
         
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;

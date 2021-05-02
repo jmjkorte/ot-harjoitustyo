@@ -2,13 +2,14 @@
 package fi.mielialapaivakirja.logics;
 import fi.mielialapaivakirja.database.DatabaseCreator;
 import fi.mielialapaivakirja.database.PatientDaoJDBC;
+import fi.mielialapaivakirja.database.PatientDao;
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Init {
     
-    private PatientDaoJDBC patientDao;
+    private PatientDao patientDao;
     private PatientInformationSystem pis;
     
     public Init(Scanner scanner) {

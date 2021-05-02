@@ -7,23 +7,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.sql.Date;
 
+/** Represents an patient.
+ * 
+ * 
+ */
 public class Patient {
     final String surname;
     final String firstname;
     final LocalDate dateOfBirth;
     
     final String username;
+
+    /** Diary has instances of the classes Indicator and Entry.
+     *
+     * 
+     */
     public Diary diary;
      
    
     private Patient patient;
     private PatientInformationSystem pis;
-    public Patient(String surName, String firstName, LocalDate bornDate, String username) {
-        this.surname = surName;
-        this.firstname = firstName;
+
+    /** Constructor for the class Patient. Creates also instance of the class Diary.
+     *
+     * @param surname   Surname of patient given by user.
+     * @param firstname First name of patient given by user.
+     * @param bornDate  Born date of patient given by user.
+     * @param username  Username of patient given by user.
+     */
+    public Patient(String surname, String firstname, LocalDate bornDate, String username) {
+        this.surname = surname;
+        this.firstname = firstname;
         this.dateOfBirth = bornDate;
         this.username = username;
-        this.diary = new Diary();
+        this.diary = new Diary(surname, firstname);
     
     }
     
@@ -54,14 +71,15 @@ public class Patient {
         return this.diary;
     }
     
-   
-    
-
+    /**
+     * Returns a String presentation of an instance without username.
+     * @return surname, firstname and date of birth of an instance of the class.
+     */
     @Override
     public String toString() {
         return surname + ", " + firstname + ", s. " + getFormattedDate(dateOfBirth);
     }
-    
+    // tämä metodi siirretään omaan luokkaansa yhdessä muiden apumetodien kanssa.
     public String getFormattedDate(LocalDate date) {
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;

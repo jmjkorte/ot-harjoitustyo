@@ -38,7 +38,7 @@ public class EntryDaoJDBC implements EntryDao {
         conn.close();
     }
     
-    @Override
+/*    @Override
     public Patient read(Integer key) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Asiakas WHERE id = ?");
@@ -58,6 +58,6 @@ public class EntryDaoJDBC implements EntryDao {
         
         return p;
         
-    }
+    }*/
     
 }

@@ -37,5 +37,14 @@ public class DiaryTest {
         
     }
     
+    @Test
+    public void getNamesOfAllIndicatorsReturnsEmptyListIfNoIndicators() {
+        ArrayList<Indicator> testList = testDiary.getNamesOfAllIndicators();
+        assertTrue(testList.isEmpty());
+    }
+    
+    //@Test
+  //  public void 
+    
    
 }

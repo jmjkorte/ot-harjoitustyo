@@ -1,7 +1,10 @@
 
 package fi.mielialapaivakirja.logics;
 
-
+/** Represents an indicator in patient's diary.
+ *
+ * 
+ */
 public class Indicator {
     private String nameOfIndicator;
     private int minValue;
@@ -9,6 +12,14 @@ public class Indicator {
     private int criticalValue;
     private int lowerOrHigher;
     
+    /** Constructor of the class Indicator.
+     *
+     * @param name  Name of an indicator.
+     * @param min   Min value of an indicator.
+     * @param max   Max value of an indicator.
+     * @param criticalValue     Critical value of an indicator, if chosen.
+     * @param lowerOrHigher     Indicates if user is interested of lower or higher values than critical value. 
+     */
     public Indicator(String name, int min, int max, int criticalValue, int lowerOrHigher) {
         this.nameOfIndicator = name;
         this.minValue = min;
@@ -52,11 +63,10 @@ public class Indicator {
         this.criticalValue = criticalValue;
     }
 
-   
-    
-
-   
-
+    /** Represents String presentation of an instance.
+     *
+     * @return Name of an indicator, min value and max value.
+     */
     @Override
     public String toString() {
         return  nameOfIndicator + "(" + minValue + "-" + maxValue + ")";
