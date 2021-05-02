@@ -10,9 +10,9 @@ Sovelluksen käyttöliittymä on pakkauksessa [mielialapaivakirja.ui], sovellusl
 
 ![image](https://yuml.me/jannek/Logics.jpg)
 
-Sovelluksen käynnistyessä luokka *Init* luo potilastietojärjestelmän tekemällä *PatientInformationSystem*-olion kutsumalla viimeksi mainitun luokan konstruktoria. Tämä luokka sisältää sovelluslogiikan kannalta olennaiset toiminnot potilaiden luontiin ja potilastietojärjestelmän ylläpitoon. Potilas luodaan kutsumalla luokan *Patient* konstruktoria, joka luo potilaalle myös päiväkirjan kutsumalla luokan *Diary* konstruktoria. *Patient* -luokassa on metodit patient-olion henkilötietojen ylläpitoon.
+Sovelluksen käynnistyessä luokka *Init* luo potilastietojärjestelmän kutsumalla *PatientInformationSystem*-luokan konstruktoria. Tämä luokka sisältää sovelluslogiikan kannalta olennaiset toiminnot potilaiden luontiin, arkistointiin ja potilastietojärjestelmän ylläpitoon.  Potilas luodaan kutsumalla luokan *Patient* konstruktoria, joka luo potilaalle myös päiväkirjan kutsumalla luokan *Diary* konstruktoria. *Patient* -luokassa on toiminnallisuus potilaan henkilötietojen ylläpitoon.
 
-*Diary*-luokka sisältää toiminnallisuuden indikaattorien ja päiväkirjamerkintöjen luomiseen ja käsittelyyn. Indicator-olio luodaan Diary-olion kutsuessa *Indicator*-luokan konstruktoria, Entry-olio vastaavasti kutsumalla *Entry*-luokan konstruktoria.
+*Diary*-luokka sisältää toiminnallisuuden indikaattorien ja päiväkirjamerkintöjen luomiseen ja käsittelyyn. Indicator-olio luodaan, kun Diary-olio kutsuu *Indicator*-luokan konstruktoria, Entry-olio vastaavasti kutsumalla *Entry*-luokan konstruktoria. 
 
 ## Sekvenssikaavio
 
