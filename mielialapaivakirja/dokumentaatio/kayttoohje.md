@@ -28,7 +28,7 @@ Lataa tiedosto
   5 - Luo indikaattori \
   6 - Tulosta kaikki indikaattorit \
   0 - Kirjaudu ulos \
-  99 - Lopeta \
+  99 - Lopeta 
   
   Toimintoihin kirjaudutaan antamalla kyseisen rivin edessä oleva numero. Tämän jälkeen sovellus opastaa tarvittavien tietojen antamisessa. 
   Muutamia huomioita:
@@ -45,7 +45,7 @@ Lataa tiedosto
   3 - Tulosta päiväkirja \
   4 - Tulosta mittarit \
   0 - Kirjaudu ulos \
-  99 - Lopeta \
+  99 - Lopeta 
   
   Toimintoihin kirjaudutaan samalla tavalla kuin terapeutin näkymässä. Kuten alussa on mainittu, päiväkirjamerkinnät eivät vielä tässä sovelluksen kehitysvaiheessa
   tallennu tietokantaan eivätkä ole näin ollen käytettävissä sovelluksen sulkemisen jälkeen.
