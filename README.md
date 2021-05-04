@@ -1,23 +1,18 @@
 # Mielialapäiväkirja
 Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttisessa työskentelyssä mielialahäiriöistä kärsiviä potilaita hoidettaessa. Mielialapäiväkirja tukee tavoitteellista terapeuttista työskentelyä. Potilas ja terapeutti määrittävät yhdessä mittarit / indikaattorit (esim. mieliala, aktiivisuus, nukkuminen), joita potilas seuraa päivittäin ja kirjaa tuloksen mielialapäiväkirjaan terapiakertojen välillä. Potilaan voinnin kehitystä seurataan terapiakäynneillä mielialapäiväkirjasta.
 
-## Viikko 5
+## Viikko 6
 
 ### Sovelluksen kehitystilanne
 Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilas on myös mahdollista siirtää arkistoon ja arkistosta takaisin aktiiviseksi potilaaksi. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää ainakaan toistaiseksi.
 
-Sovelluksen käynnistyttyä on mahdollista kirjautua testiympäristöön. Tällöin sovellus generoi testausta varten yhden terapeuttikäyttäjän ja viisi potilasta, joiden käyttäjätunnukset ovat:
-```
-Terapeutti: test
-Potilaat: kalle, urkki, manu, sale, tarja
-```
-Sovelluksen käyttöliittymää on refaktoroitu oleellisesti edellisestä viikosta. Yhdestä käyttöliittymäluokasta on muodostettu omat luokkansa terapeutin ja potilaan käyttöön. Näiden lisäksi on luotu luokka *UiInit*, jota kutsutaan sovelluksen käynnistyessä main-luokassa.
+Viikon 6 kehittys on painottunut voimakkaasti tietokantatoiminnallisuuden lisäämiseen ja kehittämiseen. Tällä hetkellä onnistuu tietokannan luominen sekä potilastietojen ja indikaattorien tallennus ja lataaminen. Päiväkirjamerkintöjen tallentaminen / lataaminen ei vielä onnistu. Tietokantatoiminnallisuuksiin liittyvässä koodissa on vielä merkittävästi refaktoroitavaa. 
 
-**HUOM!** Mittarin kriittisen arvon luominen ei toimi käyttöliittymätasolla toivotulla tavalla. Sovelluslogiikan puolella toiminto on kunnossa. 
+Terapeutin käyttöliittymää on hieman paranneltu, sovelluksen ei pitäisi kaatua niin monessa kohdassa kuin edellisellä viikolla. Kriittisen arvon asettaminen indikaattorille onnistuu, samoin 'hälytysviestin' välittäminen potilaalle, jos arvo alittuu / ylittyy.
 
-**HUOM!** Jos kirjaudut ulos sovelluksesta, älä kirjaudu siihen toista kertaa testikäyttäjänä. Tämä luo tällä hetkellä samat käyttäjätunnukset toiseen kertaan.
+Testejä ei ajan rajallisuuden vuoksi ole tällä viikolla lisätty. SQL-toiminnallisuuksien vuoksi kahden luokan testit (DiaryTest, PatientInformationSystemTest) on otettu väliaikaisesti pois käytöstä.  
 
-Sovelluksen jatkokehityksen seuraava askel - puuttuvien toimintojen luonnin ohella - on tehdä siitä tietokantasovellus. Tämän vuoksi sovelluksessa on jo pakkaus *database*, joka tulee sisältämään tietokantatoimintoihin liittyvät luokat. Tämä kehitys on vasta suunnitteluvaiheessa, eikä toteutusta ole vielä tehty.
+Sovellus luo tässä vaiheessa kehitystä tietokannan luomisen yhteydessä sinne 4 testipotilasta ja testiterapeutin.
 
 
 ### Dokumentaatio
@@ -36,9 +31,9 @@ Sovelluksesta voi tehdä jar-tiedoston komennolla:
 ```
 mvn package
 ```
-Jar-tiedosto generoidaan *target* -kansioon ja on nimeltään 
+Jar-tiedosto generoidaan *target* -kansioon ja sen voi suorittaa komennolla 
 ```
-Mielialapaivakirja-1.0-SNAPSHOT.jar
+java -jar Mielialapaivakirja-1.0-SNAPSHOT.jar
 ```
 
 
