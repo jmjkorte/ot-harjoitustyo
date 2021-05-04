@@ -37,6 +37,9 @@ Sovelluksesta voi tehdä jar-tiedoston komennolla:
 mvn package
 ```
 Jar-tiedosto generoidaan *target* -kansioon ja on nimeltään 
+```
+Mielialapaivakirja-1.0-SNAPSHOT.jar
+```
 
 
 Sovelluksen voi myös suorittaa sekä Netbeansissa että komentorivin kautta komennolla: 
