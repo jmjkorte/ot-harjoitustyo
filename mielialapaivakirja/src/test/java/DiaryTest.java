@@ -11,7 +11,7 @@ import java.sql.*;
 
 
 public class DiaryTest {
-    
+    /*
    
     Diary testDiary;
     Indicator testIndicator;
@@ -47,5 +47,5 @@ public class DiaryTest {
     //@Test
   //  public void 
     
-   
+   */
 }
