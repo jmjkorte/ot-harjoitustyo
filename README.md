@@ -31,7 +31,7 @@ Sovelluksesta voi tehdä jar-tiedoston komennolla:
 ```
 mvn package
 ```
-Jar-tiedosto generoidaan *target* -kansioon ja sen voi suorittaa komennolla 
+Jar-tiedosto generoidaan *target* -kansioon ja sen voi suorittaa komennolla: 
 ```
 java -jar Mielialapaivakirja-1.0-SNAPSHOT.jar
 ```
@@ -56,3 +56,10 @@ mvn test jacoco:report
 Tiedostossa [checkstyle.xml](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/checkstyle.xml) määritellyt tarkistukset suoritetaan komennolla:
 ```
 mvn jxr:jxr checkstyle:checkstyle
+```
+
+#### JavaDoc
+JavaDoc on generoitavissa komennolla:
+```
+mvn javadoc:javadoc
+```
