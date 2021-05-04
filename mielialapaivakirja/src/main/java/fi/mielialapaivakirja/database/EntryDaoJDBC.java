@@ -13,29 +13,51 @@ public class EntryDaoJDBC implements EntryDao {
     @Override
     public void create(Entry entry, String surname, String firstname, String nameOfIndicator) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
-       
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
         stmt.setString(1, surname);
         stmt.setString(2, firstname);
         ResultSet r = stmt.executeQuery();
         int patientId = r.getInt("id");
-        
-        stmt = conn.prepareStatement("SELECT id FROM Indicators WHERE name=?" );
+        stmt = conn.prepareStatement("SELECT id FROM Indicators WHERE nameOfIndicator=?");
         stmt.setString(1, nameOfIndicator);
         r = stmt.executeQuery();
         int indicatorId = r.getInt("id");
-        
-        stmt = conn.prepareStatement("INSERT INTO Entries "
-                + "(value, date, patient_id, indicator_id)"
-                + "VALUES (?, ?, ?, ?)");
+        stmt = conn.prepareStatement("INSERT INTO Entries(value, date, patient_id, indicator_id) VALUES (?, ?, ?, ?)");
         stmt.setInt(1, entry.getValueOfEntry());
         stmt.setDate(2, entry.getDateOfEntryAsDate());
         stmt.setInt(3, patientId);
         stmt.setInt(4, indicatorId);
-        
         stmt.executeUpdate();
         stmt.close();
         conn.close();
+    }
+    
+    @Override
+    public ArrayList<Entry> list(String surname, String firstname, Indicator indicator) throws SQLException {
+        ArrayList<Entry> entries = new ArrayList();
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+        PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
+        stmt.setString(1, surname);
+        stmt.setString(2, firstname);
+        ResultSet rs = stmt.executeQuery();
+        if (!rs.next()) {
+            return null;
+        }
+        int patientId = rs.getInt("id");
+        stmt = conn.prepareStatement("SELECT * FROM Entries WHERE patient_id = ?");
+        stmt.setInt(1, patientId);
+        if (!rs.next()) {
+            return null;
+        }
+        while (rs.next()) {
+            Date date = rs.getDate("date");
+            LocalDate dateOfEntry = date.toLocalDate();
+            Entry e = new Entry(dateOfEntry, indicator, rs.getInt("value"));
+            entries.add(e);
+        }
+        stmt.close();
+        conn.close();
+        return entries;
     }
     
 /*    @Override
@@ -59,5 +81,6 @@ public class EntryDaoJDBC implements EntryDao {
         return p;
         
     }*/
+    
     
 }

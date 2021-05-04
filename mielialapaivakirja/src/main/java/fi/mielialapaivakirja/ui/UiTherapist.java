@@ -6,20 +6,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Objects;
-import strman.Strman;
+import strman.Strman; 
+import java.sql.SQLException;
 
 public class UiTherapist {
     private Scanner scanner;
     private Patient patient;
     private PatientInformationSystem pis;
     
-    public UiTherapist(Scanner scanner, PatientInformationSystem pis) {
+    public UiTherapist(Scanner scanner, PatientInformationSystem pis) throws SQLException {
         this.scanner = scanner;
         this.pis = pis;
         this.patient = null;
     }
     
-    public void start(){
+    public void start() throws SQLException {
         
         this.patient = pis.getPatient();
         System.out.println("Tervetuloa.");
@@ -32,15 +33,19 @@ public class UiTherapist {
             System.out.println("2 - Arkistoi tai palauta potilas");
             System.out.println("3 - Tulosta potilaat");
             System.out.println("4 - Valitse potilas");
-            System.out.println("5 - Tulosta kaikkien potilaiden tiedot");
-            System.out.println("6 - Luo indikaattori");
-            System.out.println("7 - Tulosta kaikki indikaattorit");
+            System.out.println("5 - Luo indikaattori");
+            System.out.println("6 - Tulosta kaikki indikaattorit");
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
             
             System.out.print("> ");
 
-            int choice = Integer.valueOf(scanner.nextLine());
+            String number = (scanner.nextLine());
+            if (checkIfNumber(number) == false) {
+                continue;
+            }
+            int choice = Integer.valueOf(number);
+            
 
             if (choice == 99){
                 System.out.println("Hyvää päivänjatkoa!");
@@ -75,8 +80,6 @@ public class UiTherapist {
                     System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
                 }
             } else if (choice == 5){
-                pis.printAllPatients();
-            } else if (choice == 6){
                 if (Objects.nonNull(this.patient)){
                     System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.toString());
                     System.out.println("Anna indikaattorin nimi:");
@@ -110,14 +113,15 @@ public class UiTherapist {
 
 
                                 } else {
-                                        System.out.println("Kriittinen arvo ei ole välillä " + minValue + "-" + maxValue + ".");
-                                        System.out.println("");
+                                        this.patient.diary.createIndicator(nameOfIndicator, minValue, maxValue, 1000, 1000);
                                         break;
                                 }
                             }
+                }
                 
-            } else if (choice == 7){
-                System.out.println(this.patient.diary.getIndicators());
+            } else if (choice == 6){
+                this.patient.diary.printAllIndicators();
+                    System.out.println("kukuu");
             }
             
             else {
@@ -126,11 +130,11 @@ public class UiTherapist {
             
 
         }
-        }    
+          
         
     }
 
-    private void  newPatient(){
+    private void  newPatient() throws SQLException {
         int bornYear;
         int bornMonth;
         int bornDate;
@@ -221,6 +225,16 @@ public class UiTherapist {
         int day = Integer.valueOf(scanner.nextLine());
         LocalDate chosenDate = LocalDate.of(year, month, day);
         return chosenDate;
+    }
+    
+    public boolean checkIfNumber(String number) {
+        try {
+            int value = Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("Väärä valinta!");
+            return false;
+        }
     }
     
 }

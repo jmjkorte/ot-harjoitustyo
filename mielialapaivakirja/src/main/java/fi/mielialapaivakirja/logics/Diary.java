@@ -3,8 +3,11 @@ package fi.mielialapaivakirja.logics;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.sql.SQLException;
 import fi.mielialapaivakirja.database.IndicatorDao;
 import fi.mielialapaivakirja.database.IndicatorDaoJDBC;
+import fi.mielialapaivakirja.database.EntryDao;
+import fi.mielialapaivakirja.database.EntryDaoJDBC;
 
 /** Represents an instance of Diary. 
  *  An instance of diary is created by constructor of the class Patient.
@@ -18,6 +21,8 @@ public class Diary {
     private String surname;
     private String firstname;
     private IndicatorDao indicatorDao;
+    private EntryDao entryDao;
+    
     
     /** Constructor of the class Diary.
      *
@@ -29,6 +34,7 @@ public class Diary {
         this.entries = new ArrayList();
         this.scanner = new Scanner(System.in);
         this.indicatorDao = new IndicatorDaoJDBC();
+        this.entryDao = new EntryDaoJDBC();
         
     }
 
@@ -40,17 +46,18 @@ public class Diary {
         return firstname;
     }
     
-    /** Creates an new instance of the class Indicator and adds it to private ArrayList.
+    /** Creates an new instance of the class Indicator, adds it to private ArrayList and creates row to the database.
      * 
-     * @param name  Name of an indicator.
+     * @param nameOfIndicator  Name of an indicator.
      * @param min   Min value of an indicator.
      * @param max   Max value of an indicator.
      * @param criticalValue Critical value of an indicator.
      * @param lowerOrHigher Indicates if user is interested of lower or higher values than critical value. 
      */
-    public void createIndicator(String name, int min, int max, int criticalValue, int lowerOrHigher) {
-        this.indicators.add(new Indicator(name, min, max, criticalValue, lowerOrHigher));
-        
+    public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) throws SQLException {
+        Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
+        this.indicators.add(i);
+        this.indicatorDao.create(this.surname, this.firstname, i);
         
     }
 
@@ -62,24 +69,33 @@ public class Diary {
         return entries;
     }
     
-    public void loadIndicators(Indicator indicator) {
-        this.indicators.add(indicator);
+    public void loadIndicators(ArrayList<Indicator> indicators) {
+        for (Indicator indicator: indicators) {
+            this.indicators.add(indicator);
+        }
     }
     
-    public void loadEntries(Entry entry) {
-        this.entries.add(entry);
+    public void loadEntries(ArrayList<Entry> entries) {
+        if (this.entries.isEmpty()) {
+            System.out.println("Merkintöjä ei löytynyt.");
+            return;
+        }
+        for (Entry entry: entries) {
+            this.entries.add(entry);
+        }
     }
     
     /** Prints names, min values and max values of patient's indicators.
      *
      */
     public void printAllIndicators() { //muutetaan palauttavaksi metodiksi!
-        if (indicators.isEmpty()) {
+        if (this.indicators.isEmpty()) {
             System.out.println("Indikaattoreita ei löydy.");
             return;
         }    
         for (Indicator indicator: this.indicators) {
-            System.out.println(indicator.toString());
+            System.out.println(indicator);
+            
         }
     }
     
@@ -95,13 +111,19 @@ public class Diary {
      *
      * @param date  Date when entry is made.
      */
-    public void makeEntry(LocalDate date) {
+    public void makeEntry(LocalDate date) throws SQLException {
         for (Indicator indicator: this.indicators) {
             System.out.println("Anna arvo indikaattorille " + indicator.toString());
             int valueOfEntry = Integer.valueOf(scanner.nextLine());
-            this.entries.add(new Entry(date, indicator, valueOfEntry));
-            if (valueOfEntry < indicator.getCriticalValue()) {
+            Entry e = new Entry(date, indicator, valueOfEntry);
+            this.entries.add(e);
+            this.entryDao.create(e, surname, firstname, indicator.getNameOfIndicator());
+            
+            if (indicator.getLowerOrHigher() == 1 && valueOfEntry < indicator.getCriticalValue()) {
                 System.out.println("HUOM! Antamasi arvo alittaa kriittisen arvon.");
+                System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
+            } else if (indicator.getLowerOrHigher() == 2 && valueOfEntry < indicator.getCriticalValue()) {
+                System.out.println("HUOM! Antamasi arvo ylittää kriittisen arvon.");
                 System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
             }
         }

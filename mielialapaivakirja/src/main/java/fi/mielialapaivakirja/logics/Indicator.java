@@ -45,6 +45,10 @@ public class Indicator {
     public int getCriticalValue() {
         return criticalValue;
     }
+    
+    public int getLowerOrHigher() {
+        return lowerOrHigher;
+    }
 
     
     public void setNameOfIndicator(String nameOfIndicator) {

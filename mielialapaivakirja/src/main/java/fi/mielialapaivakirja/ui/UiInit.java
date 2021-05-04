@@ -1,53 +1,38 @@
 
 package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
+import fi.mielialapaivakirja.logics.Init;
 import fi.mielialapaivakirja.database.PatientDaoJDBC;
 import fi.mielialapaivakirja.database.DatabaseCreator;
 import java.util.Scanner;
 import strman.Strman;
 import java.sql.*;
+import java.io.File;
 
 
 
 public class UiInit {
     private Scanner scanner;
     private PatientInformationSystem pis;
-    
+    private Init init;
     public UiInit(Scanner scanner) {
         this.scanner = scanner;
         this.pis = new PatientInformationSystem(scanner);
-    }
-    public void start() throws SQLException{
+        this.init = new Init(this.scanner, this.pis);
         
-        System.out.println("Tervetuloa Mielialapäiväkirja -sovellukseen.");
-        System.out.println("Sinulla on mahdollisuus kirjautua sovellukseen testikäyttäjänä, ");
-        System.out.println("jolloin potilastietojärjestelmään on luotu testiterapeutti(username: 'test' ja ");
-        System.out.println("viisi testipotilasta:(usernames: 'kalle', 'urkki', 'manu', 'sale' , 'tarja'");
-        System.out.println("HUOM! Tässä vaiheessa sovelluskehitystä on tärkeää, että uloskirjautumisen");
-        System.out.println("jälkeen et kirjaudu sovellukseen enää uudelleen testikäyttäjänä.");
-        while (true) {
-            System.out.println("Haluatko kirjautua testikäyttäjänä (K/E)? (X lopettaa sovelluksen)");
-            String testUser = scanner.nextLine().toUpperCase();
-            if (testUser.equals("K")) {
-                pis.initTestEnvironment();
-                oldUser();
-            } else if (testUser.equals("E")) {
-                System.out.println("Onko sinulle luotu käyttäjätunnus Mielialapäiväkirjaan(K/E)?");
-                String hasUsername = scanner.nextLine().toUpperCase();
-                if (hasUsername.equals("K")) {
-                    oldUser();
-                } else if (testUser.equals("E")) {
-                    newUser();
-                } else if (testUser.equals("X")) {
-                    System.exit(0);
-                }
-            } else {
-                System.out.println("Väärä valinta.");
-            }
-        }
     }
+    public void start() throws Exception{
+        
+        
+        init.dataBaseConnect("testdatabase.db");
+        pis.createTherapist("test");
+        oldUser();
+        
+        }
+        
+    
 
-    public void oldUser() {
+    public void oldUser() throws SQLException {
         System.out.println("Kirjaudu antamalla käyttäjätunnuksesi ('x' lopettaa ohjelman):");
         String username = scanner.nextLine().toLowerCase();
         if (username.equals("x")) {

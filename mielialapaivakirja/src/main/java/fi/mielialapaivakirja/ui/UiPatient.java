@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import strman.Strman;
+import java.sql.SQLException;
 public class UiPatient {
     
     private Scanner scanner;
@@ -17,7 +18,7 @@ public class UiPatient {
         this.patient = pis.getPatient();
     }
     
-    public void start(){
+    public void start() throws SQLException {
          while (true){
             
             System.out.println("Paina <Enter> jatkaaksesi.");
@@ -34,7 +35,7 @@ public class UiPatient {
             String patientsChoice = scanner.nextLine();
 
             if (patientsChoice.equals("0")) {
-                start();
+                break;
             } else if (patientsChoice.equals("1")) {
                 System.out.println("Tänään on " + LocalDate.now());
                 System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");

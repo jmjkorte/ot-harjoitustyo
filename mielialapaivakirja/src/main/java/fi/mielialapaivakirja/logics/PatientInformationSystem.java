@@ -20,7 +20,7 @@ public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     private ArrayList<Patient> archive;
-    private PatientDaoJDBC patientdao;
+    private PatientDaoJDBC patientDao;
     private Scanner scanner;
     public Patient patient;
     
@@ -29,7 +29,7 @@ public class PatientInformationSystem {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
         this.archive = new ArrayList<>();
-        this.patientdao = new PatientDaoJDBC();
+        this.patientDao = new PatientDaoJDBC();
         
     }
     
@@ -55,8 +55,10 @@ public class PatientInformationSystem {
         this.userRoles.put(username, 1);
     }
     
-    public void createPatient(String surname, String firstname, LocalDate bornDate, String username) {
-        patients.add(new Patient(surname, firstname, bornDate, username));
+    public void createPatient(String surname, String firstname, LocalDate bornDate, String username) throws SQLException  {
+        Patient p = new Patient(surname, firstname, bornDate, username);
+        this.patients.add(p);
+        this.patientDao.create(p);
         userRoles.put(username, 2);
         Collections.sort(patients, Comparator.comparing(Patient::getSurname));
         System.out.println("Potilas luotu onnistuneesti.");
@@ -64,8 +66,11 @@ public class PatientInformationSystem {
         
     }
     
-    public void loadPatients(Patient patient) {
-        this.patients.add(patient);
+    public void loadPatients(ArrayList<Patient> patients) {
+        for (Patient patient: patients) {
+            this.patients.add(patient);
+            this.userRoles.put(patient.getUsername(), 2);
+        }
     }
     
     public void printAllPatients() {
@@ -130,32 +135,25 @@ public class PatientInformationSystem {
     }
     
     public void initTestEnvironment() throws SQLException {
-        DatabaseCreator dbc = new DatabaseCreator();
-        dbc.createDatabase();
-        patients.add(new Patient("Kiesilä", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
+        patients.add(new Patient("Kiesila", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
         userRoles.put("kalle", 2);
         patients.add(new Patient("Kekkonen", "Urho-Kaleva", LocalDate.of(1910, 7, 1), "urkki"));
         userRoles.put("urkki", 2);
         patients.add(new Patient("Koivisto", "Mauno-Henrik", LocalDate.of(2001, 12, 12), "manu"));
         userRoles.put("manu", 2);
-        patients.add(new Patient("Niinistö", "Sauli", LocalDate.of(1951, 12, 4), "sale"));
+        patients.add(new Patient("Niinisto", "Sauli", LocalDate.of(1951, 12, 4), "sale"));
         userRoles.put("sale", 2);
         patients.add(new Patient("Halonen", "Tarja", LocalDate.of(1990, 11, 1), "tarja"));
         userRoles.put("tarja", 2);
         userRoles.put("test", 1);
         Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
         choosePatient("Koivisto", "Mauno-Henrik");
+        for (Patient patient: this.patients) {
+            patientDao.create(patient);
+        }
         this.patient.diary.createIndicator("Surullisuus", 0, 5, 1, 1);
         this.patient.diary.createIndicator("Aktiivisuus", 0, 10, -1, -1);
-        for(Patient patient: this.patients) {
-            patientdao.create(patient);
-        }
-        ArrayList<Patient> list = patientdao.list();
-        for(Patient patient: list) {
-            System.out.println(patient);
-        }
-        
-        
+        ArrayList<Patient> list = patientDao.list();
     }
     
     public String getFormattedDate(LocalDate date) { //siirretään metodi toiseen luokkaan

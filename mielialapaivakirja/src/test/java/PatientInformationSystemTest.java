@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.sql.*;
 
 
 public class PatientInformationSystemTest {
@@ -15,7 +16,7 @@ public class PatientInformationSystemTest {
     
     @Before
     
-    public void setUp() {
+    public void setUp() throws SQLException {
         Scanner scanner = new Scanner(System.in);
         pis = new PatientInformationSystem(scanner);
         LocalDate bornDate = LocalDate.of(1920, 3, 1);

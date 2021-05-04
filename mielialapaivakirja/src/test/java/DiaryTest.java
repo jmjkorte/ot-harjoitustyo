@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+import java.sql.*;
 
 
 public class DiaryTest {
@@ -18,13 +19,13 @@ public class DiaryTest {
     
     @Before
     public void setUp() {
-        testDiary = new Diary();
+        testDiary = new Diary("Paasio", "Pertti");
         LocalDate testDate = LocalDate.of(2021, 3, 1);
         testEntry = new Entry(testDate, testIndicator, 3);
     }
     
     @Test
-    public void createIndicatorReturnsRightName() {
+    public void createIndicatorReturnsRightName() throws SQLException {
         testDiary.createIndicator("anotherIndicator", 0, 10, 10, 1);
         ArrayList<String> list = new ArrayList();
         String name ="";

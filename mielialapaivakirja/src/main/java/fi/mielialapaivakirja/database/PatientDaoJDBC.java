@@ -6,7 +6,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
-import java.time.LocalDate;
 
 
 public class PatientDaoJDBC implements PatientDao {
@@ -14,9 +13,7 @@ public class PatientDaoJDBC implements PatientDao {
     @Override
     public void create(Patient patient) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Patients "
-                + " (surname, firstname, username, dateOfBirth)"
-                + " VALUES(?, ?, ?, ?)");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Patients(surname, firstname, username, dateOfBirth) VALUES(?, ?, ?, ?)");
         stmt.setString(1, patient.getSurname());
         stmt.setString(2, patient.getFirstname());
         stmt.setString(3, patient.getUsername());
@@ -33,9 +30,11 @@ public class PatientDaoJDBC implements PatientDao {
         stmt.setInt(1, key);
         ResultSet rs = stmt.executeQuery();
         if (!rs.next()) {
+            rs.close();
+            stmt.close();
+            conn.close();
             return null;
         }
-        
         Date date = rs.getDate("dateOfBirth");
         LocalDate dateOfBirth = date.toLocalDate();
         
@@ -78,8 +77,7 @@ public class PatientDaoJDBC implements PatientDao {
         stmt.close();
         rs.close();
         conn.close();
-
-    return list;
+        return list;
     
     }
     
