@@ -3,6 +3,7 @@
 ## Lataaminen ja käynnnistäminen
 Lataa tiedosto 
   ```
+  mielialapaivakirja_vko6.jar
   ```
   Käynnistä tiedosto komennolla
   ```
