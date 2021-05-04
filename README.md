@@ -23,7 +23,7 @@ Sovellus luo tässä vaiheessa kehitystä tietokannan luomisen yhteydessä sinne
 
 [Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/arkkitehtuuri.md)
 
-
+[Käyttöohje](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/kayttoohje.md)
 
 ### Komentorivitoiminnot
 
