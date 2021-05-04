@@ -21,7 +21,7 @@ Lataa tiedosto
   
   ## Terapeutin näkymä
   Terapeutin käyttöliittymä sisältää seuraavan valikon toiminnoista:
-  1 - Perusta potilas
+  1 - Perusta potilas \
   2 - Arkistoi tai palauta potilas
   3 - Tulosta potilaat
   4 - Valitse potilas
@@ -40,7 +40,7 @@ Lataa tiedosto
   
   ## Potilaan näkymä
   Potilaan käyttöliittymä sisältää seuraavan valikon toiminnoista:
-  1 - Tee kirjaus päiväkirjaan
+  1 - Tee kirjaus päiväkirjaan \
   2 - Tarkastele päiväkirjaa
   3 - Tulosta päiväkirja
   4 - Tulosta mittarit
