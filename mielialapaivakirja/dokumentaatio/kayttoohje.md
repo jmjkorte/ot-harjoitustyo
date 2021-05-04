@@ -20,15 +20,15 @@ Lataa tiedosto
   **Huom!** Sovelluksen tämän hetkisessä versiossa on paljon bugeja ja sovellus saattaa kaatua käyttäjän virheellisiin syötteisiin.
   
   ## Terapeutin näkymä
-  Terapeutin käyttöliittymä sisältää seuraavan valikon toiminnoista:
+  Terapeutin käyttöliittymä sisältää seuraavan valikon toiminnoista: \
   1 - Perusta potilas \
-  2 - Arkistoi tai palauta potilas
-  3 - Tulosta potilaat
-  4 - Valitse potilas
-  5 - Luo indikaattori
-  6 - Tulosta kaikki indikaattorit
-  0 - Kirjaudu ulos
-  99 - Lopeta
+  2 - Arkistoi tai palauta potilas \
+  3 - Tulosta potilaat \
+  4 - Valitse potilas \
+  5 - Luo indikaattori \
+  6 - Tulosta kaikki indikaattorit \
+  0 - Kirjaudu ulos \
+  99 - Lopeta \
   
   Toimintoihin kirjaudutaan antamalla kyseisen rivin edessä oleva numero. Tämän jälkeen sovellus opastaa tarvittavien tietojen antamisessa. 
   Muutamia huomioita:
@@ -39,13 +39,13 @@ Lataa tiedosto
   - Potilasta ja potilaan indikaattoreita luodessa sovellus tallentaa tiedot automaattisesti myös tietokantaan.  
   
   ## Potilaan näkymä
-  Potilaan käyttöliittymä sisältää seuraavan valikon toiminnoista:
+  Potilaan käyttöliittymä sisältää seuraavan valikon toiminnoista: \
   1 - Tee kirjaus päiväkirjaan \
-  2 - Tarkastele päiväkirjaa
-  3 - Tulosta päiväkirja
-  4 - Tulosta mittarit
-  0 - Kirjaudu ulos
-  99 - Lopeta
+  2 - Tarkastele päiväkirjaa \
+  3 - Tulosta päiväkirja \
+  4 - Tulosta mittarit \
+  0 - Kirjaudu ulos \
+  99 - Lopeta \
   
   Toimintoihin kirjaudutaan samalla tavalla kuin terapeutin näkymässä. Kuten alussa on mainittu, päiväkirjamerkinnät eivät vielä tässä sovelluksen kehitysvaiheessa
   tallennu tietokantaan eivätkä ole näin ollen käytettävissä sovelluksen sulkemisen jälkeen.
