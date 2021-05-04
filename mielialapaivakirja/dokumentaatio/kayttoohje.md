@@ -27,6 +27,7 @@ Lataa tiedosto
   4 - Valitse potilas \
   5 - Luo indikaattori \
   6 - Tulosta kaikki indikaattorit \
+  7 - Tulosta potilaan päiväkirja \
   0 - Kirjaudu ulos \
   99 - Lopeta 
   
