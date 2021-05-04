@@ -16,6 +16,8 @@
 | 19.4.| Potilaan käyttöliittymän ja potilan toiminnallisuuksiin liittyvien luokkien ohjelmointi. Checkstylen käyttöönotto. |4|
 | 20.4.| Testit, arkkitehtuuri.md:n ja README.md:n kirjoittaminen |3|
 | 23.4.| Käyttöliittymäluokkien refaktorointi ja ohjelmointi sekä toiminnallisuuksien ohjelmointi. Sekvenssikaavionn teko. |8|
-| 27.4.| Testien luominen, hienosäätö ennen viikkopalautusta. |3|
-
-Tunnit yhteensä: 45
+| 27.4.| Testien luominen, hienosäätö ennen viikkopalautusta |3|
+| 2.5. | Javadocin luonti, tietokantatoiminnallisuuksien koodaus |2|
+| 3.5. | Tietokantatoiminnallisuuksien koodaus |2|
+| 4.5. | Tietokantatoiminnalisuuksien ja muiden toiminnallisuuksien koodaus, dokumentointi, releasen valmistelu. |12|
+**Tunnit yhteensä: 61**
