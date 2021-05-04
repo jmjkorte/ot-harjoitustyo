@@ -79,8 +79,8 @@ public class Patient {
     public String toString() {
         return surname + ", " + firstname + ", s. " + getFormattedDate(dateOfBirth);
     }
-    // tämä metodi siirretään omaan luokkaansa yhdessä muiden apumetodien kanssa.
-    public String getFormattedDate(LocalDate date) {
+    
+    private String getFormattedDate(LocalDate date) {
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;
     }

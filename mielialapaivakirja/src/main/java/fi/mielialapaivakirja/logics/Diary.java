@@ -69,12 +69,20 @@ public class Diary {
         return entries;
     }
     
+    /** Takes a list of indicators as parameter and adds them to private ArrayList 'indicators'.
+     *
+     * @param indicators
+     */
     public void loadIndicators(ArrayList<Indicator> indicators) {
         for (Indicator indicator: indicators) {
             this.indicators.add(indicator);
         }
     }
     
+    /** Takes a list of entries as parameter and adds them to private ArrayList 'entries'.
+     *
+     * @param entries   List of entries.
+     */
     public void loadEntries(ArrayList<Entry> entries) {
         if (this.entries.isEmpty()) {
             System.out.println("Merkintöjä ei löytynyt.");
@@ -99,6 +107,10 @@ public class Diary {
         }
     }
     
+    /** Returns names of all of patient's indicators.
+     *
+     * @return names of all indicators.
+     */
     public ArrayList getNamesOfAllIndicators() { 
         ArrayList<String> names = new ArrayList();
         for (Indicator indicator: this.indicators) {

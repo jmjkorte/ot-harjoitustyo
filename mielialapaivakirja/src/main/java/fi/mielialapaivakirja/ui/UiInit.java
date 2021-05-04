@@ -33,28 +33,32 @@ public class UiInit {
     
 
     public void oldUser() throws SQLException {
-        System.out.println("Kirjaudu antamalla käyttäjätunnuksesi ('x' lopettaa ohjelman):");
-        String username = scanner.nextLine().toLowerCase();
-        if (username.equals("x")) {
-            System.out.println("Hyvää päivänjatkoa!");
-            System.exit(0);
+        while (true) {
+            System.out.println("Kirjaudu antamalla käyttäjätunnuksesi ('x' lopettaa ohjelman):");
+            System.out.print("> ");
+            String username = scanner.nextLine().toLowerCase();
+            if (username.equals("x")) {
+                System.out.println("Hyvää päivänjatkoa!");
+                System.exit(0);
+            }
+            int role = this.pis.check(username);
+            if (role == 1) {
+                UiTherapist uiT = new UiTherapist(this.scanner, pis);
+                uiT.start();
+
+            } else if (role == 2) {
+                UiPatient uiP = new UiPatient(this.scanner, pis);
+                uiP.start();
+
+            } else if (role == 3) {
+                System.out.println("Käyttäjätunnusta ei löydy.");
+            }    
         }
-        int role = this.pis.check(username);
-        if (role == 1) {
-            UiTherapist uiT = new UiTherapist(this.scanner, pis);
-            uiT.start();
+    }    
+        
+        
 
-        } else if (role == 2) {
-            UiPatient uiP = new UiPatient(this.scanner, pis);
-            uiP.start();
-
-        } else if (role == 3) {
-            System.out.println("Käyttäjätunnusta ei löydy.");
-
-        }
-    }
-
-    public void newUser() {
+   /* public void newUser() {
         while (true) {
             System.out.println("Oletko terapeutti, joka on kirjautumassa sovellukseen ensimmäistä kertaa(K/E)?");
             String areYouTherapist = scanner.nextLine().toUpperCase();
@@ -71,6 +75,6 @@ public class UiInit {
                 System.out.println("Väärä valinta.");
             }     
         }
-    }
+    } */
        
 }

@@ -28,7 +28,7 @@ public class Init {
             loadFromDatabase();
         } else {
             System.out.println("Sovellus on kehitysvaiheessa.");
-            System.out.println("Kun uusi tietokanta luodaan, luodaan myös testipotilaat ja testiterapeutti.");
+            System.out.println("Ensimmäistä kertaa käynnistettäessä luodaan tietokanta, testipotilaat ja testiterapeutti.");
             System.out.println("Testipotilaiden käyttäjätunnukset ovat 'kalle', 'manu', 'sale' ja 'urkki'.");
             System.out.println("Terapeutin käyttäjätunnus on 'test'.");
 

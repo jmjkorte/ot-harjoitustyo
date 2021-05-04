@@ -15,16 +15,26 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import strman.Strman;
 
-
+/** Represents patient information system which records personal data of the patients.
+ *
+ * 
+ */
 public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
     private ArrayList<Patient> archive;
     private PatientDaoJDBC patientDao;
     private Scanner scanner;
+
+    /** Instance of the class Patient.
+     *
+     */
     public Patient patient;
     
-    
+    /** Comstructor of the class.
+     *
+     * @param scanner
+     */
     public PatientInformationSystem(Scanner scanner) {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
@@ -33,8 +43,13 @@ public class PatientInformationSystem {
         
     }
     
-   
-    
+    /** Checks if patient / therapist has valid username.
+     *
+     * @param username
+     * @return 1 if username with therapist status,
+     * 2 if username with patient status,
+     * 3 if username not found.
+     */
     public int check(String username) {
         if (userRoles.containsKey(username) && userRoles.get(username) == 1) {
             return 1;
@@ -51,10 +66,24 @@ public class PatientInformationSystem {
         return 3;
     }
     
+    /** Creates a new therapist.
+     *
+     * @param username
+     */
     public void createTherapist(String username) {
         this.userRoles.put(username, 1);
     }
     
+    /** Creates a patient
+     * 
+     * Method creates an instance of the class Patient and adds it to private ArrayList 'patients'.
+     * The patient is also added to database table 'Patients'.
+     * @param surname   Surname of a patient. 
+     * @param firstname Firstname of a patient.
+     * @param bornDate  Borndate of a patient.
+     * @param username  Userna,e of a patient.
+     * @throws SQLException
+     */
     public void createPatient(String surname, String firstname, LocalDate bornDate, String username) throws SQLException  {
         Patient p = new Patient(surname, firstname, bornDate, username);
         this.patients.add(p);
@@ -66,6 +95,10 @@ public class PatientInformationSystem {
         
     }
     
+    /** Takes a list of patients as parameter and adds them to private ArrayList 'patients'.
+     *
+     * @param patients
+     */
     public void loadPatients(ArrayList<Patient> patients) {
         for (Patient patient: patients) {
             this.patients.add(patient);
@@ -73,12 +106,21 @@ public class PatientInformationSystem {
         }
     }
     
+    /** Prints all the patients in private ArrayList 'patients'.
+     *
+     */
     public void printAllPatients() {
         for (int i = 0; i < patients.size(); i++) {
             System.out.println(patients.get(i).getSurname() + " " + patients.get(i).getFirstname() + ", s. " + getFormattedDate(patients.get(i).getDateOfBirth()));
         }
     }
     
+    /** Changes the value of private variable 'patient'.
+     *
+     * @param surname   Surname of a patient.
+     * @param firstname Firstname of a patient.
+     * @return
+     */
     public boolean choosePatient(String surname, String firstname) {
        
         for (Patient person : patients) {
@@ -91,6 +133,11 @@ public class PatientInformationSystem {
         return false;
     }
     
+    /** Adds patient to private ArrayList 'archive' and removes it from private ArrayList 'patients'.
+     *
+     * @param surname   Surname of a patient.
+     * @param firstname Firstname of a patient.
+     */
     public void archivePatient(String  surname, String firstname) {
         Patient found = null;
         for (Patient person : patients) {
@@ -110,6 +157,11 @@ public class PatientInformationSystem {
         }
     }
     
+    /** Adds patient to private ArrayList 'patients' and removes it from private ArrayList 'archive'.
+     *
+     * @param surname
+     * @param firstname
+     */
     public void returnPatientFromArchive(String surname, String firstname) {
         Patient found = null;
         for (Patient person : archive) {
@@ -134,6 +186,10 @@ public class PatientInformationSystem {
     
     }
     
+    /** Creates patients for test purposes.
+     *
+     * @throws SQLException
+     */
     public void initTestEnvironment() throws SQLException {
         patients.add(new Patient("Kiesila", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
         userRoles.put("kalle", 2);
@@ -156,7 +212,7 @@ public class PatientInformationSystem {
         ArrayList<Patient> list = patientDao.list();
     }
     
-    public String getFormattedDate(LocalDate date) { //siirretään metodi toiseen luokkaan
+    private String getFormattedDate(LocalDate date) { //siirretään metodi toiseen luokkaan
         
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;

@@ -35,6 +35,7 @@ public class UiTherapist {
             System.out.println("4 - Valitse potilas");
             System.out.println("5 - Luo indikaattori");
             System.out.println("6 - Tulosta kaikki indikaattorit");
+            System.out.println("7 - Tulosta potilaan päiväkirja");
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
             
@@ -119,16 +120,18 @@ public class UiTherapist {
                             }
                 }
                 
-            } else if (choice == 6){
+            } else if (choice == 6) {
                 this.patient.diary.printAllIndicators();
-                    System.out.println("kukuu");
+                    
+            } else if (choice == 7) {
+                this.patient.diary.printAllEntries();
             }
             
             else {
                 System.out.println("Väärä valinta.");
             }
             
-
+            
         }
           
         
