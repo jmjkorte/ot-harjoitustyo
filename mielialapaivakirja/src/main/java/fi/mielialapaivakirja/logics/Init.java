@@ -45,24 +45,15 @@ public class Init {
             ArrayList<Indicator> indicatorList = indicatorDao.list(patient.getSurname(), patient.getFirstname());
             if (indicatorList != null) {   
                 patient.diary.loadIndicators(indicatorList);
-                ArrayList<Entry> entryList = new ArrayList();
-            
+                
                 for (Indicator indicator: indicatorList) {
-                    ArrayList<Entry> entriesByIndicator = entryDao.list(patient.getSurname(), patient.getFirstname(), indicator);
-                    if (entriesByIndicator != null) {
-                        for (Entry entry: entriesByIndicator) {
-                            entryList.add(entry);
-                        }
+                    ArrayList<Entry> entryList = entryDao.list(patient.getSurname(), patient.getFirstname(), indicator);
+                    if (entryList != null) {
+                        patient.diary.loadEntries(entryList);
                     }
                 }
                 
             }
-            
-            
-       
-            
-            
-           
             
         }
     }

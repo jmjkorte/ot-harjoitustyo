@@ -84,10 +84,6 @@ public class Diary {
      * @param entries   List of entries.
      */
     public void loadEntries(ArrayList<Entry> entries) {
-        if (this.entries.isEmpty()) {
-            System.out.println("Merkintöjä ei löytynyt.");
-            return;
-        }
         for (Entry entry: entries) {
             this.entries.add(entry);
         }
@@ -134,10 +130,11 @@ public class Diary {
             if (indicator.getLowerOrHigher() == 1 && valueOfEntry < indicator.getCriticalValue()) {
                 System.out.println("HUOM! Antamasi arvo alittaa kriittisen arvon.");
                 System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
-            } else if (indicator.getLowerOrHigher() == 2 && valueOfEntry < indicator.getCriticalValue()) {
+            } else if (indicator.getLowerOrHigher() == 2 && valueOfEntry > indicator.getCriticalValue()) {
                 System.out.println("HUOM! Antamasi arvo ylittää kriittisen arvon.");
                 System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
             }
+            
         }
     }
         

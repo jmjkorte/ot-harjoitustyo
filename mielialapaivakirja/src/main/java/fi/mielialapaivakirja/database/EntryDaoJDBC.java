@@ -30,6 +30,7 @@ public class EntryDaoJDBC implements EntryDao {
         stmt.executeUpdate();
         stmt.close();
         conn.close();
+        
     }
     
     @Override
@@ -37,6 +38,7 @@ public class EntryDaoJDBC implements EntryDao {
         ArrayList<Entry> entries = new ArrayList();
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
+        
         stmt.setString(1, surname);
         stmt.setString(2, firstname);
         ResultSet rs = stmt.executeQuery();
@@ -44,12 +46,31 @@ public class EntryDaoJDBC implements EntryDao {
             return null;
         }
         int patientId = rs.getInt("id");
-        stmt = conn.prepareStatement("SELECT * FROM Entries WHERE patient_id = ?");
-        stmt.setInt(1, patientId);
+        
+        stmt = conn.prepareStatement("SELECT id FROM Indicators WHERE nameOfIndicator = ?");
+        stmt.setString(1, indicator.getNameOfIndicator());
+        rs = stmt.executeQuery();
         if (!rs.next()) {
+            
+            return null;
+        }
+        int indicatorId = rs.getInt("id");
+        System.out.println(indicatorId);
+        System.out.println(indicator.getNameOfIndicator());
+        stmt.close();
+        
+        stmt = conn.prepareStatement("SELECT * FROM Entries WHERE indicator_id = ?");
+        stmt.setInt(1, indicatorId);
+        rs = stmt.executeQuery();
+        if (!rs.next()) {
+            System.out.println("entryä ei löydy");
+            stmt.close();
+            rs.close();
+            conn.close();
             return null;
         }
         while (rs.next()) {
+            System.out.println("entry löytyy");
             Date date = rs.getDate("date");
             LocalDate dateOfEntry = date.toLocalDate();
             Entry e = new Entry(dateOfEntry, indicator, rs.getInt("value"));

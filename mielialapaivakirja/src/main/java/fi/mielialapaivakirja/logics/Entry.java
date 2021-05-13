@@ -34,7 +34,7 @@ public class Entry {
         return indicatorOfEntry;
     }
     public Date getDateOfEntryAsDate() {
-        Date date = Date.valueOf(dateOfEntry);
+        Date date = Date.valueOf(getDateOfEntry());
         return date;
     }
 
