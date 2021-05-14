@@ -58,7 +58,7 @@ public class UiInit {
         
         
 
-   /* public void newUser() {
+   /*public void newUser() {
         while (true) {
             System.out.println("Oletko terapeutti, joka on kirjautumassa sovellukseen ensimmäistä kertaa(K/E)?");
             String areYouTherapist = scanner.nextLine().toUpperCase();
@@ -75,6 +75,6 @@ public class UiInit {
                 System.out.println("Väärä valinta.");
             }     
         }
-    } */
+    }*/ 
        
 }

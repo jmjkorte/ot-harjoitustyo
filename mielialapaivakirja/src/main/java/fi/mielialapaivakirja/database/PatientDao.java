@@ -7,9 +7,8 @@ import java.util.*;
 
 public interface PatientDao {
     void create(Patient patient) throws SQLException;
-    Patient read(Integer id) throws SQLException;
-    //T update(T object) throws SQLException;
-    void delete(Integer key) throws SQLException;
+    Patient read(String surname, String firstname) throws SQLException;
+    void archive(String surname, String firstname, int way) throws SQLException;
     ArrayList<Patient> list() throws SQLException; 
     
     

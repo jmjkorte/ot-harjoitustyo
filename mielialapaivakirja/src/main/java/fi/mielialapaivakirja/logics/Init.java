@@ -22,11 +22,14 @@ public class Init {
     }
     
     
+    
+    
     public void dataBaseConnect(String dbname) throws Exception {
         File file = new File(dbname);
         if (file.exists()) {
             loadFromDatabase();
         } else {
+            
             System.out.println("Sovellus on kehitysvaiheessa.");
             System.out.println("Ensimmäistä kertaa käynnistettäessä luodaan tietokanta, testipotilaat ja testiterapeutti.");
             System.out.println("Testipotilaiden käyttäjätunnukset ovat 'kalle', 'manu', 'sale' ja 'urkki'.");

@@ -22,7 +22,6 @@ import strman.Strman;
 public class PatientInformationSystem {
     private HashMap<String, Integer> userRoles;
     private ArrayList<Patient> patients;
-    private ArrayList<Patient> archive;
     private PatientDaoJDBC patientDao;
     private Scanner scanner;
 
@@ -38,7 +37,6 @@ public class PatientInformationSystem {
     public PatientInformationSystem(Scanner scanner) {
         this.userRoles = new HashMap();
         this.patients = new ArrayList<>();
-        this.archive = new ArrayList<>();
         this.patientDao = new PatientDaoJDBC();
         
     }
@@ -138,7 +136,7 @@ public class PatientInformationSystem {
      * @param surname   Surname of a patient.
      * @param firstname Firstname of a patient.
      */
-    public void archivePatient(String  surname, String firstname) {
+    public void archivePatient(String  surname, String firstname) throws SQLException {
         Patient found = null;
         for (Patient person : patients) {
             if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)) {
@@ -146,8 +144,8 @@ public class PatientInformationSystem {
             }    
         }
         if (Objects.nonNull(found)) {
-            this.archive.add(found);
             this.patients.remove(found);
+            patientDao.archive(found.getSurname(), found.getFirstname(), 1);
         } else {
             System.out.println("Potilasta ei löytynyt.");
         }
@@ -162,22 +160,13 @@ public class PatientInformationSystem {
      * @param surname
      * @param firstname
      */
-    public void returnPatientFromArchive(String surname, String firstname) {
-        Patient found = null;
-        for (Patient person : archive) {
-            if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)) {
-                found = person;
-            }
-        } 
-        if (Objects.nonNull(found)) {
-            this.archive.remove(found);
-            this.patients.add(found);
-            Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
-        } else {
-            System.out.println("Potilasta ei löytynyt.");
-        }
+    public void returnPatientFromArchive(String surname, String firstname) throws SQLException {
+                
+        patientDao.archive(surname, firstname, 0);
+        this.patients.add(patientDao.read(surname, firstname));
         
     }
+    
     
     
    
@@ -212,7 +201,7 @@ public class PatientInformationSystem {
         ArrayList<Patient> list = patientDao.list();
     }
     
-    private String getFormattedDate(LocalDate date) { //siirretään metodi toiseen luokkaan
+    private String getFormattedDate(LocalDate date) { 
         
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;

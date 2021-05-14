@@ -58,7 +58,7 @@ public class Patient {
         return dateOfBirth;
     }
     
-    public Date getDatePfBirthAsDate() {
+    public Date getDateOfBirthAsDate() {
         Date date = Date.valueOf(dateOfBirth);
         return date;
     }

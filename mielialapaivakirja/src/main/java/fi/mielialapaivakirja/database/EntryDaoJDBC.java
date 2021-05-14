@@ -69,13 +69,13 @@ public class EntryDaoJDBC implements EntryDao {
             conn.close();
             return null;
         }
-        while (rs.next()) {
+        do {
             System.out.println("entry löytyy");
             Date date = rs.getDate("date");
             LocalDate dateOfEntry = date.toLocalDate();
             Entry e = new Entry(dateOfEntry, indicator, rs.getInt("value"));
             entries.add(e);
-        }
+        } while (rs.next());
         stmt.close();
         conn.close();
         return entries;
