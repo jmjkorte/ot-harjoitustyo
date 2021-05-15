@@ -2,7 +2,6 @@
 package fi.mielialapaivakirja.logics;
 import fi.mielialapaivakirja.database.DatabaseCreator;
 import fi.mielialapaivakirja.database.PatientDaoJDBC;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,7 +19,7 @@ import strman.Strman;
  * 
  */
 public class PatientInformationSystem {
-    private HashMap<String, Integer> userRoles;
+    private ArrayList<String> usernames;
     private ArrayList<Patient> patients;
     private PatientDaoJDBC patientDao;
     private Scanner scanner;
@@ -35,7 +34,7 @@ public class PatientInformationSystem {
      * @param scanner
      */
     public PatientInformationSystem(Scanner scanner) {
-        this.userRoles = new HashMap();
+        this.usernames = new ArrayList();
         this.patients = new ArrayList<>();
         this.patientDao = new PatientDaoJDBC();
         
@@ -48,29 +47,15 @@ public class PatientInformationSystem {
      * 2 if username with patient status,
      * 3 if username not found.
      */
-    public int check(String username) {
-        if (userRoles.containsKey(username) && userRoles.get(username) == 1) {
-            return 1;
+    public boolean check(String username) {
+        if (this.usernames.contains(username)) {
+            choosePatient(username);
+            return true;
         }
-        if (userRoles.containsKey(username) && userRoles.get(username) == 2) {
-            for (Patient person : this.patients) {
-                if (person.getUsername().equals(username)) {
-                    this.patient = person;
-                    break;
-                }
-            }
-            return 2;
-        }
-        return 3;
-    }
+        return false;
+    }   
     
-    /** Creates a new therapist.
-     *
-     * @param username
-     */
-    public void createTherapist(String username) {
-        this.userRoles.put(username, 1);
-    }
+    
     
     /** Creates a patient
      * 
@@ -82,11 +67,11 @@ public class PatientInformationSystem {
      * @param username  Userna,e of a patient.
      * @throws SQLException
      */
-    public void createPatient(String surname, String firstname, LocalDate bornDate, String username) throws SQLException  {
+    public void createPatient(String surname, String firstname, LocalDate bornDate, String username) {
         Patient p = new Patient(surname, firstname, bornDate, username);
         this.patients.add(p);
         this.patientDao.create(p);
-        userRoles.put(username, 2);
+        this.usernames.add(username);
         Collections.sort(patients, Comparator.comparing(Patient::getSurname));
         System.out.println("Potilas luotu onnistuneesti.");
         
@@ -100,17 +85,15 @@ public class PatientInformationSystem {
     public void loadPatients(ArrayList<Patient> patients) {
         for (Patient patient: patients) {
             this.patients.add(patient);
-            this.userRoles.put(patient.getUsername(), 2);
+            this.usernames.add(patient.getUsername());
         }
     }
     
     /** Prints all the patients in private ArrayList 'patients'.
      *
      */
-    public void printAllPatients() {
-        for (int i = 0; i < patients.size(); i++) {
-            System.out.println(patients.get(i).getSurname() + " " + patients.get(i).getFirstname() + ", s. " + getFormattedDate(patients.get(i).getDateOfBirth()));
-        }
+    public ArrayList getPatients() {
+        return this.patients;       
     }
     
     /** Changes the value of private variable 'patient'.
@@ -119,15 +102,15 @@ public class PatientInformationSystem {
      * @param firstname Firstname of a patient.
      * @return
      */
-    public boolean choosePatient(String surname, String firstname) {
+    public boolean choosePatient(String username) {
        
         for (Patient person : patients) {
-            if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)) {
+            if (person.getUsername().equals(username)) {
                 this.patient = person;
                 return true;
-            } 
-        }
-        System.out.println("Potilasta ei löytynyt.");        
+            }
+            
+        }        
         return false;
     }
     
@@ -136,7 +119,7 @@ public class PatientInformationSystem {
      * @param surname   Surname of a patient.
      * @param firstname Firstname of a patient.
      */
-    public void archivePatient(String  surname, String firstname) throws SQLException {
+    public void archivePatient(String  surname, String firstname) {
         Patient found = null;
         for (Patient person : patients) {
             if (person.getFirstname().equals(firstname) && person.getSurname().equals(surname)) {
@@ -160,16 +143,13 @@ public class PatientInformationSystem {
      * @param surname
      * @param firstname
      */
-    public void returnPatientFromArchive(String surname, String firstname) throws SQLException {
+    public void returnPatientFromArchive(String surname, String firstname) {
                 
         patientDao.archive(surname, firstname, 0);
         this.patients.add(patientDao.read(surname, firstname));
         
     }
     
-    
-    
-   
     public Patient getPatient() {
         return this.patient;
     
@@ -179,20 +159,19 @@ public class PatientInformationSystem {
      *
      * @throws SQLException
      */
-    public void initTestEnvironment() throws SQLException {
+    public void initTestEnvironment() {
         patients.add(new Patient("Kiesila", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
-        userRoles.put("kalle", 2);
+        this.usernames.add("kalle");
         patients.add(new Patient("Kekkonen", "Urho-Kaleva", LocalDate.of(1910, 7, 1), "urkki"));
-        userRoles.put("urkki", 2);
+        this.usernames.add("urkki" );
         patients.add(new Patient("Koivisto", "Mauno-Henrik", LocalDate.of(2001, 12, 12), "manu"));
-        userRoles.put("manu", 2);
+        this.usernames.add("manu");
         patients.add(new Patient("Niinisto", "Sauli", LocalDate.of(1951, 12, 4), "sale"));
-        userRoles.put("sale", 2);
+        this.usernames.add("sale");
         patients.add(new Patient("Halonen", "Tarja", LocalDate.of(1990, 11, 1), "tarja"));
-        userRoles.put("tarja", 2);
-        userRoles.put("test", 1);
+        this.usernames.add("tarja");
         Collections.sort(this.patients, Comparator.comparing(Patient::getSurname));
-        choosePatient("Koivisto", "Mauno-Henrik");
+        choosePatient("manu");
         for (Patient patient: this.patients) {
             patientDao.create(patient);
         }

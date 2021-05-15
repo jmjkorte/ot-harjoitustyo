@@ -3,7 +3,6 @@ package fi.mielialapaivakirja.logics;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Scanner;
-import java.sql.SQLException;
 import fi.mielialapaivakirja.database.IndicatorDao;
 import fi.mielialapaivakirja.database.IndicatorDaoJDBC;
 import fi.mielialapaivakirja.database.EntryDao;
@@ -54,7 +53,13 @@ public class Diary {
      * @param criticalValue Critical value of an indicator.
      * @param lowerOrHigher Indicates if user is interested of lower or higher values than critical value. 
      */
-    public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) throws SQLException {
+    public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) {
+        for (Indicator indicator: this.indicators) {
+            if (indicator.getNameOfIndicator().equals(nameOfIndicator)) {
+                System.out.println("Tämän niminen mittari on jo luotu.");
+                return;
+            } 
+        }
         Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
         this.indicators.add(i);
         this.indicatorDao.create(this.surname, this.firstname, i);
@@ -119,7 +124,17 @@ public class Diary {
      *
      * @param date  Date when entry is made.
      */
-    public void makeEntry(LocalDate date) throws SQLException {
+    public void makeEntry(LocalDate date) {
+        if (this.indicators.isEmpty()) {
+            System.out.println("Mittareita ei ole luotu.");
+            return;
+        }
+        for (Entry entry: this.entries) {
+            if (entry.getDateOfEntry().equals(date)) {
+                System.out.println("Tälle päivämäärälle on jo tehty kirjaus.");
+                return;
+            }
+        }
         for (Indicator indicator: this.indicators) {
             System.out.println("Anna arvo indikaattorille " + indicator.toString());
             int valueOfEntry = Integer.valueOf(scanner.nextLine());

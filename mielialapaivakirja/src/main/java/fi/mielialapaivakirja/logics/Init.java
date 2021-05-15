@@ -24,24 +24,20 @@ public class Init {
     
     
     
-    public void dataBaseConnect(String dbname) throws Exception {
+    public void dataBaseConnect(String dbname) {
         File file = new File(dbname);
+        
         if (file.exists()) {
             loadFromDatabase();
         } else {
-            
-            System.out.println("Sovellus on kehitysvaiheessa.");
-            System.out.println("Ensimmäistä kertaa käynnistettäessä luodaan tietokanta, testipotilaat ja testiterapeutti.");
-            System.out.println("Testipotilaiden käyttäjätunnukset ovat 'kalle', 'manu', 'sale' ja 'urkki'.");
-            System.out.println("Terapeutin käyttäjätunnus on 'test'.");
-
             DatabaseCreator dbc = new DatabaseCreator();
             dbc.createDatabase();
-            pis.initTestEnvironment();
+            
+            //pis.initTestEnvironment();
         }
     }
     
-    public void loadFromDatabase() throws SQLException  {
+    public void loadFromDatabase() {
         ArrayList<Patient> patientList = patientDao.list();
         pis.loadPatients(patientList);
         for (Patient patient: patientList) { 

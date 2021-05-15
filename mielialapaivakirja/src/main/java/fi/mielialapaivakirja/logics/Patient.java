@@ -77,7 +77,7 @@ public class Patient {
      */
     @Override
     public String toString() {
-        return surname + ", " + firstname + ", s. " + getFormattedDate(dateOfBirth);
+        return surname + ", " + firstname + ", s. " + getFormattedDate(dateOfBirth) + ". Käyttäjätunnus: " + username;
     }
     
     private String getFormattedDate(LocalDate date) {

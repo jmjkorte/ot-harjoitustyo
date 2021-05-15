@@ -1,3 +1,4 @@
+
 package fi.mielialapaivakirja.database;
 import fi.mielialapaivakirja.logics.Indicator;
 
@@ -7,11 +8,21 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-
+/** The class handles SQL queries of indicators.
+ *
+ * @author jmjkorte
+ */
 public class IndicatorDaoJDBC implements IndicatorDao {
     
+    /** Creates an indicator to database.
+     *
+     * @param surname   Surname of a patient.
+     * @param firstname Firstname of a patient.
+     * @param indicator Instance from the class Indicator.
+     */
     @Override
-    public void create(String surname, String firstname, Indicator indicator) throws SQLException {
+    public void create(String surname, String firstname, Indicator indicator) {
+        try {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
        
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
@@ -33,11 +44,21 @@ public class IndicatorDaoJDBC implements IndicatorDao {
         stmt.executeUpdate();
         stmt.close();
         conn.close();
+        } catch (SQLException e) {
+            System.out.println("Virehe: " + e.getMessage());
+        }
     }
     
+    /** Returns a list of indicators.
+     *
+     * @param surname   Surname of a patient.
+     * @param firstname Firstname of a patient.
+     * @return  An ArrayList of all entries of a patient given by parameters. 
+     */
     @Override
-    public ArrayList<Indicator> list(String surname, String firstname) throws SQLException {
+    public ArrayList<Indicator> list(String surname, String firstname) {
         ArrayList<Indicator> list = new ArrayList();
+        try {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE surname = ? AND firstname = ?");
         stmt.setString(1, surname);
@@ -66,6 +87,9 @@ public class IndicatorDaoJDBC implements IndicatorDao {
         }
         stmt.close();
         conn.close();
+        } catch (SQLException e) {
+            System.out.println("Virhe: " + e.getMessage());
+        }
         return list;
     }
 }

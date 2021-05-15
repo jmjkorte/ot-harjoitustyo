@@ -18,7 +18,8 @@ public class UiPatient {
         this.patient = pis.getPatient();
     }
     
-    public void start() throws SQLException {
+    public void start() {
+        System.out.println("Tervetuloa, " + this.patient.getFirstname() + " " + this.patient.getSurname() + "!");
          while (true){
             
             System.out.println("Paina <Enter> jatkaaksesi.");
@@ -37,7 +38,7 @@ public class UiPatient {
             if (patientsChoice.equals("0")) {
                 break;
             } else if (patientsChoice.equals("1")) {
-                System.out.println("Tänään on " + LocalDate.now());
+                System.out.println("Tänään on " + getFormattedToday());
                 System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");
                 String entryForToday = scanner.nextLine();
                 if (entryForToday.equals("k") || entryForToday.equals("K")) {
@@ -46,7 +47,7 @@ public class UiPatient {
                     
                 }
                 if (entryForToday.equals("e") || entryForToday.equals("E")){
-                    this.patient.diary.makeEntry(setDate());
+                    this.patient.diary.makeEntry(giveDate());
                 }
                     
             } else if (patientsChoice.equals("2")) {
@@ -55,8 +56,8 @@ public class UiPatient {
                 System.out.println("1 - Tarkastelu indikaattorin perusteella");
                 System.out.println("2 - Tarkastelu päivämäärän perusteella");
                 System.out.print("> ");
-                int chosenAlternative = Integer.valueOf(scanner.nextLine());
-                if (chosenAlternative == 1){
+                String chosenAlternative = scanner.nextLine();
+                if (chosenAlternative.equals("1")) {
                     System.out.println("Valitse seuraavista vaihtoehdoista kirjoittamalla indikaattorin nimi: ");
                     ArrayList<String> namesOfIndicators = this.patient.diary.getNamesOfAllIndicators();
                     for (String name: namesOfIndicators) {
@@ -65,16 +66,20 @@ public class UiPatient {
                     System.out.print("> ");
                     String chosenIndicator = scanner.nextLine();
                     this.patient.diary.printEntriesOfChosenIndicator(chosenIndicator);
-                } else if (chosenAlternative == 2){
-                    this.patient.diary.printEntriesOfChosenDate(setDate());
-                    
-                    
+                } else if (chosenAlternative.equals("2")){
+                    this.patient.diary.printEntriesOfChosenDate(giveDate());
+                } else {
+                    System.out.println("Väärä valinta!");
                 }
                 
             } else if (patientsChoice.equals("3")) {
+                System.out.println("");
                 this.patient.diary.printAllEntries();
+                System.out.println("");
             } else if (patientsChoice.equals("4")) {
+                System.out.println("");
                 this.patient.diary.printAllIndicators();
+                System.out.println("");
             } else if (patientsChoice.equals("99")) {
                 System.out.println("Hyvää päivänjatkoa!");
                 System.exit(0);
@@ -95,29 +100,28 @@ public class UiPatient {
         return formattedDay;
     }
     
-    public LocalDate setDate(){
-         System.out.println("Anna vuosi: ");
-        System.out.print("> ");
-        int year = Integer.valueOf(scanner.nextLine());
-        System.out.println("Anna kuukausi: ");
-        System.out.print("> ");
-        int month = Integer.valueOf(scanner.nextLine());
-        System.out.println("Anna päivä: ");
-        System.out.print("> ");
-        int day = Integer.valueOf(scanner.nextLine());
-        LocalDate chosenDate = LocalDate.of(year, month, day);
-        return chosenDate;
-    }
+    public LocalDate giveDate(){
+        while (true) {
+            LocalDate chosenDate = null;
+            System.out.println("Anna vuosi: ");
+            System.out.print("> ");
+            int year = Integer.valueOf(scanner.nextLine());
+            System.out.println("Anna kuukausi: ");
+            System.out.print("> ");
+            int month = Integer.valueOf(scanner.nextLine());
+            System.out.println("Anna päivä: ");
+            System.out.print("> ");
+            int day = Integer.valueOf(scanner.nextLine());
+            try {
+                chosenDate = LocalDate.of(year, month, day);
+            } catch (Exception e) {
+                System.out.println("Virheellinen päivämäärä!");
+                continue;
+            }
+            return chosenDate;
+        }
+    }    
     
-    public String[] askName(){
-        
-        System.out.println("Anna sukunimi: ");
-        String surname = capitalize(scanner.nextLine());
-        System.out.println("Anna etunimi: ");
-        String firstname = capitalize(scanner.nextLine());
-        String[] name = {surname, firstname};
-        return name;
-       }
     
     public String capitalize(String name) {
         if (name.contains("-")) {
@@ -129,6 +133,12 @@ public class UiPatient {
         }
         String capName = Strman.capitalize(name);
         return capName;
+    }
+    
+    public String getFormattedToday(){
+            LocalDate today = LocalDate.now();
+        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return formattedDay;
     }
     
     

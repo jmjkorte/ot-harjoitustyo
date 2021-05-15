@@ -73,7 +73,7 @@ public class Indicator {
      */
     @Override
     public String toString() {
-        return  nameOfIndicator + "(" + minValue + "-" + maxValue + ")";
+        return  nameOfIndicator + " (" + minValue + "-" + maxValue + ")";
     }
     
     

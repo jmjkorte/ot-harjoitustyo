@@ -5,22 +5,22 @@ import fi.mielialapaivakirja.logics.Patient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Objects;
 import strman.Strman; 
-import java.sql.SQLException;
 
 public class UiTherapist {
     private Scanner scanner;
     private Patient patient;
     private PatientInformationSystem pis;
     
-    public UiTherapist(Scanner scanner, PatientInformationSystem pis) throws SQLException {
+    public UiTherapist(Scanner scanner, PatientInformationSystem pis) {
         this.scanner = scanner;
         this.pis = pis;
         this.patient = null;
     }
     
-    public void start() throws SQLException {
+    public void start() {
         
         this.patient = pis.getPatient();
         System.out.println("Tervetuloa.");
@@ -33,8 +33,8 @@ public class UiTherapist {
             System.out.println("2 - Arkistoi tai palauta potilas");
             System.out.println("3 - Tulosta potilaat");
             System.out.println("4 - Valitse potilas");
-            System.out.println("5 - Luo indikaattori");
-            System.out.println("6 - Tulosta kaikki indikaattorit");
+            System.out.println("5 - Luo mittari");
+            System.out.println("6 - Tulosta kaikki mittarit");
             System.out.println("7 - Tulosta potilaan päiväkirja");
             System.out.println("0 - Kirjaudu ulos");
             System.out.println("99 - Lopeta");
@@ -56,40 +56,44 @@ public class UiTherapist {
             } else if (choice == 1){
                 newPatient();
             } else if (choice ==2) {
-                System.out.println("Haluatko arkistoida(1) vai palauttaa(2) potilaan arkistosta?");
+                System.out.println("Haluatko arkistoida (1) vai palauttaa (2) potilaan arkistosta?");
                 int archiveOrReturn = Integer.valueOf(scanner.nextLine());
                 String[] patientsName = askName();
-                System.out.println(patientsName[1]);
                 if (archiveOrReturn == 1){
                     pis.archivePatient(patientsName[0], patientsName[1]);
                 }
-                if (archiveOrReturn ==2){
+                else if (archiveOrReturn ==2){
                     pis.returnPatientFromArchive(patientsName[0], patientsName[1]);
                 }
                 
             } else if (choice ==3) {
-                pis.printAllPatients(); 
+                ArrayList<Patient> patients = pis.getPatients();
+                for (Patient patient : patients) {
+                    System.out.println(patient.toString());
+                }
             } else if (choice ==4) {
-                String[] patientsName = askName();
-                boolean patientExists = pis.choosePatient(patientsName[0], patientsName[1]);
+                String username = askUsername();
+                boolean patientExists = pis.choosePatient(username);
                 if (patientExists){
                     this.patient = pis.getPatient();
-                    System.out.println("Potilas " + this.patient.toString() + " valittu.");
+                    System.out.println("Potilas " + this.patient.getSurname() + ", " + this.patient.getFirstname() + " valittu.");
                 }
                 else {
-                    System.out.println("Potilasta " + (patientsName[0]) + ", " + patientsName[1] + " ei löytynyt");
-                    System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
-                }
+                    System.out.println("Käyttäjätunnusta " + username +  " ei löytynyt");
+                    if (Objects.nonNull(this.patient)) {
+                        System.out.println("Valittuna on potilas " + this.patient.toString() + ".");
+                    }
+                }    
             } else if (choice == 5){
                 if (Objects.nonNull(this.patient)){
-                    System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.toString());
-                    System.out.println("Anna indikaattorin nimi:");
-                    String nameOfIndicator = scanner.nextLine();
-                    System.out.println("Anna indikaattorin minimiarvo:");
+                    System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.getSurname() + ", " + this.patient.getFirstname());
+                    System.out.println("Anna mittarin nimi:");
+                    String nameOfIndicator = capitalize(scanner.nextLine());
+                    System.out.println("Anna mittarin minimiarvo:");
                     int minValue = Integer.valueOf(scanner.nextLine());
-                    System.out.println("Anna indikaattorin maksimiarvo:");
+                    System.out.println("Anna mittarin maksimiarvo:");
                     int maxValue = Integer.valueOf(scanner.nextLine());
-                    System.out.println("Haluatko luoda indikaattorille kriittisen arvon (K/E)?");
+                    System.out.println("Haluatko luoda mittarille kriittisen arvon (K/E)?");
                     String criticalYesOrNo = scanner.nextLine().toUpperCase();
                     while (true) {
                         if (criticalYesOrNo.equals("K")){
@@ -121,13 +125,20 @@ public class UiTherapist {
                 }
                 
             } else if (choice == 6) {
-                this.patient.diary.printAllIndicators();
+                if (Objects.nonNull(this.patient)) {
+                    this.patient.diary.printAllIndicators();
+                } else {
+                    System.out.println("Potilasta ei ole valittu.");
+                }    
                     
             } else if (choice == 7) {
-                this.patient.diary.printAllEntries();
-            }
+                if (Objects.nonNull(this.patient)) {
+                    this.patient.diary.printAllEntries();
+                } else {
+                    System.out.println("Potilasta ei ole valittu.");
+                }
             
-            else {
+            } else {
                 System.out.println("Väärä valinta.");
             }
             
@@ -137,7 +148,7 @@ public class UiTherapist {
         
     }
 
-    private void  newPatient() throws SQLException {
+    private void  newPatient() {
         int bornYear;
         int bornMonth;
         int bornDate;
@@ -171,7 +182,14 @@ public class UiTherapist {
                 System.out.println("Virhe!");
             }
         }
-        LocalDate borndate = LocalDate.of(bornYear, bornMonth, bornDate);
+        LocalDate borndate = null;
+        try {
+            borndate = LocalDate.of(bornYear, bornMonth, bornDate);
+        } catch(Exception e) {
+            System.out.println("Virheellinen päivämäärä.");
+            return;
+            
+        }
         
         System.out.println("Käyttäjätunnus:");
         String patientsUsername = scanner.nextLine();
@@ -192,6 +210,13 @@ public class UiTherapist {
         firstname = capitalize(firstname);
         String[] name = {surname, firstname};
         return name;
+       }
+        
+       public String askUsername() {
+           System.out.println("Anna potilaan käyttäjätunnus: ");
+           String username = scanner.nextLine();
+           username = username.toLowerCase();
+           return username;
        }
     
     public String capitalize(String name) {
@@ -216,7 +241,7 @@ public class UiTherapist {
         return formattedDay;
     }
     
-    public LocalDate setDate(){
+    public LocalDate giveDate(){
          System.out.println("Anna vuosi: ");
         System.out.print("> ");
         int year = Integer.valueOf(scanner.nextLine());
@@ -239,5 +264,6 @@ public class UiTherapist {
             return false;
         }
     }
+
     
 }
