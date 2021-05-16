@@ -22,10 +22,10 @@ public class PatientTest {
     
     
     @Test
-    public void ConstructorCreatesNameAndDateOfBirthRight() {
+    public void ConstructorWorksRoght() {
         LocalDate secondBornDate = LocalDate.of(1921, 9, 10);
         Patient patient = new Patient("Ahtisaari", "Martti", secondBornDate, "mara");
-        assertEquals("Ahtisaari, Martti, s. 10.09.1921", patient.toString());
+        assertEquals("Ahtisaari, Martti, s. 10.09.1921. Käyttäjätunnus: mara", patient.toString());
     }
     
     @Test

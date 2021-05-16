@@ -18,7 +18,7 @@ public class IndicatorTest {
     
     @Test
     public void ConstructorWorksRight() {
-        assertEquals("TestIndicator(1-5)", indicator.toString());
+        assertEquals("TestIndicator (1-5)", indicator.toString());
     }
     
     @Test

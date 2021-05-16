@@ -7,25 +7,27 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
-import java.sql.*;
+import java.util.Scanner;
+import org.junit.Assert;
+
 
 
 public class DiaryTest {
-    /*
+    
    
     Diary testDiary;
-    Indicator testIndicator;
-    Entry testEntry;
+    LocalDate testDate;
+    
     
     @Before
     public void setUp() {
         testDiary = new Diary("Paasio", "Pertti");
         LocalDate testDate = LocalDate.of(2021, 3, 1);
-        testEntry = new Entry(testDate, testIndicator, 3);
+        
     }
     
     @Test
-    public void createIndicatorReturnsRightName() throws SQLException {
+    public void createIndicatorReturnsRightName()  {
         testDiary.createIndicator("anotherIndicator", 0, 10, 10, 1);
         ArrayList<String> list = new ArrayList();
         String name ="";
@@ -44,8 +46,17 @@ public class DiaryTest {
         assertTrue(testList.isEmpty());
     }
     
-    //@Test
-  //  public void 
+    @Test
+    public void thisEntriesIsEmpty() {
+        ArrayList<Entry> testEntries = testDiary.getEntries();
+        assertTrue(testEntries.isEmpty());
+    }
     
-   */
+   
+        
+   
+    
+    
+    
+   
 }

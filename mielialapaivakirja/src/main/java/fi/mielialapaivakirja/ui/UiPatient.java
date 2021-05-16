@@ -12,10 +12,12 @@ public class UiPatient {
     
     private Scanner scanner;
     private Patient patient;
+    private UiHelper helper;
     
     public UiPatient(Scanner scanner, PatientInformationSystem pis) {
         this.scanner = scanner;
         this.patient = pis.getPatient();
+        this.helper = new UiHelper();
     }
     
     public void start() {
@@ -33,12 +35,16 @@ public class UiPatient {
             System.out.println("99 - Lopeta");
 
             System.out.print("> ");
-            String patientsChoice = scanner.nextLine();
+            String number = (scanner.nextLine());
+            if (helper.checkIfNumber(number) == false) {
+                continue;
+            }
+            int choice = Integer.valueOf(number);
 
-            if (patientsChoice.equals("0")) {
+            if (choice == 0) {
                 break;
-            } else if (patientsChoice.equals("1")) {
-                System.out.println("Tänään on " + getFormattedToday());
+            } else if (choice == 1) {
+                System.out.println("Tänään on " + helper.getFormattedToday());
                 System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");
                 String entryForToday = scanner.nextLine();
                 if (entryForToday.equals("k") || entryForToday.equals("K")) {
@@ -50,7 +56,7 @@ public class UiPatient {
                     this.patient.diary.makeEntry(giveDate());
                 }
                     
-            } else if (patientsChoice.equals("2")) {
+            } else if (choice == 2) {
                 System.out.println("Voit tutkia kirjauksiasi päivämäärän tai indikaattorin nimen perusteella.");
                 System.out.println("Valitse seuraavista:");
                 System.out.println("1 - Tarkastelu indikaattorin perusteella");
@@ -72,15 +78,15 @@ public class UiPatient {
                     System.out.println("Väärä valinta!");
                 }
                 
-            } else if (patientsChoice.equals("3")) {
+            } else if (choice == 3) {
                 System.out.println("");
                 this.patient.diary.printAllEntries();
                 System.out.println("");
-            } else if (patientsChoice.equals("4")) {
+            } else if (choice == 4) {
                 System.out.println("");
                 this.patient.diary.printAllIndicators();
                 System.out.println("");
-            } else if (patientsChoice.equals("99")) {
+            } else if (choice == 5) {
                 System.out.println("Hyvää päivänjatkoa!");
                 System.exit(0);
             } else {
@@ -93,13 +99,6 @@ public class UiPatient {
     
     
     }
-    
-    public String getDate(){
-        LocalDate today = LocalDate.now();
-        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return formattedDay;
-    }
-    
     public LocalDate giveDate(){
         while (true) {
             LocalDate chosenDate = null;
@@ -112,35 +111,15 @@ public class UiPatient {
             System.out.println("Anna päivä: ");
             System.out.print("> ");
             int day = Integer.valueOf(scanner.nextLine());
-            try {
-                chosenDate = LocalDate.of(year, month, day);
-            } catch (Exception e) {
-                System.out.println("Virheellinen päivämäärä!");
+            boolean right = helper.checkDate(year, month, day);
+            if (right == false) {
                 continue;
             }
             return chosenDate;
         }
-    }    
-    
-    
-    public String capitalize(String name) {
-        if (name.contains("-")) {
-            String[] parts = name.split("-");
-            String part1 = Strman.capitalize(parts[0]);
-            String part2 = Strman.capitalize(parts[1]);
-            String capName = part1 + "-" + part2;
-            return capName;
-        }
-        String capName = Strman.capitalize(name);
-        return capName;
     }
     
-    public String getFormattedToday(){
-            LocalDate today = LocalDate.now();
-        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return formattedDay;
-    }
-    
+  
     
     
 }

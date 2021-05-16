@@ -159,7 +159,7 @@ public class PatientInformationSystem {
      *
      * @throws SQLException
      */
-    public void initTestEnvironment() {
+   /* public void initTestEnvironment() {
         patients.add(new Patient("Kiesila", "Kalle", LocalDate.of(1980, 10, 10), "kalle"));
         this.usernames.add("kalle");
         patients.add(new Patient("Kekkonen", "Urho-Kaleva", LocalDate.of(1910, 7, 1), "urkki"));
@@ -177,14 +177,10 @@ public class PatientInformationSystem {
         }
         this.patient.diary.createIndicator("Surullisuus", 0, 5, 1, 1);
         this.patient.diary.createIndicator("Aktiivisuus", 0, 10, -1, -1);
-        ArrayList<Patient> list = patientDao.list();
-    }
+        ArrayList<Patient> list = patientDao.list(); 
+    } */
     
-    private String getFormattedDate(LocalDate date) { 
-        
-        String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return formattedDay;
-    }
+    
      
    
     

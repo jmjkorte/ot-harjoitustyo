@@ -3,6 +3,7 @@ package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
 import fi.mielialapaivakirja.logics.Patient;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -10,12 +11,14 @@ import java.util.Objects;
 import strman.Strman; 
 
 public class UiTherapist {
+    private UiHelper helper;
     private Scanner scanner;
     private Patient patient;
     private PatientInformationSystem pis;
     
     public UiTherapist(Scanner scanner, PatientInformationSystem pis) {
         this.scanner = scanner;
+        this.helper = new UiHelper();
         this.pis = pis;
         this.patient = null;
     }
@@ -24,7 +27,7 @@ public class UiTherapist {
         
         this.patient = pis.getPatient();
         System.out.println("Tervetuloa.");
-        System.out.println("Tänään on " + getFormattedTodday());
+        System.out.println("Tänään on " + helper.getFormattedToday());
         while(true){
             System.out.println("Paina <Enter> jatkaaksesi");
             scanner.nextLine();
@@ -42,7 +45,7 @@ public class UiTherapist {
             System.out.print("> ");
 
             String number = (scanner.nextLine());
-            if (checkIfNumber(number) == false) {
+            if (helper.checkIfNumber(number) == false) {
                 continue;
             }
             int choice = Integer.valueOf(number);
@@ -88,7 +91,7 @@ public class UiTherapist {
                 if (Objects.nonNull(this.patient)){
                     System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.getSurname() + ", " + this.patient.getFirstname());
                     System.out.println("Anna mittarin nimi:");
-                    String nameOfIndicator = capitalize(scanner.nextLine());
+                    String nameOfIndicator = helper.capitalize(scanner.nextLine());
                     System.out.println("Anna mittarin minimiarvo:");
                     int minValue = Integer.valueOf(scanner.nextLine());
                     System.out.println("Anna mittarin maksimiarvo:");
@@ -151,45 +154,45 @@ public class UiTherapist {
     private void  newPatient() {
         int bornYear;
         int bornMonth;
-        int bornDate;
-        String[] patientsName = askName();
-        while(true){
-            System.out.println("Syntymäaika, vuosi(yyyy):");
-            bornYear = Integer.valueOf(scanner.nextLine());
-            if (bornYear > 1900 && bornYear < 2010 && bornYear == (int)bornYear){
-                break;
-            } else{
-                System.out.println("Virhe!");
-            }
-        }
-        
-        
-        while(true){
-            System.out.println("Kuukausi(mm)");
-            bornMonth = Integer.valueOf(scanner.nextLine());
-            if (bornMonth >= 1 && bornMonth <= 12 && bornMonth == (int)bornMonth){
-                break;
-            } else {
-                System.out.println("Virhe!");
-            }
-        }
-        while(true){
-        System.out.println("Päivä(dd)");    
-        bornDate = Integer.valueOf(scanner.nextLine());
-         if (bornDate >=1 && bornDate < 31 && bornDate == (int)bornDate){
-                break;
-            } else {
-                System.out.println("Virhe!");
-            }
-        }
+        int bornDay;
         LocalDate borndate = null;
-        try {
-            borndate = LocalDate.of(bornYear, bornMonth, bornDate);
-        } catch(Exception e) {
-            System.out.println("Virheellinen päivämäärä.");
-            return;
-            
-        }
+        String[] patientsName = askName();
+        while (true) {
+            while (true){
+                System.out.println("Syntymäaika, vuosi(yyyy):");
+                bornYear = Integer.valueOf(scanner.nextLine());
+                if (bornYear > 1900 && bornYear < 2010 && bornYear == (int)bornYear){
+                    break;
+                } else{
+                    System.out.println("Virhe!");
+                }
+            }
+            while (true){
+                System.out.println("Kuukausi(mm)");
+                bornMonth = Integer.valueOf(scanner.nextLine());
+                if (bornMonth >= 1 && bornMonth <= 12 && bornMonth == (int)bornMonth){
+                    break;
+                } else {
+                    System.out.println("Virhe!");
+                }
+            }
+            while (true){
+                System.out.println("Päivä(dd)");    
+                bornDay = Integer.valueOf(scanner.nextLine());
+                if (bornDay >=1 && bornDay < 31 && bornDay == (int)bornDay){
+                    break;
+                } else {
+                    System.out.println("Virhe!");
+                }
+            }
+            boolean rightDate = helper.checkDate(bornYear, bornMonth, bornDay);
+            if (rightDate == false) {
+                continue;
+            } else {
+                borndate = LocalDate.of(bornYear, bornMonth, bornDay);
+            break;  
+            }
+        }    
         
         System.out.println("Käyttäjätunnus:");
         String patientsUsername = scanner.nextLine();
@@ -201,69 +204,46 @@ public class UiTherapist {
         
     }
         public String[] askName(){
-        
+
         System.out.println("Anna sukunimi: ");
         String surname = scanner.nextLine();
-        surname = capitalize(surname);
+        surname = helper.capitalize(surname);
         System.out.println("Anna etunimi: ");
         String firstname = scanner.nextLine();
-        firstname = capitalize(firstname);
+        firstname = helper.capitalize(firstname);
         String[] name = {surname, firstname};
         return name;
        }
-        
+
        public String askUsername() {
            System.out.println("Anna potilaan käyttäjätunnus: ");
            String username = scanner.nextLine();
            username = username.toLowerCase();
            return username;
        }
-    
-    public String capitalize(String name) {
-        if (name.contains("-")) {
-            String[] parts = name.split("-");
-            String part1 = Strman.capitalize(parts[0]);
-            String part2 = Strman.capitalize(parts[1]);
-            String capName = part1 + "-" + part2;
-            return capName;
-        }
-        String capName = Strman.capitalize(name);
-        return capName;
-    }
-    public String getFormattedTodday(){
-            LocalDate today = LocalDate.now();
-        String formattedDay = today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return formattedDay;
-    }
-    
-    public String getFormattedDate(LocalDate date) {
-        String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        return formattedDay;
-    }
+ 
     
     public LocalDate giveDate(){
-         System.out.println("Anna vuosi: ");
-        System.out.print("> ");
-        int year = Integer.valueOf(scanner.nextLine());
-        System.out.println("Anna kuukausi: ");
-        System.out.print("> ");
-        int month = Integer.valueOf(scanner.nextLine());
-        System.out.println("Anna päivä: ");
-        System.out.print("> ");
-        int day = Integer.valueOf(scanner.nextLine());
-        LocalDate chosenDate = LocalDate.of(year, month, day);
-        return chosenDate;
-    }
-    
-    public boolean checkIfNumber(String number) {
-        try {
-            int value = Integer.parseInt(number);
-            return true;
-        } catch (NumberFormatException e) {
-            System.out.println("Väärä valinta!");
-            return false;
+        while (true) {
+            LocalDate chosenDate = null;
+            System.out.println("Anna vuosi: ");
+            System.out.print("> ");
+            int year = Integer.valueOf(scanner.nextLine());
+            System.out.println("Anna kuukausi: ");
+            System.out.print("> ");
+            int month = Integer.valueOf(scanner.nextLine());
+            System.out.println("Anna päivä: ");
+            System.out.print("> ");
+            int day = Integer.valueOf(scanner.nextLine());
+            boolean right = helper.checkDate(year, month, day);
+            if (right == false) {
+                continue;
+            }
+            return chosenDate;
         }
-    }
+    }    
+    
+    
 
     
 }

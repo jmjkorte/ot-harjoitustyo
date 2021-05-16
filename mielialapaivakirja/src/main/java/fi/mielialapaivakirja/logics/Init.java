@@ -22,8 +22,6 @@ public class Init {
     }
     
     
-    
-    
     public void dataBaseConnect(String dbname) {
         File file = new File(dbname);
         
