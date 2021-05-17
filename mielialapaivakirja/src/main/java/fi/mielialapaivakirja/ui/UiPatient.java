@@ -2,6 +2,8 @@
 package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
 import fi.mielialapaivakirja.logics.Patient;
+import fi.mielialapaivakirja.logics.Entry;
+import fi.mielialapaivakirja.logics.Indicator;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -44,19 +46,38 @@ public class UiPatient {
             if (choice == 0) {
                 break;
             } else if (choice == 1) {
+                ArrayList<Indicator> indicators = this.patient.diary.getAllIndicators();
+            
+                LocalDate date = null;
                 System.out.println("Tänään on " + helper.getFormattedToday());
                 System.out.println("Haluatko tehdä kirjauksen tälle päivälle (k/e)?");
                 String entryForToday = scanner.nextLine();
                 if (entryForToday.equals("k") || entryForToday.equals("K")) {
-                    LocalDate now = LocalDate.now();
-                    this.patient.diary.makeEntry(now);
-                    
+                    if (this.patient.diary.checkIfEntryExists(LocalDate.now())) {
+                        System.out.println("Kirjaus on jo luotu tälle päivämäärälle.");
+                        continue;
+                    } else {
+                    date = LocalDate.now();
+                    }
+                } else if (entryForToday.equals("e") || entryForToday.equals("E")){
+                    date = giveDate();
+                    if (this.patient.diary.checkIfEntryExists(date)) {
+                        System.out.println("Kirjaus on jo luotu tälle päivämäärälle.");
+                        continue;
+                    }
                 }
-                if (entryForToday.equals("e") || entryForToday.equals("E")){
-                    this.patient.diary.makeEntry(giveDate());
+                for (Indicator indicator: indicators) {
+                    System.out.println("Anna arvo indikaattorille " + indicator.toString());
+                    int value = Integer.valueOf(scanner.nextLine());
+                    this.patient.diary.makeEntry(date, indicator, value);
+                    if (this.patient.diary.makeEntry(giveDate(), indicator, value)) {
+                        System.out.println("Antamasi arvo alittaa / ylittää kriittisen arvon.");
+                        System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi!");
+                    }
                 }
                     
             } else if (choice == 2) {
+                ArrayList<Entry> chosenEntries = new ArrayList();
                 System.out.println("Voit tutkia kirjauksiasi päivämäärän tai indikaattorin nimen perusteella.");
                 System.out.println("Valitse seuraavista:");
                 System.out.println("1 - Tarkastelu indikaattorin perusteella");
@@ -71,34 +92,46 @@ public class UiPatient {
                     }
                     System.out.print("> ");
                     String chosenIndicator = scanner.nextLine();
-                    this.patient.diary.printEntriesOfChosenIndicator(chosenIndicator);
-                } else if (chosenAlternative.equals("2")){
-                    this.patient.diary.printEntriesOfChosenDate(giveDate());
+                    chosenEntries = this.patient.diary.getEntriesOfChosenIndicator(number);
+                    for (Entry entry: chosenEntries) {
+                        System.out.println(entry);
+                    }
+                    
+                } else if (chosenAlternative.equals("2")) {
+                    this.patient.diary.getEntriesOfChosenDate(giveDate());
                 } else {
                     System.out.println("Väärä valinta!");
                 }
                 
             } else if (choice == 3) {
+                ArrayList<Entry> entries = this.patient.diary.getAllEntries();
                 System.out.println("");
-                this.patient.diary.printAllEntries();
+                entries.forEach((entry) -> {
+                    System.out.println(entry.toString());
+                });
                 System.out.println("");
+
             } else if (choice == 4) {
+                ArrayList<Indicator> indicators  = this.patient.diary.getAllIndicators();
                 System.out.println("");
-                this.patient.diary.printAllIndicators();
+                indicators.forEach((indicator) -> {
+                System.out.println(indicator.toString());
+                });
                 System.out.println("");
-            } else if (choice == 5) {
+
+            } else if (choice == 99) {
                 System.out.println("Hyvää päivänjatkoa!");
                 System.exit(0);
             } else {
                 System.out.println("Väärä valinta.");
             }
+            
         
         
         }
+    }     
         
     
-    
-    }
     public LocalDate giveDate(){
         while (true) {
             LocalDate chosenDate = null;

@@ -23,7 +23,7 @@ public class IndicatorDaoJDBC implements IndicatorDao {
     @Override
     public void create(String surname, String firstname, Indicator indicator) {
         try {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
        
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
         stmt.setString(1, surname);
@@ -59,7 +59,7 @@ public class IndicatorDaoJDBC implements IndicatorDao {
     public ArrayList<Indicator> list(String surname, String firstname) {
         ArrayList<Indicator> list = new ArrayList();
         try {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
         PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE surname = ? AND firstname = ?");
         stmt.setString(1, surname);
         stmt.setString(2, firstname);

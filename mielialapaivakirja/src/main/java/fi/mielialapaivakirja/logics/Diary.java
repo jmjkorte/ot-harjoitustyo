@@ -54,25 +54,21 @@ public class Diary {
      * @param lowerOrHigher Indicates if user is interested of lower or higher values than critical value. 
      */
     public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) {
+    
+            Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
+            this.indicators.add(i);
+            this.indicatorDao.create(this.surname, this.firstname, i);
+            
+    }
+    
+    public boolean checkIfIndicatorExists(String name) {
         for (Indicator indicator: this.indicators) {
-            if (indicator.getNameOfIndicator().equals(nameOfIndicator)) {
-                System.out.println("Tämän niminen mittari on jo luotu.");
-                return;
-            } 
+            if (indicator.getNameOfIndicator().equals(name)) {
+                return true;
+            }
         }
-        Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
-        this.indicators.add(i);
-        this.indicatorDao.create(this.surname, this.firstname, i);
-        
-    }
-
-    public ArrayList<Indicator> getIndicators() {
-        return indicators;
-    }
-
-    public ArrayList<Entry> getEntries() {
-        return entries;
-    }
+        return false;
+    }    
     
     /** Takes a list of indicators as parameter and adds them to private ArrayList 'indicators'.
      *
@@ -94,18 +90,11 @@ public class Diary {
         }
     }
     
-    /** Prints names, min values and max values of patient's indicators.
+    /** Returns ArrayList of patient's indicators.
      *
      */
-    public void printAllIndicators() { //muutetaan palauttavaksi metodiksi!
-        if (this.indicators.isEmpty()) {
-            System.out.println("Indikaattoreita ei löydy.");
-            return;
-        }    
-        for (Indicator indicator: this.indicators) {
-            System.out.println(indicator);
-            
-        }
+    public ArrayList<Indicator> getAllIndicators() { //muutetaan palauttavaksi metodiksi!   
+        return this.indicators;
     }
     
     /** Returns names of all of patient's indicators.
@@ -124,67 +113,64 @@ public class Diary {
      *
      * @param date  Date when entry is made.
      */
-    public void makeEntry(LocalDate date) {
+    public boolean makeEntry(LocalDate date, Indicator indicator, int value) {
         if (this.indicators.isEmpty()) {
             System.out.println("Mittareita ei ole luotu.");
-            return;
+            return false;
         }
+        Entry e = new Entry(date, indicator, value);
+        this.entries.add(e);
+        this.entryDao.create(e, surname, firstname, indicator.getNameOfIndicator());    
+        if (indicator.getLowerOrHigher() == 1 && value < indicator.getCriticalValue()) {
+            return true;
+        } else if (indicator.getLowerOrHigher() == 2 && value > indicator.getCriticalValue()) {
+            return true;
+        }
+        return false;        
+    }    
+      
+    public boolean checkIfEntryExists(LocalDate date) {
         for (Entry entry: this.entries) {
             if (entry.getDateOfEntry().equals(date)) {
                 System.out.println("Tälle päivämäärälle on jo tehty kirjaus.");
-                return;
+                return true;
             }
         }
-        for (Indicator indicator: this.indicators) {
-            System.out.println("Anna arvo indikaattorille " + indicator.toString());
-            int valueOfEntry = Integer.valueOf(scanner.nextLine());
-            Entry e = new Entry(date, indicator, valueOfEntry);
-            this.entries.add(e);
-            this.entryDao.create(e, surname, firstname, indicator.getNameOfIndicator());
-            
-            if (indicator.getLowerOrHigher() == 1 && valueOfEntry < indicator.getCriticalValue()) {
-                System.out.println("HUOM! Antamasi arvo alittaa kriittisen arvon.");
-                System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
-            } else if (indicator.getLowerOrHigher() == 2 && valueOfEntry > indicator.getCriticalValue()) {
-                System.out.println("HUOM! Antamasi arvo ylittää kriittisen arvon.");
-                System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi.");
-            }
-            
-        }
+        return false;
     }
         
-    /** Prints all patient's entries in private ArrayList.
+    /** Returns all patient's entries as ArrayList.
      *
+     * @return ArryList of all patient's entries.
      */
-    public void printAllEntries() { //muutetaan palauttavaksi metodiksi!
-        for (Entry entry: this.entries) {
-            System.out.println(entry.toString());
-        }
+    public ArrayList getAllEntries() {
+        return this.entries;
     }
     
-    /** Prints all entries of chosen indicator added to private ArrayList.
+    /** Returns all entries of chosen indicator added to private ArrayList.
      *
      * @param name  Name of an indicator.
+     * @return ArrayList of chosen entries.
      */
-    public void printEntriesOfChosenIndicator(String name) { //muutetaan palauttavaksi metodiksi!
-        for (Entry entry: this.entries) {
-            if (name.equals(entry.getIndicatorOfEntry().getNameOfIndicator())) {
-                System.out.println(entry.getDateOfEntry() + " " + entry.getIndicatorOfEntry().getNameOfIndicator() + ":" + entry.getValueOfEntry());
-            }
-        }
+    public ArrayList<Entry> getEntriesOfChosenIndicator(String name) { 
+        ArrayList<Entry> chosenEntries = new ArrayList();
+        this.entries.stream().filter((entry) -> (name.equals(entry.getIndicatorOfEntry().getNameOfIndicator()))).forEachOrdered((entry) -> {
+            chosenEntries.add(entry);
+        });
+        return chosenEntries;
     }    
         
     /** Prints all entries of chosen date added to private ArrayList.
      *
      * @param chosenDate    Date when entry is made.
+     * @return  ArrayList of chosen entries.
      */
-    public void printEntriesOfChosenDate(LocalDate chosenDate) { //muutetaan palauttavaksi metodiksi!
-        for (Entry entry: this.entries) {
-            if (chosenDate.equals(entry.getDateOfEntry())) {
-                System.out.println(entry.getDateOfEntry() + " " + entry.getIndicatorOfEntry().getNameOfIndicator() + ":" + entry.getValueOfEntry());
-            }
-
-        }
+    public ArrayList getEntriesOfChosenDate(LocalDate chosenDate) {
+        ArrayList<Entry> chosenEntries = new ArrayList();
+        this.entries.stream().filter((entry) -> (chosenDate.equals(entry.getDateOfEntry()))).forEachOrdered((entry) -> {
+            chosenEntries.add(entry);
+        });
+        return chosenEntries;
     }
 }
         

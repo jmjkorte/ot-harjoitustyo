@@ -6,7 +6,15 @@ import java.sql.*;
  *
  * 
  */
+
+
 public class DatabaseCreator {
+    
+
+    
+    public DatabaseCreator() {
+        
+    }
     
     
     
@@ -16,7 +24,7 @@ public class DatabaseCreator {
      */
     public void createDatabase() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqllite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             Statement s = conn.createStatement();
             s.execute("CREATE TABLE Patients (id INTEGER PRIMARY KEY, surname TEXT, firstname TEXT, username TEXT UNIQUE, dateOFBirth DATE, archived INT)");
             s.execute("CREATE TABLE Indicators (id INTEGER PRIMARY KEY, nameOfindicator TEXT, minvalue INTEGER, maxvalue INTEGER,"

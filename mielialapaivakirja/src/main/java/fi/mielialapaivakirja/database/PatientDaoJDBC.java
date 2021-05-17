@@ -16,7 +16,7 @@ public class PatientDaoJDBC implements PatientDao {
     @Override
     public void create(Patient patient) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Patients(surname, firstname, username, dateOfBirth, archived) VALUES(?, ?, ?, ?, ?)");
             stmt.setString(1, patient.getSurname());
             stmt.setString(2, patient.getFirstname());
@@ -41,7 +41,7 @@ public class PatientDaoJDBC implements PatientDao {
     public Patient read(String surname, String firstname) {
         Patient p = null;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Patients WHERE surname = ? and firstname = ?");
             stmt.setString(1, surname);
             stmt.setString(2, firstname);
@@ -75,7 +75,7 @@ public class PatientDaoJDBC implements PatientDao {
     @Override
     public void archive(String surname, String firstname, int way) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("UPDATE Patients SET archived = ? WHERE surname = ? AND firstname = ?");
             stmt.setInt(1, way);
             stmt.setString(2, surname);
@@ -94,7 +94,7 @@ public class PatientDaoJDBC implements PatientDao {
     public ArrayList<Patient> list() {
         ArrayList<Patient> list = new ArrayList();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Patients WHERE archived = 0");
             ResultSet rs = stmt.executeQuery();
             if (!rs.next()) {

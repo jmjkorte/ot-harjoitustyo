@@ -2,6 +2,8 @@
 package fi.mielialapaivakirja.ui;
 import fi.mielialapaivakirja.logics.PatientInformationSystem;
 import fi.mielialapaivakirja.logics.Patient;
+import fi.mielialapaivakirja.logics.Indicator;
+import fi.mielialapaivakirja.logics.Entry;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -92,6 +94,9 @@ public class UiTherapist {
                     System.out.println("Olet luomassa indikaattoria potilaalle " + this.patient.getSurname() + ", " + this.patient.getFirstname());
                     System.out.println("Anna mittarin nimi:");
                     String nameOfIndicator = helper.capitalize(scanner.nextLine());
+                    if (this.patient.diary.checkIfIndicatorExists(nameOfIndicator) == true) {
+                        continue;
+                    }
                     System.out.println("Anna mittarin minimiarvo:");
                     int minValue = Integer.valueOf(scanner.nextLine());
                     System.out.println("Anna mittarin maksimiarvo:");
@@ -129,28 +134,36 @@ public class UiTherapist {
                 
             } else if (choice == 6) {
                 if (Objects.nonNull(this.patient)) {
-                    this.patient.diary.printAllIndicators();
+                    ArrayList<Indicator>  indicators = this.patient.diary.getAllIndicators();
+                    if (indicators.isEmpty()) {
+                        System.out.println("Mittareita ei ole luotu.");
+                        continue;
+                    } else {
+                        for (Indicator indicator: indicators) {
+                            System.out.println(indicator.toString());
+                        }
+                    }        
                 } else {
                     System.out.println("Potilasta ei ole valittu.");
                 }    
                     
             } else if (choice == 7) {
                 if (Objects.nonNull(this.patient)) {
-                    this.patient.diary.printAllEntries();
+                    ArrayList<Entry> entries = new ArrayList();
+                    if (entries.isEmpty()) {
+                        System.out.println("Merkintöjä ei ole luotu.");
+                        continue;
+                    } else {
+                        for (Entry entry: entries) {
+                            System.out.println(entry.toString());
+                        }
+                    }
                 } else {
                     System.out.println("Potilasta ei ole valittu.");
                 }
-            
-            } else {
-                System.out.println("Väärä valinta.");
             }
-            
-            
-        }
-          
-        
+        }    
     }
-
     private void  newPatient() {
         int bornYear;
         int bornMonth;
@@ -198,9 +211,6 @@ public class UiTherapist {
         String patientsUsername = scanner.nextLine();
         
         pis.createPatient(patientsName[0], patientsName[1], borndate, patientsUsername);
-        
-        
-    
         
     }
         public String[] askName(){

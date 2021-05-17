@@ -23,8 +23,7 @@ public class UiInit {
     }
 
     public void start() {
-
-        init.dataBaseConnect("testdatabase.db");
+        init.dataBaseConnect();
 
         while (true) {
             System.out.println("Haluatko kirjautua potilaana (1) vai terapeuttina (2)?");

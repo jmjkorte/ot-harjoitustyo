@@ -22,15 +22,14 @@ public class Init {
     }
     
     
-    public void dataBaseConnect(String dbname) {
-        File file = new File(dbname);
+    public void dataBaseConnect() {
+      File file = new File("database.db");
         
-        if (file.exists()) {
+      if (file.exists()) {
             loadFromDatabase();
         } else {
             DatabaseCreator dbc = new DatabaseCreator();
             dbc.createDatabase();
-            
             //pis.initTestEnvironment();
         }
     }

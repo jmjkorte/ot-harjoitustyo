@@ -23,7 +23,7 @@ public class EntryDaoJDBC implements EntryDao {
     @Override
     public void create(Entry entry, String surname, String firstname, String nameOfIndicator)  {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
             stmt.setString(1, surname);
             stmt.setString(2, firstname);
@@ -58,7 +58,7 @@ public class EntryDaoJDBC implements EntryDao {
     public ArrayList<Entry> list(String surname, String firstname, Indicator indicator) {
         ArrayList<Entry> entries = new ArrayList();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:testdatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             PreparedStatement stmt = conn.prepareStatement("SELECT id FROM Patients WHERE Surname=? AND Firstname=?");
 
             stmt.setString(1, surname);
