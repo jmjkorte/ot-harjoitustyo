@@ -6,6 +6,11 @@ import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/** The class has methods for initialising application.
+ *
+ * 
+ */
 public class Init {
     
     private PatientDao patientDao;
@@ -13,6 +18,11 @@ public class Init {
     private EntryDao entryDao;
     private PatientInformationSystem pis;
     
+    /** Constructor of a class.
+     *
+     * @param scanner
+     * @param pis   PatientInformationSystem
+     */
     public Init(Scanner scanner, PatientInformationSystem pis) {
         this.pis = pis;
         this.patientDao = new PatientDaoJDBC();
@@ -21,7 +31,9 @@ public class Init {
         
     }
     
-    
+    /** Checks if database exists. 
+     *  If database exists, it calls method 'loadFromDatabase'. If database doesn't exist, method creates new database.
+     */
     public void dataBaseConnect() {
       File file = new File("database.db");
         
@@ -34,6 +46,9 @@ public class Init {
         }
     }
     
+    /** Loads data from database for application.
+     *
+     */
     public void loadFromDatabase() {
         ArrayList<Patient> patientList = patientDao.list();
         pis.loadPatients(patientList);

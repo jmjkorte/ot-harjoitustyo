@@ -51,7 +51,7 @@ public class Diary {
      * @param min   Min value of an indicator.
      * @param max   Max value of an indicator.
      * @param criticalValue Critical value of an indicator.
-     * @param lowerOrHigher Indicates if user is interested of lower or higher values than critical value. 
+     * @param lowerOrHigher Indicates if user is interested of lower(1) or higher(2) values than critical value. 
      */
     public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) {
     
@@ -61,6 +61,11 @@ public class Diary {
             
     }
     
+    /** Checks if indicator with given name exists in private ArrayList 'indicators'.
+     *
+     * @param name  Name of indicator
+     * @return  True if indicator exists, false if doesn't exist.
+     */
     public boolean checkIfIndicatorExists(String name) {
         for (Indicator indicator: this.indicators) {
             if (indicator.getNameOfIndicator().equals(name)) {
@@ -115,7 +120,6 @@ public class Diary {
      */
     public boolean makeEntry(LocalDate date, Indicator indicator, int value) {
         if (this.indicators.isEmpty()) {
-            System.out.println("Mittareita ei ole luotu.");
             return false;
         }
         Entry e = new Entry(date, indicator, value);
@@ -129,10 +133,14 @@ public class Diary {
         return false;        
     }    
       
+    /** Checks if entry with given date exists in private ArrayList 'entries'.
+     *
+     * @param date  Date of entry.
+     * @return  true if entry exists, false if it doesn't exist.
+     */
     public boolean checkIfEntryExists(LocalDate date) {
         for (Entry entry: this.entries) {
             if (entry.getDateOfEntry().equals(date)) {
-                System.out.println("Tälle päivämäärälle on jo tehty kirjaus.");
                 return true;
             }
         }
@@ -154,9 +162,11 @@ public class Diary {
      */
     public ArrayList<Entry> getEntriesOfChosenIndicator(String name) { 
         ArrayList<Entry> chosenEntries = new ArrayList();
-        this.entries.stream().filter((entry) -> (name.equals(entry.getIndicatorOfEntry().getNameOfIndicator()))).forEachOrdered((entry) -> {
-            chosenEntries.add(entry);
-        });
+        for (Entry entry: entries) {
+            if (entry.getIndicatorOfEntry().getNameOfIndicator().equals(name)) {
+                chosenEntries.add(entry);
+            }
+        }
         return chosenEntries;
     }    
         

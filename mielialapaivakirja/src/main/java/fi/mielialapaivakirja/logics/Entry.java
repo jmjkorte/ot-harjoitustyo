@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 /** Class represents an entry in patient's diary.
  *
- * @author jmjkorte
+ * 
  */
 public class Entry {
     private LocalDate dateOfEntry;
@@ -23,6 +23,7 @@ public class Entry {
         this.dateOfEntry = date;
         this.indicatorOfEntry = indicator;
         this.valueOfEntry = value;
+        
     }
     
 
@@ -33,6 +34,11 @@ public class Entry {
     public Indicator getIndicatorOfEntry() {
         return indicatorOfEntry;
     }
+
+    /** Transforms LocalDate object to Date object. 
+     * 
+     * @return Date of entry.
+     */
     public Date getDateOfEntryAsDate() {
         Date date = Date.valueOf(getDateOfEntry());
         return date;
@@ -52,7 +58,7 @@ public class Entry {
     }
     
     
-    public String getDate(LocalDate date) {  // Tämä toiseen luokkaan.
+    public String getDate(LocalDate date) { 
         String formattedDay = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         return formattedDay;
     }

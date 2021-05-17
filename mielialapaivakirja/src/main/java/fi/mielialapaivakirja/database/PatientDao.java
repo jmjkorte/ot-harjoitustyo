@@ -3,7 +3,10 @@ package fi.mielialapaivakirja.database;
 import fi.mielialapaivakirja.logics.Patient;
 import java.util.*;
         
-
+/** Interface for handling data from the table 'Entries'.
+ *
+ * 
+ */
 public interface PatientDao {
     void create(Patient patient);
     Patient read(String surname, String firstname);

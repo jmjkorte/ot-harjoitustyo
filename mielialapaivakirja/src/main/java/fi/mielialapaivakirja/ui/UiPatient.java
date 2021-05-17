@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import strman.Strman;
 import java.sql.SQLException;
+import java.time.Month;
 public class UiPatient {
     
     private Scanner scanner;
@@ -74,6 +75,7 @@ public class UiPatient {
                         System.out.println("Antamasi arvo alittaa / ylittää kriittisen arvon.");
                         System.out.println("Ole tarvittaessa yhteydessä terapeuttiisi!");
                     }
+                    break;
                 }
                     
             } else if (choice == 2) {
@@ -91,14 +93,20 @@ public class UiPatient {
                         System.out.println(name);
                     }
                     System.out.print("> ");
-                    String chosenIndicator = scanner.nextLine();
-                    chosenEntries = this.patient.diary.getEntriesOfChosenIndicator(number);
+                    String chosenIndicator = helper.capitalize(scanner.nextLine());
+                    chosenEntries = this.patient.diary.getEntriesOfChosenIndicator(chosenIndicator);
                     for (Entry entry: chosenEntries) {
                         System.out.println(entry);
                     }
                     
                 } else if (chosenAlternative.equals("2")) {
-                    this.patient.diary.getEntriesOfChosenDate(giveDate());
+                    chosenEntries = this.patient.diary.getEntriesOfChosenDate(giveDate());
+                    for (Entry entry: chosenEntries) {
+                        System.out.println(entry);
+                    }
+                    if (chosenEntries.isEmpty()) {
+                        System.out.println("Kirjausta ei löydy annetulla päivämäärällä.");
+                    }
                 } else {
                     System.out.println("Väärä valinta!");
                 }
@@ -148,6 +156,7 @@ public class UiPatient {
             if (right == false) {
                 continue;
             }
+            chosenDate = LocalDate.of(year, month, day);
             return chosenDate;
         }
     }

@@ -73,7 +73,7 @@ public class Patient {
     
     /**
      * Returns a String presentation of an instance without username.
-     * @return surname, firstname and date of birth of an instance of the class.
+     * @return surname, firstname, date of birth and username of an instance of the class.
      */
     @Override
     public String toString() {
