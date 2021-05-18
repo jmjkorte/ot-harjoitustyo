@@ -46,3 +46,6 @@ Pakkauksessa on neljä luokkaa, joiden vastuulla on seuraavat toiminnallisuudet:
 
 ![Indikaattorin luonti](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=VWlUaGVyYXBpc3QgLT4gRGlhcnk6IGNyZWF0ZUluZGljYXRvcihuYW1lLCBtaW5WYWx1ZSwgbWF4AAMHY3JpdGljYWwAEgdsb3dlck9ySGlnaGVyKQoASgUgLT4gAEIJOiBuZXcABQoAITkAgRMJIC0tPiAAgTAIAAwKAGgTRGFvAIFSCChzdXIAgU4GZmlyc3QAgVkGaQCBZwgpCgo&s=default)
 
+### Päiväkirjamerkinnän luonti
+![Päiväkirjamerkinnän luonti](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=VWlUaGVyYXBpc3QgLT4gRGlhcnk6IGNyZWF0ZUluZGljYXRvcihuYW1lLCBtaW5WYWx1ZSwgbWF4AAMHY3JpdGljYWwAEgdsb3dlck9ySGlnaGVyKQoASgUgLT4gAEIJOiBuZXcABQoAITkAgRMJIC0tPiAAgTAIAAwKAGgTRGFvAIFSCChzdXIAgU4GZmlyc3QAgVkGaQCBZwgpCgo&s=default)
+
