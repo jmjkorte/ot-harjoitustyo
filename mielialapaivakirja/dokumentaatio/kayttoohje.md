@@ -11,14 +11,11 @@ Lataa tiedosto
   ```
   
   ## Kirjautuminen sovellukseen
-  Sovelluksen käynnistyessä ensimmäistä kertaa se luo tietokantatiedoston *testdatabase.db*. Sovellus luo lisäksi testiterapeutin tunnuksen 'test' ja 4 testipotilasta
-  'kalle', 'manu', 'urkki' ja 'sale'. Käyttäjätunnuksilla pääsee vastaavasti kirjautumaan terapeutin ja potilaan näkymiin. Terapeutin luonti ei ole tässä kehitysvaiheessa
-  vielä mahdollista. 
+  Sovelluksen käynnistyessä ensimmäistä kertaa se luo tietokantatiedoston *database.db*. Uudessa tietokannassa ei ole yhtään potilasta, joten ensimmäisellä kerralla on     kirjauduttava sisään terapeuttina. Kirjautuminen ei vaadi käyttäjätunnusta. 
   
-  Jokaisen käynnistyskerran yhteydessä ladataan automaattisesti tietokanta sovelluksen käyttöön. Nykyisessä sovelluksen kehitysvaiheessa tietokantaan tallennetaan potilastiedot
-  ja potilaiden indikaattorit, mutta ei päiväkirjamerkintöjä.
+  Jokaisen käynnistyskerran yhteydessä ladataan automaattisesti tietokanta sovelluksen käyttöön. Tietokanta sisältää potilaiden henkilötiedot, mittarit ja päiväkirjamerkinnät..
   
-  **Huom!** Sovelluksen tämän hetkisessä versiossa on paljon bugeja ja sovellus saattaa kaatua käyttäjän virheellisiin syötteisiin.
+ Sovelluksen käyttöliittymä sisältää kirjautumisnäkymän lisäksi terapautin ja potilaan näkymät.
   
   ## Terapeutin näkymä
   Terapeutin käyttöliittymä sisältää seuraavan valikon toiminnoista: \
@@ -26,8 +23,8 @@ Lataa tiedosto
   2 - Arkistoi tai palauta potilas \
   3 - Tulosta potilaat \
   4 - Valitse potilas \
-  5 - Luo indikaattori \
-  6 - Tulosta kaikki indikaattorit \
+  5 - Luo mittari \
+  6 - Tulosta kaikki mittarit \
   7 - Tulosta potilaan päiväkirja \
   0 - Kirjaudu ulos \
   99 - Lopeta 
@@ -36,8 +33,8 @@ Lataa tiedosto
   Muutamia huomioita:
   - Ennen indikaattorien luomista pitää olla valittuna potilas toiminnolla *4 - Valitse potilas*. 
   - Terapian lopettaneet potilaat siirretään arkistoon toiminnolla *2 - Arkistoi tai palauta potilas*. Vastaavasti samalla komennolla voi siirtää arkistoidun potilaan
-  jälleen aktiiviseksi. Tietokantatoiminnot eivät tue vielä potilaan arkistointia.
-  - Sovelluksen käyttö edellyttää, että kahta saman nimistä potilasta ei luoda.
+  jälleen aktiiviseksi. 
+  - Sovelluksen käyttö edellyttää, että kahdelle potilaalle ei luoda samaa käyttäjätunnusta.
   - Potilasta ja potilaan indikaattoreita luodessa sovellus tallentaa tiedot automaattisesti myös tietokantaan.  
   
   ## Potilaan näkymä
