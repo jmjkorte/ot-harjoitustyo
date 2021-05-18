@@ -42,3 +42,7 @@ Pakkauksessa on neljä luokkaa, joiden vastuulla on seuraavat toiminnallisuudet:
 
 ![Potilaan luonti](https://user-images.githubusercontent.com/55651379/115962971-682c3500-a526-11eb-90c7-4c313d11e4fd.png)
 
+### Indikaattorin luonti
+
+![Indikaattorin luonti](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=VWlUaGVyYXBpc3QgLT4gRGlhcnk6IGNyZWF0ZUluZGljYXRvcihuYW1lLCBtaW5WYWx1ZSwgbWF4AAMHY3JpdGljYWwAEgdsb3dlck9ySGlnaGVyKQoASgUgLT4gAEIJOiBuZXcABQoAITkAgRMJIC0tPiAAgTAIAAwKAGgTRGFvAIFSCChzdXIAgU4GZmlyc3QAgVkGaQCBZwgpCgo&s=default)
+
