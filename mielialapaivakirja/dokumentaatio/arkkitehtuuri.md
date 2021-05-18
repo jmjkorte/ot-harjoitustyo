@@ -59,8 +59,8 @@ Tärkeimpiä muita toiminnallisuuksia sovelluksessa ovat
 * Potilaan noutaminen arkistosta
 
 
-# Heikkoudet
-Sovelluksen nykyisessä versiossa on jäljellä paljon heikkouksia. Käyttöliittymäluokkien ja sovelluslogiikkaluokkien välillä on riippuvuuksia, joista olisi hyvä päästä eroon.
+### Heikkoudet
+Sovelluksen nykyisessä versiossa on jäljellä paljon heikkouksia. Suurimmalta osin nämä koskevat luokkien välisiä riippuvuuksia.
 - PatientInformatioSystem -luokassa on julkinen oliomuuttuja 'patient', jota myös sovelluslogiikkaluokat käyttävät. 
 - Tietokantatoiminnallisuuksia voisi edelleen erottaa sovelluslogiikasta: esimerkiksi tietokantatiedosto on kovakoodattu, eikä käyttäjä voi sitä itse valita.
 - Sovellus ei käytä konfiguraatiotiedostoja. Tämä mahdollistaisi esimerkiksi tunnusten luomisen terapeutille, joka ei sovelluksen nykyisessä versiossa ole mahdollista. 
