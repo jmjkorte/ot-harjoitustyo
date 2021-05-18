@@ -20,4 +20,8 @@
 | 2.5. | Javadocin luonti, tietokantatoiminnallisuuksien koodaus |2|
 | 3.5. | Tietokantatoiminnallisuuksien koodaus |2|
 | 4.5. | Tietokantatoiminnalisuuksien ja muiden toiminnallisuuksien koodaus, dokumentointi, releasen valmistelu. |12|
-**Tunnit yhteensä: 61**
+| 15.5.| Tietokantatoiminnalisuuksien parantelu. |2|
+| 16.5.| Luokkien refaktorointi. Testit. |4|
+| 17.5.| Testit. |4|
+| 18.5.| Dokumentointi, testit, koodaus. |4|
+**Tunnit yhteensä: 75**
