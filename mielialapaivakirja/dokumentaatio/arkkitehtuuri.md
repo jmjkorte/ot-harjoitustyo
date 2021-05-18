@@ -14,6 +14,21 @@ Sovelluksen käynnistyessä luokka *Init* luo potilastietojärjestelmän kutsuma
 
 *Diary*-luokka sisältää toiminnallisuuden indikaattorien ja päiväkirjamerkintöjen luomiseen ja käsittelyyn. Indicator-olio luodaan, kun Diary-olio kutsuu *Indicator*-luokan konstruktoria, Entry-olio vastaavasti kutsumalla *Entry*-luokan konstruktoria. 
 
+## Käyttöliittymä
+
+Käyttöliittymä koostuu kolmesta luokasta:
+- [UiInit](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/ui/UiInit.java)
+- [UiTherapist](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/ui/UiPatient.java)
+- [UiPatient](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/ui/UiPatient.java) 
+
+Lisäksi käyttöliittymään kuuluu aputoiminnallisuuksia sisältävä luokku [UIHelper](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/ui/UiHelper.java)
+
+Sovelluksen käynnistyessä Main -luokka tekee uIInit -olion ja kutsuu kyseisen luokan metodia start(). UiInit -luokassa on kirjautumista koskevat toiminnallisuudet. Käyttäjän on mahdollista kirjautua terapeuttina tai potilaana ja tästä riippuen olio kutsuu joko luokkaa UiTherapist tai UiPatient. Terapeutin kirjautuminen onnistuu ilman käyttäjätunnusta, potilaan kirjautuminen vaatii oikean käyttäjätunnuksen antamisen.
+
+## Tietojen tallennus tietokantaan
+
+Sovellus käyttää DAO -rajapintojen kautta SQL-tietokantaa. Tietokannan rakenne on seuraavanlainen:
+
 ## Sekvenssikaavio
 
 ### Uuden potilaan luonti 
