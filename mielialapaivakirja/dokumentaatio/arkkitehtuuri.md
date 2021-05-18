@@ -38,11 +38,11 @@ Pakkauksessa on neljä luokkaa, joiden vastuulla on seuraavat toiminnallisuudet:
 
 ## Toimmallisuudet 
 
-Seuraavassa on kuvattu toimminnallisuudet sekvenssikaavioin koskien potilaan, indikaattorin ja päiväkirjamerkinnän luomista.
+Seuraavassa on kuvattu toimminnallisuudet sekvenssikaavioin koskien uuden potilaan, indikaattorin ja päiväkirjamerkinnän luomista.
 
 ### Uuden potilaan luonti 
 
-![Potilaan luonti](https://user-images.githubusercontent.com/55651379/115962971-682c3500-a526-11eb-90c7-4c313d11e4fd.png)
+![https://www.websequencediagrams.com/cgi-bin/cdraw?lz=VWlUaGVyYXBpc3QtPiBQYXRpZW50SW5mb3JtYXRpb25TeXN0ZW06IGNyZWF0ZQAZByhzdXJuYW1lLCBmaXJzdAAFBmJvcm5EYXksIHVzZQAZBSkKADcYIABhCjogbmV3AHAIACkvIC0-IERpYXJ5AD8GAAYFKAARDQBoGTogcACBZQYAgQAkRGFvACYKCgo&s=default](https://user-images.githubusercontent.com/55651379/115962971-682c3500-a526-11eb-90c7-4c313d11e4fd.png)
 
 ### Indikaattorin luonti
 
