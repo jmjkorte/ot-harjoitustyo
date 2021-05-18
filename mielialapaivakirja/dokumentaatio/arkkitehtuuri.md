@@ -27,7 +27,8 @@ Sovelluksen käynnistyessä Main -luokka tekee uIInit -olion ja kutsuu kyseisen 
 
 ## Tietojen tallennus tietokantaan
 
-Sovellus käyttää DAO -rajapintojen kautta SQL-tietokantaa. Tietokannan rakenne on seuraavanlainen:
+Sovellus käyttää DAO -rajapintojen kautta SQL-tietokantaa. Tietokannan rakenne on seuraavanlainen: 
+![image](https://yuml.me/jannek/4d4e180e.jpg)
 
 ## Sekvenssikaavio
 
