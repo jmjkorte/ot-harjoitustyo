@@ -30,6 +30,12 @@ Sovelluksen käynnistyessä Main -luokka tekee uIInit -olion ja kutsuu kyseisen 
 Sovellus käyttää DAO -rajapintojen kautta SQL-tietokantaa. Tietokannan rakenne on seuraavanlainen: 
 ![image](https://yuml.me/jannek/4d4e180e.jpg)
 
+Pakkauksessa on neljä luokkaa, joiden vastuulla on seuraavat toiminnallisuudet:
+- [DatabaseCreator](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/DatabaseCreator.java) : Tietokannan ja tietokantataulujen luominen.
+- [PatientDaoJDBC](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/PatientDaoJDBC.java) : 'Patients' -tauluun liittyvät toiminnallisuudet.
+- [IndicatorDaoJDBC](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/IndicatorDaoJDBC.java) : 'Inidcators' -tauluun liittyvät toiminnallisuudet.
+- [EntryDaoJDBC](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/EntryDaoJDBC.java) : 'Entries' -tauluun liittyvät toiminnallisuudet.
+
 ## Sekvenssikaavio
 
 ### Uuden potilaan luonti 
