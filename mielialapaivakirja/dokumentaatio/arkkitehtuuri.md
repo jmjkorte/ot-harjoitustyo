@@ -36,7 +36,9 @@ Pakkauksessa on neljä luokkaa, joiden vastuulla on seuraavat toiminnallisuudet:
 - [IndicatorDaoJDBC](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/IndicatorDaoJDBC.java) : 'Inidcators' -tauluun liittyvät toiminnallisuudet.
 - [EntryDaoJDBC](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/src/main/java/fi/mielialapaivakirja/database/EntryDaoJDBC.java) : 'Entries' -tauluun liittyvät toiminnallisuudet.
 
-## Sekvenssikaavio
+## Toimmallisuudet 
+
+Seuraavassa on kuvattu toimminnallisuudet sekvenssikaavioin koskien potilaan, indikaattorin ja päiväkirjamerkinnän luomista.
 
 ### Uuden potilaan luonti 
 
