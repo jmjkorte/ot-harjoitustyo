@@ -35,7 +35,7 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 
 ## Jatkokehitys
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
-- [x] Tietojen tallennus tietokantaan ja lataus tietokannasta. *Indikaattorien ja potilaiden tallennus ja lataaminen onnistuu. *
+- [x] Tietojen tallennus tietokantaan ja lataus tietokannasta.
 ### Terapeutin näkymä
 - [ ] Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty; muut ominaisuudet ei mukana tässä versiossa.*
 - [ ] Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella. *Ominaisuus ei ole mukana tässä versiossa.*
