@@ -5,7 +5,7 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Sovelluksen kehitystilanne
 Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilas on myös mahdollista siirtää arkistoon ja arkistosta takaisin aktiiviseksi potilaaksi. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää. 
 
-**HUOM! Sovelluksesta puuttuu ominaisuus, joka estäisi kahden identtisen käyttäjätunnuksen luomisen, joten käytä potilailla erillisiä käyttäjätunnuksia. **
+**HUOM! Sovelluksesta puuttuu ominaisuus, joka estäisi kahden identtisen käyttäjätunnuksen luomisen, joten käytä potilailla erillisiä käyttäjätunnuksia.**
 
 
 Sovellusta ei kyetty aikarajojen puitteissa saattamaan täysin vaatimusmäärittelyn tasolle. Mikäli sovellusta tullaan kehittämään jatkossa, vaatimusmäärittelyssä mainittujen ominaisuuksien lisäksi oleellisinta on graafisen käyttöliittymän luominen. Sovelluksen testaus on jäänyt liian vähälle huomiolle. 
