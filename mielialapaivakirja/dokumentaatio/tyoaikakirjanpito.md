@@ -24,4 +24,5 @@
 | 16.5.| Luokkien refaktorointi. Testit. |4|
 | 17.5.| Testit. |4|
 | 18.5.| Dokumentointi, testit, koodaus. |4|
-**Tunnit yhteensä: 75**
+| 23.5. | Loppupalautuksen valmistelu. |6|
+**Tunnit yhteensä: 81**
