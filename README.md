@@ -4,15 +4,13 @@ Sovelluksen tarkoituksena on toimia apuvälineenä psykiatrisessa, terapeuttises
 ## Viikko 6
 
 ### Sovelluksen kehitystilanne
-Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilas on myös mahdollista siirtää arkistoon ja arkistosta takaisin aktiiviseksi potilaaksi. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää ainakaan toistaiseksi.
+Sovellukseen voi kirjautua terapeuttina tai potilaana. Potilaita ja potilaiden mittareita on mahdollista luoda terapeutin roolilla. Potilas on myös mahdollista siirtää arkistoon ja arkistosta takaisin aktiiviseksi potilaaksi. Potilaat voivat tehdä ja tarkastella päiväkirjamerkintöjä. Sovelluksen käyttöliittymässä on paljon puutteita, mikäli käyttäjä antaa virheellisiä komentoja / pyydettyjä tietoja. Ääkkösiä ei kannata käyttää. 
+**HUOM! Sovelluksesta puuttuu ominaisuus, joka estäisi kahden identtisen käyttäjätunnuksen luomisen, joten käytä potilailla erillisiä käyttäjätunnuksia. **
 
-Viikon 6 kehittys on painottunut voimakkaasti tietokantatoiminnallisuuden lisäämiseen ja kehittämiseen. Tällä hetkellä onnistuu tietokannan luominen sekä potilastietojen ja indikaattorien tallennus ja lataaminen. Päiväkirjamerkintöjen tallentaminen / lataaminen ei vielä onnistu. Tietokantatoiminnallisuuksiin liittyvässä koodissa on vielä merkittävästi refaktoroitavaa. 
 
-Terapeutin käyttöliittymää on hieman paranneltu, sovelluksen ei pitäisi kaatua niin monessa kohdassa kuin edellisellä viikolla. Kriittisen arvon asettaminen indikaattorille onnistuu, samoin 'hälytysviestin' välittäminen potilaalle, jos arvo alittuu / ylittyy.
+Sovellusta ei kyetty aikarajojen puitteissa saattamaan täysin vaatimusmäärittelyn tasolle. Mikäli sovellusta tullaan kehittämään jatkossa, vaatimusmäärittelyssä mainittujen ominaisuuksien lisäksi oleellisinta on graafisen käyttöliittymän luominen. Sovelluksen testaus on jäänyt liian vähälle huomiolle. 
 
-Testejä ei ajan rajallisuuden vuoksi ole tällä viikolla lisätty. SQL-toiminnallisuuksien vuoksi kahden luokan testit (DiaryTest, PatientInformationSystemTest) on otettu väliaikaisesti pois käytöstä.  
 
-Sovellus luo tässä vaiheessa kehitystä tietokannan luomisen yhteydessä sinne 4 testipotilasta ja testiterapeutin.
 
 
 ### Dokumentaatio
@@ -24,6 +22,8 @@ Sovellus luo tässä vaiheessa kehitystä tietokannan luomisen yhteydessä sinne
 [Arkkitehtuurikuvaus](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/arkkitehtuuri.md)
 
 [Käyttöohje](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/kayttoohje.md)
+
+[Testausdokumentti](https://github.com/jmjkorte/ot-harjoitustyo/blob/master/mielialapaivakirja/dokumentaatio/kayttoohje.md) 
 
 ### Komentorivitoiminnot
 
