@@ -54,11 +54,9 @@ public class Diary {
      * @param lowerOrHigher Indicates if user is interested of lower(1) or higher(2) values than critical value. 
      */
     public void createIndicator(String nameOfIndicator, int min, int max, int criticalValue, int lowerOrHigher) {
-    
-            Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
-            this.indicators.add(i);
-            this.indicatorDao.create(this.surname, this.firstname, i);
-            
+        Indicator i = new Indicator(nameOfIndicator, min, max, criticalValue, lowerOrHigher);
+        this.indicators.add(i);
+        this.indicatorDao.create(this.surname, this.firstname, i);
     }
     
     /** Checks if indicator with given name exists in private ArrayList 'indicators'.

@@ -60,8 +60,8 @@ public class PatientDaoJDBC implements PatientDao {
             rs.close();
             conn.close();
         } catch (SQLException e) {
-                System.out.println("Virhe: " + e.getMessage());
-                }
+            System.out.println("Virhe: " + e.getMessage());
+        }
         return p;
         
     }

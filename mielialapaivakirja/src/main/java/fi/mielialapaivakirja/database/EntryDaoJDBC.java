@@ -98,7 +98,8 @@ public class EntryDaoJDBC implements EntryDao {
             conn.close();
         } catch (SQLException e) {
             System.out.println("Virhe: " + e.getMessage());
-        } return entries;
+        }
+        return entries;
     }
        
 }

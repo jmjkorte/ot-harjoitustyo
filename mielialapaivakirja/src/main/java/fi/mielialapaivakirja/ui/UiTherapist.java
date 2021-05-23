@@ -172,14 +172,14 @@ public class UiTherapist {
         String[] patientsName = askName();
         while (true) {
             while (true){
-                System.out.println("Syntymäaika, vuosi(yyyy):");
-                bornYear = Integer.valueOf(scanner.nextLine());
-                if (bornYear > 1900 && bornYear < 2010 && bornYear == (int)bornYear){
+                System.out.println("Syntymäaika, päivä(dd)");    
+                bornDay = Integer.valueOf(scanner.nextLine());
+                if (bornDay >=1 && bornDay < 31 && bornDay == (int)bornDay){
                     break;
-                } else{
+                } else {
                     System.out.println("Virhe!");
                 }
-            }
+            }            
             while (true){
                 System.out.println("Kuukausi(mm)");
                 bornMonth = Integer.valueOf(scanner.nextLine());
@@ -189,12 +189,13 @@ public class UiTherapist {
                     System.out.println("Virhe!");
                 }
             }
+            
             while (true){
-                System.out.println("Päivä(dd)");    
-                bornDay = Integer.valueOf(scanner.nextLine());
-                if (bornDay >=1 && bornDay < 31 && bornDay == (int)bornDay){
+                System.out.println("Syntymäaika, vuosi(yyyy):");
+                bornYear = Integer.valueOf(scanner.nextLine());
+                if (bornYear > 1900 && bornYear < 2010 && bornYear == (int)bornYear){
                     break;
-                } else {
+                } else{
                     System.out.println("Virhe!");
                 }
             }

@@ -8,4 +8,5 @@
     <suppress files="mielialapaivakirja.ui.UiPatient.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="mielialapaivakirja.ui.UiTherapist.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="mielialapaivakirja.ui.UiInit.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="mielialapaivakirja.ui.UiHelper.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

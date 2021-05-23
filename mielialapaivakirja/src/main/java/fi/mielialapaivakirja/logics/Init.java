@@ -35,9 +35,9 @@ public class Init {
      *  If database exists, it calls method 'loadFromDatabase'. If database doesn't exist, method creates new database.
      */
     public void dataBaseConnect() {
-      File file = new File("database.db");
+        File file = new File("database.db");
         
-      if (file.exists()) {
+        if (file.exists()) {
             loadFromDatabase();
         } else {
             DatabaseCreator dbc = new DatabaseCreator();
