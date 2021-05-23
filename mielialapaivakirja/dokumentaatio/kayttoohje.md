@@ -35,6 +35,7 @@ Lataa tiedosto
   - Terapian lopettaneet potilaat siirretään arkistoon toiminnolla *2 - Arkistoi tai palauta potilas*. Vastaavasti samalla komennolla voi siirtää arkistoidun potilaan
   jälleen aktiiviseksi. 
   - Sovelluksen käyttö edellyttää, että kahdelle potilaalle ei luoda samaa käyttäjätunnusta.
+  - Potilasta luotaessa sovellus antaa virheilmoituksen, mikäli päivämäärä, kuukausi tai vuosi on väärä.
   - Potilasta ja potilaan indikaattoreita luodessa sovellus tallentaa tiedot automaattisesti myös tietokantaan.  
   
   ## Potilaan näkymä
