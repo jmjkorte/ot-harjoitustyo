@@ -37,13 +37,13 @@ Sovelluksessa on ensi vaiheessa tekstikäyttöliittymä, myöhemmin mahdollisess
 Ensimmäisen version tarjoamia toiminnallisuuksia laajennetaan. 
 - [x] Tietojen tallennus tietokantaan ja lataus tietokannasta. *Indikaattorien ja potilaiden tallennus ja lataaminen onnistuu. *
 ### Terapeutin näkymä
-- [ ] Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty*
-- [ ] Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella.
+- [ ] Mahdollisuus lisätä, poistaa tai muokata mittareita. *lisääminen tehty; muut ominaisuudet ei mukana tässä versiossa.*
+- [ ] Mahdollisuus saada tilastotietoa potilaan tekemistä kirjauksista valitsemaltaan ajankohdalta tunnuslukujen (esim. mediaani, keskiarvo, minimi, maksimi...) perusteella. *Ominaisuus ei ole mukana tässä versiossa.*
 - [x] Mahdollisuus asettaa tietyille mittareille *kriittinen arvo*, jonka alittuessa / ylittyessä sovellus kehottaa potilasta olemaan yhteydessä terapeuttiin tai lähettää potilaalle kannustusviestin.
-- [ ] Mahdollisuus luoda laadullisia mittareita (String).
+- [ ] Mahdollisuus luoda laadullisia mittareita (String). *Ominaisuus ei ole mukana tässä versiossa.*
 ### Potilaan näkymä
 - [x] Mahdollisuus tietojen tallentamiseen ja lataamiseen. *Indikaattorien tallennus ja lataaminen onnistuu *
 - [x] Potilas saa viestin, mikäli *kriittinen arvo* alittuu / ylittyy.
-- [ ] Potilas voi verrata mittarien kehitystä esim. viikkotasolla.
+- [ ] Potilas voi verrata mittarien kehitystä esim. viikkotasolla. *Ominaisuus ei ole mukana tässä versiossa.*
 - [x] Automaattinen aikaleima kirjauksille. Kirjattaessa kyseiselle päivälle, ei potilaan tarvitse valita kirjausajankohtaa erikseen. *Erillistä aikaleimaa ei loda, mutta potilas voi tehdä merkinnän kirjauspäivälle antamatta erikseen päivämäärää.*
 
